@@ -1,14 +1,200 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Lumos Design</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="js/script.js"></script>
 </head>
 
 <body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="logo">
+                <a href="/">
+                    <img src="images/logo_lumosdesing.svg" alt="Lumos Design logo">
+                </a>
+            </h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#concept">CONCEPT</a></li>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#works">WORKS</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
+    <!-- FBセクション -->
+    <section class="FB">
+        <div class="FB-content">
+
+            <!-- 左:名前 -->
+            <div class="fb-left">
+                <h2>ITSUKI YOSHIDA</h2>
+            </div>
+            <!-- 中央:手のGIF -->
+            <div class="fb-center">
+                <img src="images/ライトモード.gif" alt="光を灯す手のアニメーション">
+            </div>
+
+            <!-- 右サブタイトル -->
+            <div class="fb-right">
+                <p class="subtitle">PORTFOLIO SITE</p>
+                <p class="subtext">WEB　Design / WEB　Coding</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="concept" id="concept">
+        <div class="concept-inner">
+            <!-- 上の雲 -->
+            <div class="kumo-top">
+                <img src="images/雲_上.png" alt="上の雲" class="kumo">
+            </div>
+            <!-- 枠とテキスト -->
+            <div class="waku">
+                <!-- 上の枠 -->
+                <img src="images/concept_枠_上.svg" alt="上の枠" class="waku-top">
+                <!-- テキスト -->
+                <div class="concept-text">
+                    <div class="concept-title">
+                        <h2 class="title-text">CONCEPT</h2>
+                        <img src="images/concept_title_キラキラ.svg" alt="キラキラ装飾" class="title-deco">
+                    </div>
+
+                    <!-- リード分 -->
+                    <p class="lead">光を灯すように、心に残るデザインを。</p>
+                    <!-- 本文 -->
+                    <p>
+                        Lumos Design（ルーモスデザイン） は、<br>
+                        光を灯すように、心にあたたかさを届けるデザインを目指しています。<br>
+                        華やかすぎず、でも少しだけ魔法のようなきらめきを添えて。<br>
+                        見る人の気持ちにそっと寄り添う、そんなデザインをつくります。
+                    </p>
+                </div>
+                <!-- 下の枠 -->
+                <img src="images/concept_枠_下.svg" alt="下の枠" class="waku-bottom">
+            </div>
+
+            <!-- 下の雲 -->
+            <div class="kumo-bottom">
+                <img src="images/雲_下.png" alt="下の雲" class="kumo">
+            </div>
+        </div>
+    </section>
+    <section class="about" id="about">
+        <!-- タイトルとキラキラ -->
+        <div class="about-title-wrap">
+            <h2 class="about-title">ABOUT</h2>
+            <img src="images/about_title_キラキラ.svg" alt="キラキラ" class="about-title-deco">
+        </div>
+
+        <div class="about-inner">
+            <!-- 写真とテキスト -->
+            <div class="about-photo">
+                <div class="photo-wrapper">
+                    <img src="images/ABOUT_自分の写真.png" alt="自分の写真" class="profile-photo">
+                    <img src="images/ABOUT_キラキラ_左.svg" alt="キラキラ左" class="deco-left">
+                    <img src="images/ABOUT_キラキラ_右.svg" alt="キラキラ右" class="deco-right">
+                </div>
+            </div>
+
+            <div class="about-text">
+                <h3 class="about-name">吉田 樹<span>Yoshida Itsuki</span></h3>
+                <p class="about-desc">
+                    現在はSES企業でITに携わりながら、<br>
+                    Webデザインの制作と学習を進めています。<br>
+                    医療系サポートなど、<br>
+                    人と向き合う仕事を経験してきた中で、<br>
+                    「相手の想いをくみ取り、形にすること」に興味を持つようになりました。<br>
+                    そこからデザインの世界に惹かれ、<br>
+                    見る人の心にそっと灯りがともるような、<br>
+                    やさしい光を感じるデザインをテーマに制作しています。<br>
+                    色づかいや余白、雰囲気づくりを大切にしながら、<br>
+                    クライアントの世界観が自然と伝わるデザインを目指しています。<br>
+                    これからもITとデザイン、どちらの視点も忘れながら、<br>
+                    心地よく響く満ちデザインを届けていきたいと思っています。
+                </p>
+                <a href="#" class="about-button">VIEW MORE</a>
+            </div>
+        </div>
+    </section>
+    <section class="works" id="works">
+        <!-- タイトルとキラキラ -->
+        <div class="works-title-wrap">
+            <h2 class="works-title">WORK</h2>
+            <img src="images/work_title_キラキラ.svg" alt="キラキラ" class="works-title-deco">
+        </div>
+
+        <div class="works-inner">
+            <!-- スライダー -->
+            <div class="works-slider" aria-label="制作実績">
+                <!-- 表示 -->
+                <div class="works-view">
+                    <ul class="works-track">
+                        <li class="works-item">
+                            <img src="images/work_制作実績1.png" alt="制作実績1">
+                        </li>
+                        <li class="works-item">
+                            <img src="images/work_制作実績2.png" alt="制作実績2">
+                        </li>
+                        <li class="works-item">
+                            <img src="images/work_制作実績3.png" alt="制作実績3">
+                        </li>
+                        <li class="works-item">
+                            <img src="images/work_制作実績4.png" alt="制作実績4">
+                        </li>
+                        <li class="works-item">
+                            <img src="images/work_制作実績5.png" alt="制作実績5">
+                        </li>
+                        <li class="works-item">
+                            <img src="images/work_制作実績6.png" alt="制作実績6">
+                        </li>
+                        <li class="works-item">
+                            <img src="images/work_制作実績7.png" alt="制作実績7">
+                        </li>
+                        <li class="works-item">
+                            <img src="images/work_制作実績8.png" alt="制作実績8">
+                        </li>
+                        <li class="works-item">
+                            <img src="images/work_制作実績9.png" alt="制作実績9">
+                        </li>
+                        <li class="works-item">
+                            <img src="images/work_制作実績10.png" alt="制作実績10">
+                        </li>
+                        <li class="works-item">
+                            <img src="images/work_制作実績11.png" alt="制作実績11">
+                        </li>
+                    </ul>
+                </div>
+                <!-- 矢印 -->
+                <button class="works-arrow works-prev" type="button" aria-label="前へ">
+                    <img src="images/WORK_矢印_左.svg" alt="左矢印">
+                </button>
+                <button class="works-arrow works-next" type="button" aria-label="次へ">
+                    <img src="images/WORK_矢印_右.svg" alt="右矢印">
+                </button>
+                <!-- ドット -->
+                <div class="works-dots" aria-label="スライド選択">
+                    <button class="works-dot is-active" type="button" data-go="1" aria-label="1枚目へ"></button>
+                    <button class="works-dot" type="button" data-go="2" aria-label="2枚目へ"></button>
+                    <button class="works-dot" type="button" data-go="3" aria-label="3枚目へ"></button>
+                    <button class="works-dot" type="button" data-go="4" aria-label="4枚目へ"></button>
+                </div>
+            </div>
+
+            <!-- VIEW MORE -->
+            <a href="#" class="works-button">VIEW MORE</a>
+        </div>
+    </section>
 </body>
 
 </html>

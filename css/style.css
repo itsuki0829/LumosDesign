@@ -1,0 +1,559 @@
+@charset "utf-8";
+
+:root {
+    --font-gothic: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "Meiryo", sans-serif;
+    --font-mincho: "Yu Mincho", "游明朝", "Hiragino Mincho ProN", "MS PMincho", serif;
+    --font-lora: 'Lora', serif;
+}
+
+/* 全体の背景 */
+body {
+    margin: 0;
+    background: linear-gradient(to right, #e8dcc5 0%, #ffffff 50%, #e8dcc5 100%);
+    font-family: var(--font-gothic);
+}
+
+/* ヘッダー全体 */
+.site-header {
+    /* 背景は透過にしてグラデーションと繋げる */
+    /* background-color: transparent; */
+    /* 上下左右の余白 */
+    padding: 20px 40px;
+    /* ロゴとナビを横並び */
+    display: flex;
+    /* ナビを右寄せに */
+    justify-content: flex-end;
+    /* 中央に */
+    align-items: center;
+}
+
+.logo {
+    position: absolute;
+    top: 34px;
+    left: 30px;
+}
+
+/* ロゴサイズ調整 */
+.logo img {
+    width: 413px;
+    height: 66px;
+    display: block;
+}
+
+.main-nav {
+    padding-top: 15px;
+    padding-right: 30px;
+}
+
+
+/* ナビゲーション */
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+/* ナビゲーションリンク */
+.main-nav a {
+    text-decoration: none;
+    color: #9e8d73;
+    font-size: 36px;
+    letter-spacing: 1px;
+    line-height: 66px;
+    font-family: var(--font-mincho);
+}
+
+/* FB全体の余白 */
+.FB {
+    padding: 60px 0;
+}
+
+/* 横並び */
+.FB-content {
+    /* 横並び */
+    display: flex;
+    /* 中央揃え */
+    justify-content: center;
+    align-items: center;
+    /* gap: 40px; */
+    max-width: none;
+    margin: 0 auto;
+}
+
+/* 左：名前 */
+.fb-left h2 {
+    font-size: 36px;
+    margin: 0;
+    color: #9e8d73;
+    font-family: var(--font-mincho);
+    font-weight: 500;
+}
+
+.fb-left {
+    margin-left: 20px;
+}
+
+.fb-right {
+    min-width: 250px;
+    margin-right: 20px;
+}
+
+/* 右：PORTFOLIO SITE */
+.fb-right .subtitle {
+    font-size: 36px;
+    margin: 0 0 10px;
+    color: #9e8d73;
+    font-family: var(--font-mincho);
+    font-weight: 500;
+}
+
+/* WEB Design / WEB Coding のテキスト */
+.fb-right .subtext {
+    font-size: 18px;
+    color: #9e8d73;
+    margin: 0;
+    font-family: var(--font-gothic);
+    font-weight: 700;
+}
+
+
+.fb-center img {
+    width: 600px;
+    height: auto;
+    display: block;
+}
+
+.fb-center {
+    flex-shrink: 0;
+}
+
+/* conceptセクション */
+.concept {
+    position: relative;
+    text-align: center;
+    padding: 160px 0 260px;
+    /* 全体の余白 */
+}
+
+/* 内側のレイアウト幅 */
+.concept-inner {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* 上の雲 */
+.kumo-top {
+    position: absolute;
+    top: -50px;
+    right: 20px;
+    width: 444px;
+    z-index: 1;
+}
+
+.kumo-top .kumo {
+    width: 100%;
+    height: auto;
+}
+
+/* 下の雲 */
+.kumo-bottom {
+    position: absolute;
+    bottom: -40px;
+    left: -40px;
+    width: 555px;
+    z-index: 1;
+}
+
+.kumo-bottom .kumo {
+    width: 100%;
+    height: auto;
+}
+
+/* テキストの入る “枠エリア”※ この箱の中に上枠・下枠を重ねる */
+
+.waku {
+    position: relative;
+    z-index: 2;
+    width: 800px;
+    /* デザインの幅に合わせる */
+    margin: 0 auto;
+    padding: 100px 40px 150px;
+    /* 上枠と下枠の間にテキストが収まる高さを確保 */
+}
+
+/* 上の枠 */
+.waku-top {
+    position: absolute;
+    top: 0px;
+    /* 上への距離 */
+    left: -40px;
+    /* 左寄り */
+    width: 784px;
+    /* デザインの横幅 */
+    height: auto;
+    z-index: 2;
+}
+
+/* 下の枠 */
+.waku-bottom {
+    position: absolute;
+    bottom: 0px;
+    /* 下への距離 */
+    right: -80px;
+    /* 右寄り */
+    width: 1049px;
+    /* デザインの横幅 */
+    height: auto;
+    z-index: 2;
+}
+
+/* 枠の中のテキスト */
+.concept-text {
+    position: relative;
+    z-index: 3;
+    line-height: 2;
+    color: #62361d;
+    font-family: var(--font-mincho);
+    margin-top: -60px;
+}
+
+/* タイトル */
+.concept-title {
+    position: relative;
+    display: inline-block;
+    padding-top: 0;
+    padding-bottom: 40px;
+    margin-top: 0;
+}
+
+.title-text {
+    font-size: 34px;
+    font-family: var(--font-lora);
+    color: #62361d;
+
+    width: 169px;
+    text-align: center;
+}
+
+.title-deco {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, -35px);
+    width: 183px;
+    height: 56px;
+    pointer-events: none;
+}
+
+/* リード文 */
+.lead {
+    font-size: 47px;
+    line-height: 1.6;
+    margin-top: 38px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: #62361d;
+    font-family: var(--font-mincho);
+}
+
+/* 本文 */
+.concept-text p:not(.lead) {
+    padding-top: 40px;
+    font-size: 18px;
+    line-height: 1.72;
+    font-family: var(--font-mincho);
+    font-weight: 600;
+    color: #62361d;
+    letter-spacing: 0;
+    margin: 0;
+}
+
+/* ABOUTセクション全体 */
+.about {
+    padding: 130px 30px;
+}
+
+/* タイトルとキラキラ */
+.about-title-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.about-title {
+    font-size: 35px;
+    font-family: var(--font-lora);
+    color: #62361d;
+    margin: 0;
+}
+
+.about-title-deco {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 154px;
+    height: auto;
+    pointer-events: none;
+}
+
+.about-inner {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    /* 上揃え */
+    align-items: flex-start;
+    gap: 60px;
+    padding: 0 40px;
+}
+
+.photo-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 460px;
+}
+
+.profile-photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* 左キラキラ */
+.deco-left {
+    position: absolute;
+    left: 5px;
+    top: 70%;
+    transform: translateX(-50%);
+    width: 52px;
+    height: auto;
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* 右キラキラ */
+.deco-right {
+    position: absolute;
+    right: -20px;
+    top: 35%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: auto;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.about-photo {
+    position: relative;
+    width: 400px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.about-text {
+    flex: 1;
+    min-width: 520px;
+    color: #62361d;
+    font-family: var(--font-mincho);
+    padding-left: 200px;
+    padding-right: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 名前 */
+.about-name {
+    font-family: var(--font-mincho);
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 1.8;
+    letter-spacing: 0.08em;
+    margin: 0 0 20px;
+}
+
+/* 名前のローマ字 */
+.about-name span {
+    color: #9a8f79;
+    font-size: 18px;
+    letter-spacing: 0.12em;
+    margin-left: 10px;
+}
+
+/* プロフィール本文 */
+.about-desc {
+    font-family: var(--font-gothic);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 2.1;
+    letter-spacing: 0.02em;
+    margin: 0
+}
+
+/* ABOUT：VIEW MORE ボタン */
+.about-button {
+    align-self: flex-end;
+    display: inline-flex;
+    /* ボタン内の文字 */
+    justify-content: center;
+    align-items: center;
+    width: 210px;
+    height: 64px;
+    /* テキストブロック内の余白 */
+    margin-top: 49px;
+    margin-left: auto;
+    background-color: #62361d;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: var(--font-mincho);
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 2px;
+    /* 右に寄せる */
+    margin-left: auto;
+    /* 下にずらす */
+    margin-top: 80px;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.about-button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* WORKSセクション */
+.works {
+    padding: 80px 30px;
+}
+
+/* タイトルとキラキラ */
+.works-title-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.works-title {
+    font-size: 35px;
+    font-family: var(--font-lora);
+    color: #62361d;
+    margin: 0;
+}
+
+/* タイトル直下にキラキラ */
+.works-title-deco {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 154px;
+    height: auto;
+    pointer-events: none;
+}
+
+/* 中身の横幅 */
+.works-inner {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* スライダー全体 */
+.works-inner {
+    position: relative;
+}
+
+/* 表示窓 */
+.works-view {
+    overflow: hidden;
+    padding: 0 140px;
+}
+
+/* 横並び */
+.works-track {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    /* JSで transform を変更して動かす */
+    transition: transform 0.45s ease;
+    gap: 20px;
+}
+
+/* 1枚＝表示幅100％ */
+.works-item {
+    flex: 0 0 44%;
+}
+
+.works-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* 矢印 */
+.works-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    /* /* デフォルトを消す */
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    /* クリックしやすく */
+    width: 56px;
+    height: 56px;
+    display: grid;
+    place-items: center;
+}
+
+.works-arrow img {
+    width: 95px;
+    height: auto;
+    display: block;
+}
+
+.works-prev {
+    left: -18px;
+}
+
+.works-next {
+    right: -18px;
+}
+
+/* ドット */
+.works-dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding-top: 18px;
+}
+
+.works-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 999px;
+    border: 1px solid #62361d;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* アクティブなドットだけ塗りつぶす */
+.works-dot.is-active {
+    background: #62361d;
+}
+
+.works-slider {
+    margin-top: 135px;
+}

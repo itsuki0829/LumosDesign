@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_2" data-name="レイヤー 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93.22 27.42">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #9e8d73;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <g id="_編集箇所" data-name="編集箇所">
+    <g>
+      <path class="cls-1" d="M1.13,26.42h92.09"/>
+      <line class="cls-1" x1=".7" y1="26.55" x2="27.31" y2=".72"/>
+      <line class="cls-1" x1="27.19" y1=".13" x2="27.19" y2="27.13"/>
+    </g>
+  </g>
+</svg>
