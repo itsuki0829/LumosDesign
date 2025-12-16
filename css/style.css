@@ -430,7 +430,7 @@ body {
 
 /* WORKSセクション */
 .works {
-    padding: 80px 30px;
+    padding: 80px 0;
 }
 
 /* タイトルとキラキラ */
@@ -463,41 +463,8 @@ body {
 .works-inner {
     max-width: 1500px;
     margin: 0 auto;
-    padding: 0 40px;
-}
-
-/* スライダー全体 */
-.works-inner {
+    /* スライダー全体 */
     position: relative;
-}
-
-/* 表示窓 */
-.works-view {
-    overflow: hidden;
-    padding: 0 140px;
-}
-
-/* 横並び */
-.works-track {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    /* JSで transform を変更して動かす */
-    transition: transform 0.45s ease;
-    gap: 20px;
-}
-
-/* 1枚＝表示幅100％ */
-.works-item {
-    flex: 0 0 44%;
-}
-
-.works-item img {
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
 }
 
 /* 矢印 */
@@ -531,29 +498,65 @@ body {
     right: -18px;
 }
 
-/* ドット */
-.works-dots {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    padding-top: 18px;
-}
-
-.works-dot {
-    width: 20px;
-    height: 20px;
-    border-radius: 999px;
-    border: 1px solid #62361d;
-    background: transparent;
-    padding: 0;
-    cursor: pointer;
-}
-
-/* アクティブなドットだけ塗りつぶす */
-.works-dot.is-active {
-    background: #62361d;
-}
-
 .works-slider {
     margin-top: 135px;
+}
+
+.works-view {
+    overflow: visible;
+}
+
+.works-track .works-slider {
+    /* height: 460px; */
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+/* スライド1枚の箱 */
+.works-track .slick-slide {
+    height: 380px;
+    display: flex !important;
+    align-items: center;
+    /* 縦中央 */
+    justify-content: center;
+    /* 横中央 */
+    padding: 0 20px;
+}
+
+/* 画像は箱の中に収める */
+.works-track img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+}
+
+/* WORKSのVIEW MOREボタン */
+.works-button {
+    display: block;
+    width: 210px;
+    height: 64px;
+
+    /* 左右autoで中央寄せ */
+    margin: 80px auto 0;
+
+    background: #62361d;
+    color: #ffffff;
+    text-decoration: none;
+
+    font-family: var(--font-mincho);
+    font-size: 14px;
+    letter-spacing: 0.12em;
+
+    /* 文字を中央に */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.works-button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
 }

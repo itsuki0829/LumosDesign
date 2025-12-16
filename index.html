@@ -10,7 +10,11 @@
         rel="stylesheet">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
-    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer></script>
+    <script src="js/script.js" defer></script>
 </head>
 
 <body>
@@ -139,7 +143,7 @@
             <div class="works-slider" aria-label="制作実績">
                 <!-- 表示 -->
                 <div class="works-view">
-                    <ul class="works-track">
+                    <ul class="works-track js-works-slick">
                         <li class="works-item">
                             <img src="images/work_制作実績1.png" alt="制作実績1">
                         </li>
@@ -176,18 +180,18 @@
                     </ul>
                 </div>
                 <!-- 矢印 -->
-                <button class="works-arrow works-prev" type="button" aria-label="前へ">
+                <!-- <button class="works-arrow works-prev" type="button" aria-label="前へ">
                     <img src="images/WORK_矢印_左.svg" alt="左矢印">
                 </button>
                 <button class="works-arrow works-next" type="button" aria-label="次へ">
                     <img src="images/WORK_矢印_右.svg" alt="右矢印">
-                </button>
+                </button> -->
                 <!-- ドット -->
                 <div class="works-dots" aria-label="スライド選択">
-                    <button class="works-dot is-active" type="button" data-go="1" aria-label="1枚目へ"></button>
+                    <!-- <button class="works-dot is-active" type="button" data-go="1" aria-label="1枚目へ"></button>
                     <button class="works-dot" type="button" data-go="2" aria-label="2枚目へ"></button>
                     <button class="works-dot" type="button" data-go="3" aria-label="3枚目へ"></button>
-                    <button class="works-dot" type="button" data-go="4" aria-label="4枚目へ"></button>
+                    <button class="works-dot" type="button" data-go="4" aria-label="4枚目へ"></button> -->
                 </div>
             </div>
 

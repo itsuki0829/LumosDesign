@@ -1,50 +1,43 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const track = document.querySelector(".works-track");
-    const items = document.querySelectorAll(".works-item");
-    const prevBtn = document.querySelector(".works-prev");
-    const nextBtn = document.querySelector(".works-next");
-    const dots = document.querySelectorAll(".works-dot");
+$(function () {
+    // WORKSのスライダーをslickで初期化
+    $('.js-works-slick').slick({
 
-    const itemGap = 20; // CSSの gap と同じ
-    const visibleCount = 2; // 2枚表示
-    const itemWidth = items[0].offsetWidth + itemGap;
+        // 同時に表示するスライド数（中央に2枚）
+        slidesToShow: 2,
 
-    let currentIndex = 0;
+        // 1枚ずつ動かす
+        slidesToScroll: 1,
 
-    // 最大インデックス（最後で止まらないため）
-    const maxIndex = items.length - visibleCount;
+        // 中央寄せ＋チラ見えを有効にする
+        centerMode: true,
 
-    function updateSlider() {
-        track.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
+        // 左右にどれくらいチラ見えさせるか
+        centerPadding: '160px',
 
-        dots.forEach((dot, i) => {
-            dot.classList.toggle(
-                "is-active",
-                i === currentIndex || i === currentIndex + 1
-            );
-        });
-    }
+        // ===== 自動でずっと流れ続ける設定 =====
 
-    nextBtn.addEventListener("click", () => {
-        currentIndex++;
-        if (currentIndex > maxIndex) {
-            currentIndex = 0; // 無限ループ
-        }
-        updateSlider();
-    });
+        autoplay: true,        // 自動再生をON
+        autoplaySpeed: 0,      // 待ち時間なし（止まらない）
+        speed: 8000,           // 動くスピード
+        cssEase: 'linear',     // 一定速度で流す
+        infinite: true,        // 無限ループ
 
-    prevBtn.addEventListener("click", () => {
-        currentIndex--;
-        if (currentIndex < 0) {
-            currentIndex = maxIndex; // 無限ループ
-        }
-        updateSlider();
-    });
+        // マウスを乗せても止めない
+        pauseOnHover: false,
+        pauseOnFocus: false,
 
-    dots.forEach((dot, index) => {
-        dot.addEventListener("click", () => {
-            currentIndex = index;
-            updateSlider();
-        });
+        arrows: false,         // 矢印を表示しない
+        dots: false,           // 番号（1〜11）を表示しない
+
+        // ===== スマホ用設定 =====
+        responsive: [
+            {
+                breakpoint: 768,   // 768px以下のとき
+                settings: {
+                    slidesToShow: 1, // 1枚表示
+                    centerPadding: '40px'
+                }
+            }
+        ]
     });
 });
