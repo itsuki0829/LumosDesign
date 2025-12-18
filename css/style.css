@@ -59,7 +59,7 @@ body {
 .main-nav a {
     text-decoration: none;
     color: #9e8d73;
-    font-size: 36px;
+    font-size: 30px;
     letter-spacing: 1px;
     line-height: 66px;
     font-family: var(--font-mincho);
@@ -67,19 +67,24 @@ body {
 
 /* FB全体の余白 */
 .FB {
-    padding: 60px 0;
+    margin-bottom: 80px;
 }
 
-/* 横並び */
 .FB-content {
-    /* 横並び */
     display: flex;
-    /* 中央揃え */
+    flex-direction: row;
     justify-content: center;
-    align-items: center;
-    /* gap: 40px; */
-    max-width: none;
-    margin: 0 auto;
+    align-items: flex-start;
+    gap: 60px;
+    padding-top: 120px;
+}
+
+.fb-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 80px;
+    margin-bottom: 40px;
 }
 
 /* 左：名前 */
@@ -133,7 +138,7 @@ body {
 .concept {
     position: relative;
     text-align: center;
-    padding: 160px 0 260px;
+    margin: 0 30px 132px 30px;
     /* 全体の余白 */
 }
 
@@ -273,7 +278,7 @@ body {
 
 /* ABOUTセクション全体 */
 .about {
-    padding: 130px 30px;
+    margin: 0 30px 235px 30px;
 }
 
 /* タイトルとキラキラ */
@@ -430,7 +435,7 @@ body {
 
 /* WORKSセクション */
 .works {
-    padding: 80px 0;
+    margin: 0 30px 229px 30px;
 }
 
 /* タイトルとキラキラ */
@@ -557,6 +562,156 @@ body {
 }
 
 .works-button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* CONTACTセクション全体 */
+.contact {
+    margin: 310px 30px;
+}
+
+.contact-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* タイトル+キラキラ */
+.contact-title-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.contact-title {
+    font-size: 35px;
+    font-family: var(--font-lora);
+    color: #62361d;
+    margin: 0;
+}
+
+/* タイトル下のキラキラ画像 */
+.contact-title-deco {
+    position: absolute;
+    top: 100%;
+    /* タイトルの直下に配置 */
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 154px;
+    height: auto;
+    pointer-events: none;
+}
+
+.contact-text {
+    font-size: 20px;
+    color: #62361d;
+    font-family: var(--font-mincho);
+    padding-top: 100px;
+    text-align: center;
+}
+
+.contact-marker {
+    padding: 0 6px;
+
+    background: linear-gradient(transparent 65%,
+            rgba(154, 143, 121, 0.35) 65%);
+
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
+
+/* フォーム全体 */
+
+.contact-form {
+    padding-top: 120px
+}
+
+.form-row {
+    display: grid;
+    justify-content: center;
+    /* 左：ラベル幅 / 右：入力欄幅 */
+    grid-template-columns: 140px 631px;
+    column-gap: 24px;
+    align-items: start;
+    margin: 0 auto 28px;
+    /* 行全体を中央にする */
+}
+
+/* 日本語ラベル */
+.form-label .jp {
+    font-size: 21px;
+    font-weight: 500;
+    color: #62361d;
+    padding-bottom: 4px;
+}
+
+/* 英語ラベル */
+.form-label .en {
+    font-size: 14px;
+    color: #9a8f79;
+}
+
+/* 入力欄 右側 */
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    border: 1px solid #62361d;
+    background-color: #ffffff;
+    font-family: var(--font-gothic);
+    font-weight: 600;
+    color: #62361d;
+    padding: 14px 16px;
+}
+
+/* テキスト入力の高さ */
+.contact-form input {
+    width: 631px;
+    height: 48px;
+    box-sizing: border-box;
+    border: 1px solid #62361d;
+    padding: 0 16px;
+}
+
+/* テキストエリア（お問い合わせ内容） */
+.contact-form textarea {
+    width: 631px;
+    height: 362px;
+    box-sizing: border-box;
+    border: 1px solid #62361d;
+    padding: 14px 16px;
+    resize: none;
+}
+
+/* プレースホルダー文字 */
+.contact-form ::placeholder {
+    color: #b5a996;
+}
+
+/* 送信ボタン */
+.contact-submit {
+    display: block;
+    width: 210px;
+    height: 64px;
+
+    margin: 80px auto 0;
+    /* フォームの下に余白を取って中央配置 */
+
+    background-color: #62361d;
+    color: #ffffff;
+    font-family: var(--font-mincho);
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.contact-submit:hover {
     opacity: 0.9;
     transform: translateY(-1px);
 }
