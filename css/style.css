@@ -18,13 +18,14 @@ body {
     /* 背景は透過にしてグラデーションと繋げる */
     /* background-color: transparent; */
     /* 上下左右の余白 */
-    padding: 20px 40px;
+    padding: 20px 40px 20px 470px;
     /* ロゴとナビを横並び */
     display: flex;
     /* ナビを右寄せに */
     justify-content: flex-end;
     /* 中央に */
     align-items: center;
+    box-sizing: border-box;
 }
 
 .logo {
@@ -59,24 +60,56 @@ body {
 .main-nav a {
     text-decoration: none;
     color: #9e8d73;
-    font-size: 30px;
+    font-size: 25px;
     letter-spacing: 1px;
     line-height: 66px;
     font-family: var(--font-mincho);
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+}
+
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 24px;
+    opacity: 0;
+    transition: opacity .2s ease, transform .2s ease;
+    pointer-events: none;
+    background: url("../images/nav_kirakira.svg") no-repeat center / contain;
+}
+
+
+/* hover */
+.main-nav a:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(2px);
+}
+
+/* 選択中（現在地） */
+.main-nav a.is-active::after {
+    opacity: 1;
 }
 
 /* FB全体の余白 */
 .FB {
-    margin-bottom: 80px;
+    margin-bottom: 200px;
 }
 
 .FB-content {
+    position: relative;
+    height: 531px;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 60px;
-    padding-top: 120px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 120px;
+    /* 左右の余白（ここで調整） */
+    box-sizing: border-box;
+    gap: 400;
 }
 
 .fb-top {
@@ -105,6 +138,12 @@ body {
     margin-right: 20px;
 }
 
+.fb-left,
+.fb-right {
+    position: relative;
+    z-index: 1;
+}
+
 /* 右：PORTFOLIO SITE */
 .fb-right .subtitle {
     font-size: 36px;
@@ -126,12 +165,18 @@ body {
 
 .fb-center img {
     width: 600px;
+    max-width: 60%;
     height: auto;
     display: block;
 }
 
 .fb-center {
     flex-shrink: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
 }
 
 /* conceptセクション */
@@ -187,6 +232,7 @@ body {
     margin: 0 auto;
     padding: 100px 40px 150px;
     /* 上枠と下枠の間にテキストが収まる高さを確保 */
+    max-width: 100%;
 }
 
 /* 上の枠 */
@@ -213,6 +259,12 @@ body {
     /* デザインの横幅 */
     height: auto;
     z-index: 2;
+}
+
+.waku-top,
+.waku-bottom {
+    max-width: 100%;
+    height: auto;
 }
 
 /* 枠の中のテキスト */
@@ -322,6 +374,7 @@ body {
     position: relative;
     display: inline-block;
     width: 460px;
+    max-width: 100%;
 }
 
 .profile-photo {
@@ -613,7 +666,7 @@ body {
     text-align: center;
 }
 
-.contact-marker {
+.contact-maker {
     padding: 0 6px;
 
     background: linear-gradient(transparent 65%,
@@ -639,20 +692,25 @@ body {
     align-items: start;
     margin: 0 auto 28px;
     /* 行全体を中央にする */
+    display: grid;
+    grid-template-columns: 220px 631px;
+    column-gap: 68px;
 }
 
 /* 日本語ラベル */
 .form-label .jp {
     font-size: 21px;
-    font-weight: 500;
+    font-weight: 600;
     color: #62361d;
-    padding-bottom: 4px;
+    white-space: nowrap;
 }
 
 /* 英語ラベル */
 .form-label .en {
     font-size: 14px;
     color: #9a8f79;
+    font-weight: 600;
+    white-space: nowrap;
 }
 
 /* 入力欄 右側 */
