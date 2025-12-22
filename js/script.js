@@ -18,7 +18,7 @@ $(function () {
 
         autoplay: true,        // 自動再生をON
         autoplaySpeed: 0,      // 待ち時間なし（止まらない）
-        speed: 8000,           // 動くスピード
+        speed: 5000,           // 動くスピード
         cssEase: 'linear',     // 一定速度で流す
         infinite: true,        // 無限ループ
 
@@ -41,3 +41,13 @@ $(function () {
         ]
     });
 });
+const toTop = document.querySelector('.to-top');
+
+if (toTop) {
+    toTop.addEventListener('click', () => {
+        toTop.classList.add('clicked');
+        setTimeout(() => {
+            toTop.classList.remove('clicked');
+        }, 300);
+    });
+}

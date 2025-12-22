@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_2" data-name="レイヤー 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 241.8 114.28">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: HiraginoSans-W6-83pv-RKSJ-H, 'Hiragino Sans';
+        font-size: 20px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: #62361d;
+      }
+
+      .cls-3 {
+        stroke: #9a8f79;
+      }
+
+      .cls-3, .cls-4 {
+        fill: none;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-4 {
+        stroke: #62361d;
+      }
+
+      .cls-2 {
+        font-family: HiraginoSans-W1-83pv-RKSJ-H, 'Hiragino Sans';
+        font-size: 12px;
+      }
+    </style>
+  </defs>
+  <g id="_編集箇所" data-name="編集箇所">
+    <g>
+      <rect class="cls-4" x=".5" y="20.5" width="240.8" height="73.27"/>
+      <text class="cls-1" transform="translate(60.72 55.37)"><tspan x="0" y="0">Contact Us</tspan></text>
+      <text class="cls-2" transform="translate(60.9 71.63)"><tspan x="0" y="0">お問い合わせはコチラ</tspan></text>
+      <rect class="cls-3" x="31.97" y=".5" width="177.87" height="113.28"/>
+    </g>
+  </g>
+</svg>

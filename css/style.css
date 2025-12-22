@@ -4,6 +4,13 @@
     --font-gothic: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "Meiryo", sans-serif;
     --font-mincho: "Yu Mincho", "游明朝", "Hiragino Mincho ProN", "MS PMincho", serif;
     --font-lora: 'Lora', serif;
+    --brown: #62361d;
+    --brown-rgb: 98, 54, 29;
+    --orbit-alpha: .28;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 /* 全体の背景 */
@@ -13,11 +20,38 @@ body {
     font-family: var(--font-gothic);
 }
 
+/* トップに戻る */
+.to-top {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    z-index: 999;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    text-decoration: none;
+}
+
+.to-top__img {
+    width: 60%;
+    height: auto;
+    max-width: 197%;
+    display: block;
+}
+
+.to-top:active {
+    transform: scale(0.9);
+}
+
+.to-top.clicked {
+    transform: scale(0.85);
+    opacity: 0.6;
+}
+
 /* ヘッダー全体 */
 .site-header {
-    /* 背景は透過にしてグラデーションと繋げる */
-    /* background-color: transparent; */
-    /* 上下左右の余白 */
     padding: 20px 40px 20px 470px;
     /* ロゴとナビを横並び */
     display: flex;
@@ -36,9 +70,11 @@ body {
 
 /* ロゴサイズ調整 */
 .logo img {
-    width: 413px;
+    max-width: 413px;
+    width: 100%;
     height: 66px;
     display: block;
+
 }
 
 .main-nav {
@@ -106,10 +142,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 120px;
+    padding: 0 5%;
     /* 左右の余白（ここで調整） */
     box-sizing: border-box;
-    gap: 400;
+    gap: 4%;
 }
 
 .fb-top {
@@ -162,14 +198,6 @@ body {
     font-weight: 700;
 }
 
-
-.fb-center img {
-    width: 600px;
-    max-width: 60%;
-    height: auto;
-    display: block;
-}
-
 .fb-center {
     flex-shrink: 0;
     position: absolute;
@@ -177,13 +205,15 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 0;
+    max-width: 600px;
+    width: 60%;
 }
 
 /* conceptセクション */
 .concept {
     position: relative;
     text-align: center;
-    margin: 0 30px 132px 30px;
+    margin: 0 3% 132px;
     /* 全体の余白 */
 }
 
@@ -200,6 +230,7 @@ body {
     top: -50px;
     right: 20px;
     width: 444px;
+    height: auto;
     z-index: 1;
 }
 
@@ -214,6 +245,7 @@ body {
     bottom: -40px;
     left: -40px;
     width: 555px;
+    height: auto;
     z-index: 1;
 }
 
@@ -241,11 +273,10 @@ body {
     top: 0px;
     /* 上への距離 */
     left: -40px;
-    /* 左寄り */
-    width: 784px;
-    /* デザインの横幅 */
     height: auto;
     z-index: 2;
+    width: 78%;
+    max-width: 785px;
 }
 
 /* 下の枠 */
@@ -255,10 +286,11 @@ body {
     /* 下への距離 */
     right: -80px;
     /* 右寄り */
-    width: 1049px;
     /* デザインの横幅 */
     height: auto;
     z-index: 2;
+    width: 100%;
+    max-width: 1030px;
 }
 
 .waku-top,
@@ -333,6 +365,10 @@ body {
     margin: 0 30px 235px 30px;
 }
 
+.about-page {
+    margin: 100px 30px 235px;
+}
+
 /* タイトルとキラキラ */
 .about-title-wrap {
     position: relative;
@@ -367,7 +403,8 @@ body {
     /* 上揃え */
     align-items: flex-start;
     gap: 60px;
-    padding: 0 40px;
+    margin-top: 0;
+    padding-top: 100px;
 }
 
 .photo-wrapper {
@@ -411,18 +448,16 @@ body {
 
 .about-photo {
     position: relative;
-    width: 400px;
+    max-width: 400px;
+    width: 40%;
     height: auto;
     flex-shrink: 0;
 }
 
 .about-text {
     flex: 1;
-    min-width: 520px;
     color: #62361d;
     font-family: var(--font-mincho);
-    padding-left: 200px;
-    padding-right: 0;
     display: flex;
     flex-direction: column;
 }
@@ -772,4 +807,283 @@ body {
 .contact-submit:hover {
     opacity: 0.9;
     transform: translateY(-1px);
+}
+
+/* ABOUTPAGE */
+/* タイトルと最初のDesignの間を空ける */
+.skills .skill-list {
+    margin-top: 100px;
+}
+
+
+/* セクション幅を中央に */
+.skills-inner {
+    width: 1040px;
+    margin: 0 auto;
+    padding: 100px 30px;
+    box-sizing: border-box;
+}
+
+/* 3ブロック縦並び */
+.skill-list {
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+}
+
+/* 2カラム（左：見出し＋軌道 / 右：文章） */
+.skill {
+    display: grid;
+    grid-template-columns: 240px 720px;
+    column-gap: 80px;
+    align-items: start;
+}
+
+/* 左カラム */
+.skill-label .orbit {
+    position: relative;
+    width: 160px;
+    height: 250px;
+    display: block;
+    left: 20px;
+}
+
+.skill-label .orbit::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid #62361d;
+    border-radius: 50%;
+    transform: rotate(45deg);
+    transform-origin: center;
+}
+
+.skill-label {
+    position: relative;
+    /* orbitの基準点 */
+    width: 160px;
+    height: 190px;
+
+}
+
+/* 見出し文字 */
+.skill-label-text {
+    position: absolute;
+    z-index: 2;
+    margin: 0;
+
+    font-family: var(--font-lora);
+    font-size: 48px;
+    line-height: 1.1;
+    color: var(--brown);
+    white-space: nowrap;
+    /* 文字位置： */
+    right: 50px;
+    top: 60px;
+}
+
+.skill-label-tools .skill-label-text {
+    font-size: 40px;
+    right: -4px;
+}
+
+/* Other tools の右カラム： */
+.skill-label-tools+.skill-body .chips {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    /* 1行3つ */
+    gap: 18px 24px;
+    /* 行間 列間 */
+    justify-content: start;
+    /* 左揃え */
+    align-content: start;
+}
+
+.skill-label-tools+.skill-body .chip {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    justify-content: center;
+    align-content: start;
+}
+
+.skill-label-tools+.skill-body {
+    display: flex;
+}
+
+/* ===== MY PROFILE ===== */
+
+.myprofile {
+    position: relative;
+    padding: 60px 0;
+}
+
+/* タイトル */
+.myprofile-title-wrap {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.myprofile-title {
+    font-family: "Lora", serif;
+    font-size: 26px;
+    letter-spacing: .08em;
+    color: #62361d;
+    margin: 0;
+}
+
+.myprofile-title-deco {
+    display: block;
+    width: 180px;
+    margin: 10px auto 0;
+}
+
+/* 中身 */
+.myprofile-inner {
+    position: relative;
+    width: 1040px;
+    margin: 0 auto;
+    min-height: 600px;
+}
+
+.myprofile-bg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.myprofile-visual {
+    position: absolute;
+    left: -250px;
+    top: -100px;
+    width: 520px;
+    max-width: none;
+    z-index: 1;
+}
+
+/* DL */
+.mp-dl {
+    position: relative;
+    z-index: 2;
+    margin-left: 420px;
+}
+
+.mp-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    column-gap: 32px;
+    padding: 12px 0;
+}
+
+.mp-row dt {
+    font-family: "Lora", serif;
+    font-size: 18px;
+}
+
+.mp-row dt span {
+    font-size: 12px;
+    margin-left: 6px;
+    opacity: .7;
+}
+
+.mp-row dd {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+
+
+
+/* --------
+- キラキラ（SVG画像）
+-------- */
+.skills .orbit-star {
+    position: absolute;
+    z-index: 3;
+    width: 52px;
+    /* サイズ：ここを触る */
+    height: 60px;
+    /* サイズ：ここを触る */
+}
+
+/* 位置：ここを触る（Design基準） */
+.skills .orbit-star-1 {
+    left: 111px;
+    top: -9px;
+}
+
+.skills .orbit-star-2 {
+    left: -36px;
+    top: 179px;
+}
+
+.skills .orbit-star-3 {
+    left: 129px;
+    top: 131px;
+}
+
+/* 右カラム */
+.skill-desc {
+    font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN", sans-serif;
+    font-weight: 200;
+    font-size: 20px;
+    line-height: 38px;
+    letter-spacing: 0;
+    color: var(--brown);
+    max-width: 650px;
+    margin: 0;
+}
+
+/* ツール（チップ） */
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+    /* タイトルとの距離：ここ */
+}
+
+.chip {
+    display: inline-block;
+    padding: 6px 16px;
+    font-family: var(--font-gothic);
+    font-size: 14px;
+    font-weight: 100;
+    color: #fff;
+    background-color: #9a8f79;
+    border-radius: 999px;
+    line-height: 1.6;
+}
+
+
+@media (max-width: 1000px) {
+    .kumo-top {
+        top: 3%;
+        right: 5%;
+        width: 40%;
+    }
+
+    .kumo-bottom {
+        bottom: 3%;
+        left: 5%;
+        width: 50%;
+    }
+
+    /* ABOUT PAGE */
+    .skill {
+        grid-template-columns: 1fr;
+        /* 1カラムにする */
+        row-gap: 24px;
+    }
+
+    .skill-label {
+        min-height: 110px;
+    }
+
+    .orbit {
+        left: -10px;
+        width: 170px;
+        height: 110px;
+    }
+
 }
