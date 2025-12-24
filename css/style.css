@@ -272,7 +272,7 @@ body {
     position: absolute;
     top: 0px;
     /* 上への距離 */
-    left: -40px;
+    left: 0;
     height: auto;
     z-index: 2;
     width: 78%;
@@ -284,7 +284,7 @@ body {
     position: absolute;
     bottom: 0px;
     /* 下への距離 */
-    right: -80px;
+    right: 0;
     /* 右寄り */
     /* デザインの横幅 */
     height: auto;
@@ -400,8 +400,8 @@ body {
     width: 100%;
     margin: 0 auto;
     display: flex;
-    /* 上揃え */
-    align-items: flex-start;
+    /* 中央揃え */
+    align-items: center;
     gap: 60px;
     margin-top: 0;
     padding-top: 100px;
@@ -487,7 +487,7 @@ body {
     font-weight: 400;
     line-height: 2.1;
     letter-spacing: 0.02em;
-    margin: 0
+    margin: 0;
 }
 
 /* ABOUT：VIEW MORE ボタン */
@@ -764,7 +764,8 @@ body {
 
 /* テキスト入力の高さ */
 .contact-form input {
-    width: 631px;
+    max-width: 631px;
+    width: 100%;
     height: 48px;
     box-sizing: border-box;
     border: 1px solid #62361d;
@@ -774,6 +775,7 @@ body {
 /* テキストエリア（お問い合わせ内容） */
 .contact-form textarea {
     width: 631px;
+    /* width: 63%; */
     height: 362px;
     box-sizing: border-box;
     border: 1px solid #62361d;
@@ -914,7 +916,7 @@ body {
 
 .myprofile {
     position: relative;
-    padding: 60px 0;
+    margin: 0 60px 200px 60px;
 }
 
 /* タイトル */
@@ -953,57 +955,96 @@ body {
 
 .myprofile-visual {
     position: absolute;
-    left: -250px;
-    top: -100px;
-    width: 520px;
-    max-width: none;
+    left: -210px;
+    top: -130px;
+    max-width: 1345px;
+    height: auto;
+    width: 134%;
     z-index: 1;
 }
 
+.myprofile-content {
+    transform: translate(-30px, 125px);
+    line-height: 1.9;
+}
+
 /* DL */
+
 .mp-dl {
     position: relative;
     z-index: 2;
-    margin-left: 420px;
+    margin-left: 265px;
+    /* 右カラムの開始位置 */
 }
 
+/* 2列：左（dt）固定 + 右（dd）可変 */
 .mp-row {
     display: grid;
-    grid-template-columns: 160px 1fr;
+    grid-template-columns: 160px auto;
     column-gap: 32px;
     padding: 12px 0;
 }
 
 .mp-row dt {
     font-family: "Lora", serif;
-    font-size: 18px;
+    font-size: 17px;
 }
 
 .mp-row dt span {
-    font-size: 12px;
+    font-size: 11px;
     margin-left: 6px;
     opacity: .7;
 }
 
+/* ddの基本（From/Age/MBTI/Hobby用） */
 .mp-row dd {
     margin: 0;
-    font-size: 15px;
-    line-height: 1.8;
+    font-size: 14px;
+    line-height: 1.6;
+    font-weight: 100;
 }
 
+.mp-row dd p {
+    margin: 0;
+}
 
+/* ===== Favorite（好きなもの）だけ別設計 ===== */
 
+.mp-row--stack dd {
+    line-height: normal;
+}
 
-/* --------
-- キラキラ（SVG画像）
--------- */
+/* カテゴリごとに等間隔 */
+.favorite-group {
+    margin-bottom: 23px;
+}
+
+.favorite-title {
+    font-family: "Lora", serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+/* リスト（内容） */
+.favorite-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.favorite-list li {
+    font-size: 13px;
+    line-height: 1.6;
+    font-weight: 100;
+}
+
+/* キラキラ */
 .skills .orbit-star {
     position: absolute;
     z-index: 3;
     width: 52px;
-    /* サイズ：ここを触る */
     height: 60px;
-    /* サイズ：ここを触る */
 }
 
 /* 位置：ここを触る（Design基準） */
@@ -1055,6 +1096,133 @@ body {
     line-height: 1.6;
 }
 
+.kirakira {
+    position: absolute;
+    height: auto;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* キラキラ個別管理 */
+.k1 {
+    width: 52px;
+    left: 199px;
+    top: 163px;
+}
+
+.k2 {
+    width: 21px;
+    left: 414px;
+    top: 215px;
+}
+
+.k3 {
+    width: 44px;
+    left: 446px;
+    top: 173px;
+}
+
+.k4 {
+    width: 66px;
+    left: 906px;
+    top: 674px;
+}
+
+.k5 {
+    width: 51px;
+    left: 876px;
+    top: 729px;
+}
+
+.k6 {
+    width: 35px;
+    left: 849px;
+    top: 773px;
+}
+
+.k7 {
+    width: 40px;
+    left: 354px;
+    top: 628px;
+}
+
+.k8 {
+    width: 40px;
+    left: 264px;
+    top: 751px;
+}
+
+/* CONTACTご案内 */
+.contact-cta {
+    min-height: 520px;
+    display: grid;
+    place-content: center;
+    gap: 80px;
+    padding: 120px 30px;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+/* 上の文章（マーカー付き） */
+.contact-cta-text {
+    display: inline-block;
+    position: relative;
+    margin: 0;
+    font-family: var(--font-mincho);
+    font-size: 20px;
+    color: var(--brown);
+    letter-spacing: .08em;
+    line-height: 1.8;
+    padding: 0 8px;
+}
+
+.contact-cta-text::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: .25em;
+    height: 10px;
+    background: rgba(154, 143, 121, .35);
+    z-index: -1;
+}
+
+/* ボタン */
+.contact-cta-button {
+    display: inline-block;
+    justify-self: center;
+    transition: transform .25s ease, opacity .25s ease;
+}
+
+.contact-cta-button img {
+    width: 30%;
+    max-width: 260px;
+    min-width: 200px;
+    height: auto;
+    display: block;
+}
+
+.contact-cta-button {
+    display: inline-block;
+    transition: transform .3s ease, opacity .3s ease;
+}
+
+/* hover */
+.contact-cta-button:hover {
+    transform: translateY(-4px);
+    opacity: .9;
+}
+
+/* click（押した感） */
+.contact-cta-button:active {
+    transform: translateY(-1px) scale(.98);
+}
+
+/* 画面遷移の時のスクロールの余白 */
+#contact-anchor {
+    position: relative;
+    top: -120px;
+}
 
 @media (max-width: 1000px) {
     .kumo-top {

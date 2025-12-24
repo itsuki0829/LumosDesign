@@ -29,6 +29,8 @@ $(function () {
         arrows: false,         // 矢印を表示しない
         dots: false,           // 番号（1〜11）を表示しない
 
+        useTransform: false,
+
         // ===== スマホ用設定 =====
         responsive: [
             {
@@ -51,3 +53,28 @@ if (toTop) {
         }, 300);
     });
 }
+
+// TOPページをCONCEPTセクションで出現させる
+
+$(function () {
+    const toTopButton = $(".js-to-top");
+    const concept = $("#contact");
+
+    toTopButton.hide(); // 最初は非表示
+
+    $(window).on("scroll", function () {
+        const scrollTop = $(this).scrollTop();
+        const conceptTop = concept.offset().top - 700; // 開始位置
+
+        if (scrollTop >= conceptTop) {
+            toTopButton.fadeIn();
+        } else {
+            toTopButton.fadeOut();
+        }
+    });
+
+    toTopButton.on("click", function (e) {
+        e.preventDefault();
+        $("body,html").animate({ scrollTop: 0 }, 800);
+    });
+});
