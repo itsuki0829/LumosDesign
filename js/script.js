@@ -78,3 +78,13 @@ $(function () {
         $("body,html").animate({ scrollTop: 0 }, 800);
     });
 });
+$('.js-works-slick').on('init', function () {
+    if (location.hash) {
+        const target = document.querySelector(location.hash);
+        if (target) {
+            setTimeout(() => {
+                target.scrollIntoView({ behavior: 'auto' });
+            }, 0);
+        }
+    }
+});
