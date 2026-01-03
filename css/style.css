@@ -18,6 +18,96 @@ body {
     margin: 0;
     background: linear-gradient(to right, #e8dcc5 0%, #ffffff 50%, #e8dcc5 100%);
     font-family: var(--font-gothic);
+    /* 杖カーソル */
+    cursor: url("../images/magic-stick.png") 38 58, default;
+}
+
+/* 杖カーソル */
+a:hover {
+    cursor: url("../images/magic-stick.png") 38 58, default;
+}
+
+/* クリック時キラッ */
+.click-sparkle {
+    position: fixed;
+    width: 26px;
+    height: 26px;
+    pointer-events: none;
+    z-index: 9999;
+
+    background: radial-gradient(circle,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 235, 180, 0.9) 30%,
+            rgba(255, 215, 0, 0) 65%);
+
+    border-radius: 50%;
+    animation: sparkle-pop 300ms ease-out forwards;
+}
+
+/* 光の筋（短く） */
+.click-sparkle::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 36px;
+    height: 4px;
+    transform: translate(-50%, -50%);
+    border-radius: 999px;
+
+    background: linear-gradient(90deg,
+            rgba(255, 215, 0, 0) 0%,
+            rgba(255, 255, 255, 1) 50%,
+            rgba(255, 215, 0, 0) 100%);
+
+    animation: sparkle-streak 300ms ease-out forwards;
+}
+
+/* 一瞬で出て消える */
+@keyframes sparkle-pop {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+
+    30% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.4);
+        opacity: 0;
+    }
+}
+
+@keyframes sparkle-streak {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scaleX(0.3);
+    }
+
+    30% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scaleX(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scaleX(0.6);
+    }
+}
+
+@keyframes sparkle {
+    0% {
+        transform: scale(0.3);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
 }
 
 /* トップに戻る */
@@ -52,44 +142,34 @@ body {
 
 /* ヘッダー全体 */
 .site-header {
-    padding: 20px 40px 20px 470px;
-    /* ロゴとナビを横並び */
+    padding: 20px 40px;
     display: flex;
-    /* ナビを右寄せに */
-    justify-content: flex-end;
-    /* 中央に */
     align-items: center;
-    box-sizing: border-box;
+    justify-content: space-between;
 }
 
-.logo {
-    position: absolute;
-    top: 34px;
-    left: 30px;
+.site-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    width: 100%;
 }
 
-/* ロゴサイズ調整 */
 .logo img {
     max-width: 413px;
-    width: 100%;
     height: 66px;
-    display: block;
-
+    max-width: 300px;
 }
-
-.main-nav {
-    padding-top: 15px;
-    padding-right: 30px;
-}
-
 
 /* ナビゲーション */
 .main-nav ul {
-    list-style: none;
     display: flex;
     gap: 30px;
-    margin: 0;
-    padding: 0;
+}
+
+.main-nav {
+    margin-left: auto;
 }
 
 /* ナビゲーションリンク */
@@ -118,6 +198,7 @@ body {
     pointer-events: none;
     background: url("../images/nav_kirakira.svg") no-repeat center / contain;
 }
+
 
 
 /* hover */
@@ -654,6 +735,10 @@ body {
     transform: translateY(-1px);
 }
 
+.works-arrow {
+    display: none;
+}
+
 /* CONTACTセクション全体 */
 .contact {
     margin: 310px 30px;
@@ -752,6 +837,7 @@ body {
 .contact-form input,
 .contact-form textarea {
     width: 100%;
+    max-width: 100%;
     box-sizing: border-box;
     margin: 0 auto;
     border: 1px solid #62361d;
@@ -916,7 +1002,7 @@ body {
 
 .myprofile {
     position: relative;
-    margin: 0 60px 200px 60px;
+    margin: 0 60px 300px 60px;
 }
 
 /* タイトル */
@@ -962,6 +1048,8 @@ body {
     width: 100%;
     z-index: 1;
 }
+
+
 
 .myprofile-content {
     transform: translate(-30px, 125px);
@@ -1154,7 +1242,6 @@ body {
 
 /* CONTACTご案内 */
 .contact-cta {
-    min-height: 520px;
     display: grid;
     place-content: center;
     gap: 80px;
@@ -1224,6 +1311,660 @@ body {
     top: -120px;
 }
 
+/* WORKSPAGE */
+.workspage-title-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 56px;
+}
+
+.workspage-title {
+    margin: 0;
+    font-size: 35px;
+    font-family: var(--font-lora);
+    color: #62361d;
+}
+
+.workspage-title-deco {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 154px;
+}
+
+/* 2カラム */
+.works-list {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 90px;
+    padding: 56px 0 120px;
+}
+
+/* 中央ライン */
+.works-list::before {
+    content: "";
+    position: absolute;
+    top: 80px;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    transform: translateX(-50%);
+    background: #9a8f79;
+}
+
+.work-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 475px;
+    height: 1px;
+    background: #9a8f79;
+}
+
+/* カラム */
+.works-col {
+    width: 447px;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    justify-self: center;
+}
+
+/* カード */
+.work-link {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 40px;
+}
+
+/* 画像BOX */
+.work-img-box {
+    width: 100%;
+    height: 388px;
+    /* 全カードで高さを統一 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* 画像は全部表示 */
+.work-img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.work-link:hover .work-img {
+    transform: scale(1.03);
+    opacity: 0.9;
+}
+
+/* 種別ごとの max-width */
+.work-card-square .work-img-box {
+    max-width: 368px;
+    width: 100%;
+}
+
+.work-card-wide .work-img-box {
+    max-width: 485px;
+    width: 100%;
+}
+
+.work-card-free .work-img-box {
+    max-width: 447px;
+    width: 100%;
+}
+
+/* テキスト */
+.work-name {
+    margin: 16px 0 8px;
+    font-size: 18px;
+    letter-spacing: .06em;
+    color: #62361d;
+}
+
+.work-text {
+    margin: 0 0 8px;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.work-meta {
+    margin: 0;
+    font-size: 16px;
+    color: #9c8c72;
+}
+
+.work-name,
+.work-text,
+.work-meta {
+    max-width: 447px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* カーソルを合わせたら線が出る */
+.work-name,
+.work-text {
+    display: inline-block;
+    position: relative;
+}
+
+.work-name::after,
+.work-text::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0.15em;
+    width: 100%;
+    height: 0.4em;
+    background: #cfcdbf;
+    opacity: 0.35;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* リンクに反応 */
+.work-link:hover .work-name::after,
+.work-link:hover .work-text::after {
+    opacity: 1;
+}
+
+/* works各ページ */
+
+.works-detail {
+    margin-bottom: 120px;
+}
+
+/* タイトル */
+
+.workspage-detail-title {
+    margin-top: 40px;
+    font-size: 22px;
+    letter-spacing: 0.1em;
+}
+
+.works-detail-sub {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 20px;
+    line-height: 1.8;
+    padding: 40px 0;
+}
+
+
+/* フレーム（背景画像にする） */
+.works-frame {
+    position: relative;
+    width: 100%;
+    max-width: 760px;
+    height: 777px;
+    margin: 0 auto;
+    background: url("../images/work-waku.svg") no-repeat center / contain;
+}
+
+/* 中の作品画像 */
+.works-frame-inner {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    max-width: 568px;
+    width: 100%;
+    transform: translate(-50%, -50%);
+}
+
+.works-frame-inner img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 全体デザインがあるWEB用 */
+.works-web-design {
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 520px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+}
+
+/* WEB作品 */
+.works-web {
+    max-width: 520px;
+    margin: 40px auto 30px;
+    /* 上下の余白は好みで */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+}
+
+.works-web-pc {
+    width: 450px;
+    height: auto;
+    display: block;
+}
+
+/* SP版 */
+.works-web-sp {
+    width: 360px;
+    height: auto;
+    display: block;
+}
+
+/* SPありの作品だけ：PC+SPの2カラムにする */
+.works-web--has-sp {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 24px;
+    align-items: start;
+}
+
+/* SP画像を横並びにする */
+.works-web--has-sp .works-web__sp {
+    display: flex;
+    gap: 24px;
+}
+
+/* 画像共通 */
+.works-web--has-sp img {
+    width: auto;
+    height: auto;
+    display: block;
+}
+
+.works-web--has-sp .works-web__sp {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+/* 共通（SP画像の基本） */
+.works-web--has-sp .works-web-sp {
+    height: auto;
+    display: block;
+}
+
+/* メインSP */
+.works-web--has-sp .sp--main {
+    max-width: 135px;
+    width: 100%;
+    height: auto;
+}
+
+/* サブSP */
+.works-web--has-sp .sp--menu {
+    max-width: 135px;
+    width: 100%;
+    height: auto;
+}
+
+.works-detail-tag {
+    max-width: 866px;
+    margin: 22px auto 66px;
+    text-align: right;
+    font-size: 16px;
+    font-family: var(--font-gothic);
+    color: #9a8f79;
+}
+
+/* 概要など */
+.works-detail-info {
+    margin-bottom: 80px;
+}
+
+
+.works-detail-info dl {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.works-detail-info dt {
+    position: relative;
+    padding-left: 10px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.works-detail-info dt::before {
+    content: "";
+    position: absolute;
+    left: -23px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 25px;
+    background: url("../images/asterisk.svg") no-repeat center / contain;
+    opacity: 0.9;
+}
+
+.works-detail-info dd {
+    margin-top: 8px;
+    margin-bottom: 44px;
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+/* 戻るボタン */
+.works-detail-back {
+    position: relative;
+    max-width: 866px;
+    /* ← フレーム幅に合わせる */
+    margin: 90px auto 0;
+    height: 70px;
+    /* ボタン＋線の高さ */
+    display: flex;
+    justify-content: flex-end;
+    /* ← ボタンを右へ */
+    align-items: center;
+}
+
+/* 横線（フルで引く） */
+.works-detail-back::before {
+    content: "";
+    position: absolute;
+    left: -300px;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1px;
+    background: #62361d;
+    opacity: .6;
+}
+
+/* ボタン本体（線の上に載せる） */
+.works-all-btn {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 190px;
+    height: 58px;
+
+    background: #f6f0e6;
+    /* ページ背景と同系色 */
+    border: 1px solid #62361d;
+    color: #62361d;
+
+    font-family: var(--font-mincho);
+    font-size: 16px;
+    letter-spacing: .14em;
+    text-decoration: none;
+}
+
+/* サンクスページ */
+/* main */
+.thanks {
+    margin: 40px 10px 200px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* 見出し（線＋文章＋線） */
+.thanks-head {
+    width: min(760px, 92vw);
+    text-align: center;
+    margin-top: 10px;
+}
+
+.thanks-line {
+    display: flex;
+    justify-content: center;
+}
+
+.thanks-line img {
+    max-width: 536px;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.thanks-text {
+    margin: 14px 0;
+    font-size: 18px;
+    letter-spacing: .06em;
+    color: #8d7f6a;
+}
+
+/* ビジュアル土台 */
+.thanks-visual {
+    width: min(900px, 94vw);
+    height: 460px;
+    margin-top: 40px;
+    position: relative;
+}
+
+/* 封筒 */
+.letter {
+    position: absolute;
+    left: 50%;
+    top: 12px;
+    transform: translateX(-50%) rotate(-4deg);
+    width: 42%;
+    height: auto;
+    max-width: 420px;
+}
+
+/* 羽 共通 */
+.thanks-visual img[class^="hane"] {
+    position: absolute;
+    height: auto;
+    z-index: 1;
+    opacity: .95;
+}
+
+/* ===== 羽 1枚ずつ配置 =====
+   ここだけ top/left/right/width/rotate を触ればOK */
+
+/* 左の大羽 */
+.hane1 {
+    max-width: 422px;
+    width: 42%;
+    left: -62px;
+    top: 184px;
+    transform: rotate(-10deg);
+}
+
+/* 右羽 */
+.hane2 {
+    max-width: 103px;
+    left: 73%;
+    top: 212px;
+}
+
+
+.hane3 {
+    max-width: 284px;
+    width: 28%;
+    right: -7px;
+    top: 223px;
+}
+
+
+.hane4 {
+    max-width: 213px;
+    width: 21%;
+    transform: rotate(-10deg);
+    left: 42px;
+    top: 94px;
+}
+
+.hane5 {
+    max-width: 104px;
+    width: 10%;
+    left: 34%;
+    top: 343px;
+    transform: translateX(130px) rotate(-5deg);
+}
+
+.hane6 {
+    max-width: 114px;
+    width: 11.2%;
+    top: 267px;
+    right: 465px;
+}
+
+/* 英文 */
+.thanks-sub {
+    margin-top: -5px;
+    font-family: "Lora", serif;
+    font-size: 18px;
+    letter-spacing: .04em;
+    color: #9b8b73;
+    opacity: .85;
+}
+
+/* WORKS矢印 */
+.works-arrows {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+    position: relative;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 0;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.hamburger__lines {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    line-height: 0;
+}
+
+.hamburger__lines span {
+    display: block;
+    width: 30px;
+    height: 4px;
+    background: #9e8d73;
+    border-radius: 3px;
+    flex: none;
+}
+
+.hamburger__lines span:nth-child(2) {
+    width: 22px;
+    margin-left: 0;
+}
+
+.hamburger_kirakira {
+    position: absolute;
+    left: 32px;
+    top: 16px;
+    width: 10px;
+    pointer-events: none;
+}
+
+.sp-menu {
+    display: none;
+    opacity: 0;
+    position: fixed;
+    inset: 0;
+    background: #cfc6b7;
+    place-items: center;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .25s ease, visibility .25s ease;
+    z-index: 99999;
+}
+
+/* 明るい線（上に見える） */
+.sp-menu__close-line.is-light {
+    background: #f8f8f8;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* 暗い線（奥・下に見える） */
+.sp-menu__close-line.is-dark {
+    background: #9e8d73;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* 開いた状態 */
+.sp-menu.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* ×ボタン本体 */
+.sp-menu__close {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* 共通：線 */
+.sp-menu__close-line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 28px;
+    height: 2px;
+    transform-origin: center;
+}
+
+/* メニュー文字 */
+.sp-menu__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    display: grid;
+    gap: 70px;
+    /* スクショみたいに間隔広め */
+}
+
+.sp-menu__list a {
+    text-decoration: none;
+    color: #ffffff;
+    font-family: var(--font-mincho);
+    font-size: 35px;
+    letter-spacing: .06em;
+}
+
+body.is-menu-open .FB {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+body.is-menu-open {
+    overflow: hidden;
+}
+
 @media (max-width: 1000px) {
     .kumo-top {
         top: 3%;
@@ -1254,4 +1995,382 @@ body {
         height: 110px;
     }
 
+}
+
+/* ===== SP ===== */
+@media (max-width: 768px) {
+    .hamburger {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sp-menu {
+        display: grid;
+    }
+
+    /* 既存：SPではPCナビ非表示 */
+    .main-nav {
+        display: none;
+    }
+
+    .to-top img {
+        max-width: 101px;
+        width: 100%;
+        height: auto;
+    }
+
+    .main-nav {
+        display: none;
+    }
+
+    .works-list {
+        grid-template-columns: 1fr;
+    }
+
+    .works-list::before {
+        display: none;
+    }
+
+    .FB-content {
+        flex-direction: column;
+        height: auto;
+        gap: 24px;
+    }
+
+    .fb-center {
+        position: static;
+        transform: none;
+        width: 80%;
+    }
+
+    .site-header {
+        padding: 12px 16px;
+        justify-content: flex-start;
+        position: sticky;
+    }
+
+    .logo {
+        position: static;
+        margin: 0;
+    }
+
+    .logo img {
+        max-width: 220px;
+        width: 100%;
+        height: auto;
+    }
+
+    /* FBがヘッダーに食い込まないように余白 */
+    .FB {
+        margin-top: 24px;
+    }
+
+    .concept-text {
+        margin-top: -20px;
+    }
+
+    .title-text {
+        font-size: 26px;
+        width: auto;
+    }
+
+    .title-deco {
+        width: 150px;
+        transform: translate(-50%, -28px);
+    }
+
+    .lead {
+        font-size: 26px;
+        line-height: 1.6;
+        margin-top: 22px;
+    }
+
+    .concept {
+        margin: 0;
+        padding: 0 16px 90px;
+    }
+
+    /* ここで「枠と雲が連動して縮む」基準を作る */
+    .concept-inner {
+        position: relative;
+
+        /* 枠の最大幅：画面が狭いほど一緒に縮む */
+        --frameW: clamp(300px, 88vw, 380px);
+
+        /* 雲も枠幅に連動 */
+        --cloudTopW: clamp(120px, calc(var(--frameW) * 0.45), 180px);
+        --cloudBottomW: clamp(220px, calc(var(--frameW) * 0.75), 320px);
+
+        max-width: calc(var(--frameW) + 32px);
+        margin: 0 auto;
+        padding: 40px 0;
+    }
+
+    /* 枠（中身を守る箱） */
+    .waku {
+        width: 100%;
+        max-width: var(--frameW);
+        margin: 0 auto;
+
+        /* 中身の余白（デザインに合わせて微調整OK） */
+        padding: 72px 16px 86px;
+
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+        /* 枠の内側に雲が入り込まない */
+    }
+
+    /* 枠画像はSPでは100%で張る（PCの78%を無効化） */
+    .waku-top,
+    .waku-bottom {
+        width: 100%;
+        max-width: none;
+        height: auto;
+    }
+
+    .waku-top {
+        left: 0;
+        top: 0;
+    }
+
+    .waku-bottom {
+        right: 0;
+        bottom: 0;
+    }
+
+    .kumo-top,
+    .kumo-bottom {
+        position: absolute;
+        z-index: 3;
+        pointer-events: none;
+    }
+
+    .kumo-top {
+        width: var(--cloudTopW);
+        right: -14px;
+        top: -22px;
+    }
+
+    .kumo-bottom {
+        width: var(--cloudBottomW);
+        left: -20px;
+        bottom: -70px;
+    }
+
+    .title-text {
+        font-size: 26px;
+        width: auto;
+    }
+
+    .title-deco {
+        width: 150px;
+        transform: translate(-50%, -28px);
+    }
+
+    .concept-text {
+        margin-top: -20px;
+    }
+
+    .lead {
+        font-size: 26px;
+        line-height: 1.6;
+        margin-top: 22px;
+    }
+
+    .concept-text p:not(.lead) {
+        padding-top: 18px;
+        font-size: 14px;
+        line-height: 1.9;
+    }
+
+    .about {
+        margin: 0;
+        padding: 0 10px 100px;
+    }
+
+    .about-title {
+        font-size: 28px;
+    }
+
+    .about-title-deco {
+        width: 140px;
+    }
+
+    .about-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+        max-width: 420px;
+        margin: 0 auto;
+        padding-top: 40px;
+    }
+
+    .about-photo {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .photo-wrapper {
+        width: 100%;
+        position: relative;
+    }
+
+    .profile-photo {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .deco-left {
+        left: 8px;
+        top: 78%;
+        width: 36px;
+    }
+
+    .deco-right {
+        right: -6px;
+        top: 34%;
+        width: 36px;
+    }
+
+    .about-text {
+        width: 100%;
+        text-align: center;
+    }
+
+    .about-name {
+        font-size: 20px;
+        line-height: 1.7;
+        margin-bottom: 12px;
+    }
+
+    .about-name span {
+        display: block;
+        margin-left: 0;
+        margin-top: 4px;
+        font-size: 14px;
+        letter-spacing: 0.12em;
+    }
+
+    .about-desc {
+        font-size: 12px;
+        line-height: 2;
+        padding: 0 10px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .about-button {
+        margin: 32px auto 0;
+        width: 180px;
+        height: 54px;
+        align-self: center;
+    }
+
+    .works-arrows {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 240px;
+        margin: 24px auto 0;
+    }
+
+    .works-arrow {
+        display: block;
+        background: transparent;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        width: auto;
+        height: auto;
+    }
+
+    .works-arrow img {
+        width: 59px;
+        height: auto;
+        display: block;
+    }
+
+    .works-prev,
+    .works-next {
+        position: static;
+        transform: none;
+        left: auto;
+        right: auto;
+        top: auto;
+        display: block;
+    }
+
+    .works-arrow img {
+        width: 59px;
+        height: auto;
+        display: block;
+    }
+
+    /* contact */
+    .contact {
+        margin: 0;
+        padding: 90px 10px 180px;
+        /* ← 下を増やす */
+    }
+
+    .contact-title {
+        font-size: 28px;
+    }
+
+    .contact-title-deco {
+        width: 140px;
+    }
+
+    .contact-text {
+        font-size: 18px;
+        line-height: 1.9;
+        padding-top: 40px;
+        text-align: center;
+    }
+
+    .contact-form {
+        padding-top: 48px;
+    }
+
+    /* 2カラム → 1カラム */
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 12px;
+        margin-bottom: 28px;
+    }
+
+    .form-label {
+        padding-top: 0;
+    }
+
+    .form-label .jp {
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+
+    .form-label .en {
+        font-size: 12px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        max-width: none;
+    }
+
+    .contact-form textarea {
+        height: 220px;
+        margin-top: 4px;
+    }
+
+    .contact-submit {
+        width: 180px;
+        height: 54px;
+        margin: 36px auto 0;
+    }
 }

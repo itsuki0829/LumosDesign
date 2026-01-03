@@ -1,90 +1,178 @@
 $(function () {
-    // WORKSのスライダーをslickで初期化
-    $('.js-works-slick').slick({
+    const $slider = $('.js-works-slick');
+    if (!$slider.length) return;
 
-        // 同時に表示するスライド数（中央に2枚）
+    // ★ 再初期化対策（これが消えてた）
+    if ($slider.hasClass('slick-initialized')) {
+        $slider.slick('unslick');
+    }
+
+    $slider.slick({
         slidesToShow: 2,
-
-        // 1枚ずつ動かす
         slidesToScroll: 1,
 
-        // 中央寄せ＋チラ見えを有効にする
         centerMode: true,
-
-        // 左右にどれくらいチラ見えさせるか
         centerPadding: '160px',
 
-        // ===== 自動でずっと流れ続ける設定 =====
+        autoplay: true,
+        autoplaySpeed: 0,      // PC：止まらず流れる
+        speed: 5000,
+        cssEase: 'linear',
+        infinite: true,
 
-        autoplay: true,        // 自動再生をON
-        autoplaySpeed: 0,      // 待ち時間なし（止まらない）
-        speed: 5000,           // 動くスピード
-        cssEase: 'linear',     // 一定速度で流す
-        infinite: true,        // 無限ループ
-
-        // マウスを乗せても止めない
         pauseOnHover: false,
         pauseOnFocus: false,
 
-        arrows: false,         // 矢印を表示しない
-        dots: false,           // 番号（1〜11）を表示しない
+        arrows: false,
+        dots: false,
 
-        useTransform: false,
-
-        // ===== スマホ用設定 =====
         responsive: [
             {
-                breakpoint: 768,   // 768px以下のとき
+                breakpoint: 768,
                 settings: {
-                    slidesToShow: 1, // 1枚表示
-                    centerPadding: '40px'
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+
+                    centerMode: true,
+                    centerPadding: '40px',
+
+                    autoplay: true,
+                    autoplaySpeed: 3000, // SP：3秒
+                    speed: 500,
+                    cssEase: 'ease',
+                    infinite: true,
+
+                    arrows: true,
+                    prevArrow: $('.works-prev'),
+                    nextArrow: $('.works-next'),
+                    dots: false
                 }
             }
         ]
     });
 });
-const toTop = document.querySelector('.to-top');
 
-if (toTop) {
-    toTop.addEventListener('click', () => {
-        toTop.classList.add('clicked');
-        setTimeout(() => {
-            toTop.classList.remove('clicked');
-        }, 300);
+
+// TOPページ
+$(function () {
+    const $toTop = $('.js-to-top');
+    const $concept = $('#contact');
+
+    if (!$toTop.length || !$concept.length) return;
+
+    $toTop.hide(); // 最初は非表示
+
+    $(window).on('scroll', function () {
+        const scrollTop = $(this).scrollTop();
+        const conceptTop = $concept.offset().top - 600; // 少し手前で出す
+
+        if (scrollTop >= conceptTop) {
+            $toTop.fadeIn();
+        } else {
+            $toTop.fadeOut();
+        }
+    });
+
+    $toTop.on('click', function (e) {
+        e.preventDefault();
+        $('html, body').animate({ scrollTop: 0 }, 800);
+    });
+});
+
+
+// カーソル
+const isTouchDevice =
+    "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
+if (!isTouchDevice) {
+    document.addEventListener("click", (e) => {
+        if (e.target.closest("input, textarea, select")) return;
+
+        const target = e.target.closest("a, button, .to-top");
+        if (!target) return;
+
+        const sparkle = document.createElement("span");
+        sparkle.className = "click-sparkle";
+
+        sparkle.style.left = (e.clientX - 13) + "px";
+        sparkle.style.top = (e.clientY - 13) + "px";
+
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 320);
     });
 }
 
-// TOPページをCONCEPTセクションで出現させる
 
-$(function () {
-    const toTopButton = $(".js-to-top");
-    const concept = $("#contact");
+// ハンバーガーメニュー
 
-    toTopButton.hide(); // 最初は非表示
+// ハンバーガーメニュー（差し替え用：再発防止つき）
+document.addEventListener("DOMContentLoaded", () => {
+    const body = document.body;
+    const openBtn = document.querySelector(".hamburger");
+    const menu = document.getElementById("sp-menu");
+    const closeBtn = document.querySelector(".sp-menu__close");
+    const links = document.querySelectorAll(".sp-menu__list a");
 
-    $(window).on("scroll", function () {
-        const scrollTop = $(this).scrollTop();
-        const conceptTop = concept.offset().top - 700; // 開始位置
+    if (!openBtn || !menu || !closeBtn) return;
 
-        if (scrollTop >= conceptTop) {
-            toTopButton.fadeIn();
-        } else {
-            toTopButton.fadeOut();
+    // ▼ CSSのtransition秒数と合わせる
+    const DURATION = 250;
+
+    // ▼ CSSの@mediaと同じ数字にする（768→900にしたいならここも900）
+    const BREAKPOINT = 768;
+
+    const isSP = () => window.innerWidth <= BREAKPOINT;
+
+    const forceClose = () => {
+        menu.classList.remove("is-open");
+        body.classList.remove("is-menu-open");
+        openBtn.setAttribute("aria-expanded", "false");
+        menu.setAttribute("aria-hidden", "true");
+    };
+
+    const openMenu = () => {
+        // PC幅では開かない（事故防止）
+        if (!isSP()) return;
+
+        menu.classList.add("is-open");
+        body.classList.add("is-menu-open");
+        openBtn.setAttribute("aria-expanded", "true");
+        menu.setAttribute("aria-hidden", "false");
+    };
+
+    const closeMenu = () => {
+        // 先にメニューを閉じる（フェードアウト開始）
+        menu.classList.remove("is-open");
+        openBtn.setAttribute("aria-expanded", "false");
+        menu.setAttribute("aria-hidden", "true");
+
+        // 背景クラスはフェード後に外す（チラッ防止）
+        window.setTimeout(() => {
+            body.classList.remove("is-menu-open");
+        }, DURATION);
+    };
+
+    // クリックで開く
+    openBtn.addEventListener("click", openMenu);
+
+    // クリックで閉じる
+    closeBtn.addEventListener("click", closeMenu);
+
+    // メニュー内リンクで閉じる
+    links.forEach((a) => a.addEventListener("click", closeMenu));
+
+    // Escで閉じる
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && menu.classList.contains("is-open")) {
+            closeMenu();
         }
     });
 
-    toTopButton.on("click", function (e) {
-        e.preventDefault();
-        $("body,html").animate({ scrollTop: 0 }, 800);
+    // ▼ 初期ロード時：PC幅なら強制で閉じる（開きっぱなし事故防止）
+    if (!isSP()) forceClose();
+
+    // ▼ リサイズ時：PC幅になったら必ず閉じる（再発防止の本命）
+    window.addEventListener("resize", () => {
+        if (!isSP()) forceClose();
     });
-});
-$('.js-works-slick').on('init', function () {
-    if (location.hash) {
-        const target = document.querySelector(location.hash);
-        if (target) {
-            setTimeout(() => {
-                target.scrollIntoView({ behavior: 'auto' });
-            }, 0);
-        }
-    }
 });
