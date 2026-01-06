@@ -897,37 +897,39 @@ a:hover {
     transform: translateY(-1px);
 }
 
-/* ABOUTPAGE */
-/* タイトルと最初のDesignの間を空ける */
+/* ABOUT PAGE */
 .skills .skill-list {
     margin-top: 100px;
 }
 
-
-/* セクション幅を中央に */
 .skills-inner {
-    width: 1040px;
+    width: 100%;
+    max-width: 1040px;
     margin: 0 auto;
     padding: 100px 30px;
     box-sizing: border-box;
 }
 
-/* 3ブロック縦並び */
 .skill-list {
     display: flex;
     flex-direction: column;
     gap: 120px;
 }
 
-/* 2カラム（左：見出し＋軌道 / 右：文章） */
 .skill {
+    margin: 0 10px;
     display: grid;
-    grid-template-columns: 240px 720px;
+    grid-template-columns: 240px 1fr;
     column-gap: 80px;
     align-items: start;
 }
 
-/* 左カラム */
+.skill-label {
+    position: relative;
+    width: 160px;
+    height: 190px;
+}
+
 .skill-label .orbit {
     position: relative;
     width: 160px;
@@ -946,26 +948,15 @@ a:hover {
     transform-origin: center;
 }
 
-.skill-label {
-    position: relative;
-    /* orbitの基準点 */
-    width: 160px;
-    height: 190px;
-
-}
-
-/* 見出し文字 */
 .skill-label-text {
     position: absolute;
     z-index: 2;
     margin: 0;
-
     font-family: var(--font-lora);
     font-size: 48px;
     line-height: 1.1;
     color: var(--brown);
     white-space: nowrap;
-    /* 文字位置： */
     right: 50px;
     top: 60px;
 }
@@ -975,27 +966,28 @@ a:hover {
     right: -4px;
 }
 
-/* Other tools の右カラム： */
+.skill-body {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
 .skill-label-tools+.skill-body .chips {
     display: grid;
     grid-template-columns: repeat(3, max-content);
-    /* 1行3つ */
     gap: 18px 24px;
-    /* 行間 列間 */
     justify-content: start;
-    /* 左揃え */
     align-content: start;
 }
 
 .skill-label-tools+.skill-body .chip {
-    display: grid;
-    grid-template-columns: repeat(3, max-content);
-    justify-content: center;
-    align-content: start;
-}
-
-.skill-label-tools+.skill-body {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1;
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* ===== MY PROFILE ===== */
@@ -1250,28 +1242,14 @@ a:hover {
     margin-bottom: 100px;
 }
 
-/* 上の文章（マーカー付き） */
 .contact-cta-text {
-    display: inline-block;
-    position: relative;
-    margin: 0;
-    font-family: var(--font-mincho);
     font-size: 20px;
-    color: var(--brown);
-    letter-spacing: .08em;
-    line-height: 1.8;
-    padding: 0 8px;
-}
-
-.contact-cta-text::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: .25em;
-    height: 10px;
-    background: rgba(154, 143, 121, .35);
-    z-index: -1;
+    display: inline;
+    padding: 0 .25em;
+    background: linear-gradient(transparent 55%,
+            rgba(154, 143, 121, 0.38) 55%);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
 }
 
 /* ボタン */
@@ -1881,18 +1859,7 @@ a:hover {
     pointer-events: none;
 }
 
-.sp-menu {
-    display: none;
-    opacity: 0;
-    position: fixed;
-    inset: 0;
-    background: #cfc6b7;
-    place-items: center;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity .25s ease, visibility .25s ease;
-    z-index: 99999;
-}
+
 
 /* 明るい線（上に見える） */
 .sp-menu__close-line.is-light {
@@ -1906,9 +1873,29 @@ a:hover {
     transform: translate(-50%, -50%) rotate(-45deg);
 }
 
+/* SPメニュー本体（閉じてる時） */
+.sp-menu {
+    position: fixed;
+    inset: 0;
+    background: #cfc6b7;
+    display: grid;
+    place-items: center;
+
+    /* 透けないようにopacityは固定 */
+    opacity: 1;
+
+    /* 代わりに上へ隠す */
+    transform: translateY(-100%);
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: transform .25s ease, visibility .25s ease;
+    z-index: 99999;
+}
+
 /* 開いた状態 */
 .sp-menu.is-open {
-    opacity: 1;
+    transform: translateY(0);
     visibility: visible;
     pointer-events: auto;
 }
@@ -1947,6 +1934,10 @@ a:hover {
     /* スクショみたいに間隔広め */
 }
 
+.sp-only {
+    display: none;
+}
+
 .sp-menu__list a {
     text-decoration: none;
     color: #ffffff;
@@ -1978,27 +1969,14 @@ body.is-menu-open {
         width: 50%;
     }
 
-    /* ABOUT PAGE */
-    .skill {
-        grid-template-columns: 1fr;
-        /* 1カラムにする */
-        row-gap: 24px;
-    }
-
-    .skill-label {
-        min-height: 110px;
-    }
-
-    .orbit {
-        left: -10px;
-        width: 170px;
-        height: 110px;
-    }
-
 }
 
 /* ===== SP ===== */
 @media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+
     .hamburger {
         display: inline-flex;
         align-items: center;
@@ -2372,5 +2350,178 @@ body.is-menu-open {
         width: 180px;
         height: 54px;
         margin: 36px auto 0;
+    }
+
+    .myprofile .kirakira {
+        display: none;
+    }
+
+    .mp-row {
+        display: block;
+        grid-template-columns: none;
+        padding: 12px 0;
+    }
+
+    .mp-row dt,
+    .mp-row dd {
+        text-align: center;
+    }
+
+    .mp-row dd {
+        margin-top: 10px;
+    }
+
+    .sp-only {
+        display: block;
+    }
+
+    .myprofile-visual {
+        transform: translateX(-40px);
+        position: relative;
+        width: 248px;
+        margin: 0;
+        left: -50px;
+        top: 0;
+    }
+
+    .myprofile-content {
+        transform: translateY(-100px);
+        position: static;
+        width: 100%;
+    }
+
+    .myprofile-inner {
+        width: 100%;
+        box-sizing: border-box;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .myprofile {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .mp-dl {
+        margin-left: 0;
+    }
+
+    .mp-dl dt {
+        font-size: 18px;
+        letter-spacing: 0.05em;
+        padding-bottom: 6px;
+        margin-bottom: 10px;
+        position: relative;
+        text-align: center;
+    }
+
+    .mp-dl dt::after {
+        content: "";
+        display: block;
+        width: 150px;
+        height: 1px;
+        background-color: #9c8c72;
+        margin: 8px auto 0;
+    }
+
+    .mp-dl dd {
+        font-size: 13px;
+        line-height: 2.5;
+        margin-top: 8px;
+        text-align: center;
+    }
+
+    .mp-dl dd p,
+    .mp-dl dd span {
+        display: block;
+        margin-bottom: 14px;
+    }
+
+    .myprofile-frame {
+        width: 100%;
+        max-width: 248px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+
+    .myprofile-frame-top,
+    .myprofile-frame-bottom {
+        display: block;
+        width: 248px;
+        margin: 0 auto;
+    }
+
+    .skills-inner {
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto;
+        padding: 90px 20px;
+        box-sizing: border-box;
+    }
+
+    .skill {
+        grid-template-columns: 170px 1fr;
+        column-gap: 18px;
+        row-gap: 22px;
+        align-items: start;
+        --label-scale: 0.85;
+        grid-template-columns: calc(240px * var(--label-scale)) 1fr;
+        column-gap: 16px;
+    }
+
+    .skill-label {
+        width: 170px;
+        height: 200px;
+        transform: scale(var(--label-scale));
+        transform-origin: left top;
+    }
+
+    .skill-label .orbit {
+        width: 170px;
+        height: 260px;
+        left: 0;
+    }
+
+    .skill-label-text {
+        font-size: 42px;
+        right: 42px;
+        top: 68px;
+    }
+
+    .skill-label-tools .skill-label-text {
+        font-size: 34px;
+        right: -2px;
+    }
+
+    .skill-body {
+        display: contents;
+    }
+
+    .chips {
+        grid-column: 2;
+        grid-row: 1;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-self: center;
+        margin-top: 72px;
+    }
+
+    .skill-desc {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        margin: 18px auto 0;
+        max-width: 30ch;
+        text-align: center;
+        margin-top: 16px;
+        font-size: 14px;
+        line-height: 2;
+    }
+
+    .skill-label-tools+.skill-body .chips {
+        grid-template-columns: repeat(2, max-content);
+        justify-content: center;
     }
 }
