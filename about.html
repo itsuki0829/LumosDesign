@@ -2,325 +2,201 @@
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ABOUT | Lumos Design</title>
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
 
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+        rel="stylesheet" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 </head>
 
-<body id="top">
-    <a href="#top" class="to-top" aria-label="トップページへ戻る">
-        <img src="images/TOPPAGE.svg" alt="" class="to-top__img">
+<body id="top" class="page-about">
 
+    <!-- to top -->
+    <a href="#top" class="to-top js-to-top" aria-label="トップページへ戻る">
+        <img src="images/TOPPAGE.svg" alt="" class="to-top__img" />
     </a>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Lumos Design</title>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
-            rel="stylesheet">
-        <link rel="stylesheet" href="./css/reset.css">
-        <link rel="stylesheet" href="./css/style.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <!-- header -->
+    <header class="site-header">
+        <div class="container">
+            <h1 class="logo">
+                <!-- 下層ページは / より index.html の方が安定 -->
+                <a href="index.html">
+                    <img src="images/logo_lumosdesing.svg" alt="Lumos Design logo" />
+                </a>
+            </h1>
 
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
-        <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer></script>
-        <script src="js/script.js" defer></script>
-    </head>
+            <!-- PC nav -->
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html#top">HOME</a></li>
+                    <li><a href="index.html#concept">CONCEPT</a></li>
+                    <li><a href="index.html#about">ABOUT</a></li>
+                    <li><a href="index.html#works">WORKS</a></li>
+                    <li><a href="index.html#contact">CONTACT</a></li>
+                </ul>
+            </nav>
 
-    <body id="top" class="page-top">
+            <!-- hamburger -->
+            <button class="hamburger" type="button" aria-label="メニューを開く" aria-expanded="false">
+                <span class="hamburger__lines">
+                    <span></span><span></span><span></span>
+                </span>
+                <span class="hamburger__arrow"></span>
+                <img src="images/hamburger_kirakira.svg" alt="" class="hamburger_kirakira" />
+            </button>
 
-        <a href="#top" class="to-top js-to-top" aria-label="トップページへ戻る">
-            <img src="images/TOPPAGE.svg" alt="" class="to-top__img">
-
-        </a>
-        <header class="site-header">
-            <div class="container">
-                <h1 class="logo">
-                    <a href="/">
-                        <img src="images/logo_lumosdesing.svg" alt="Lumos Design logo">
-                    </a>
-                </h1>
-                <nav class="main-nav">
-                    <ul>
-                        <li><a href="index.html#top">HOME</a></li>
-                        <li><a href="index.html#concept">CONCEPT</a></li>
-                        <li><a href="index.html#about">ABOUT</a></li>
-                        <li><a href="index.html#works">WORKS</a></li>
-                        <li><a href="index.html#contact">CONTACT</a></li>
-                    </ul>
-                </nav>
-
-
-                <!-- ハンバーガー -->
-                <button class="hamburger" type="button" aria-label="メニューを開く">
-                    <span class="hamburger__lines">
-                        <span></span><span></span><span></span>
-                    </span>
-                    <span class="hamburger__arrow"></span>
-                    <img src="images/hamburger_kirakira.svg" alt="" class="hamburger_kirakira">
+            <!-- SP menu -->
+            <nav id="sp-menu" class="sp-menu" aria-hidden="true">
+                <button class="sp-menu__close" type="button" aria-label="メニューを閉じる">
+                    <span class="sp-menu__close-line is-light"></span>
+                    <span class="sp-menu__close-line is-dark"></span>
                 </button>
 
-                <!-- SPメニュー全体 -->
-                <nav id="sp-menu" class="sp-menu" aria-hidden="true">
+                <!-- ★ 下層ページでは index.html に飛ばす（ここが大事） -->
+                <ul class="sp-menu__list">
+                    <li><a href="index.html#top">TOP</a></li>
+                    <li><a href="index.html#concept">CONCEPT</a></li>
+                    <li><a href="index.html#about">ABOUT</a></li>
+                    <li><a href="index.html#works">WORKS</a></li>
+                    <li><a href="index.html#contact">CONTACT</a></li>
+                </ul>
+            </nav>
 
-                    <!-- 閉じるボタン -->
-                    <button class="sp-menu__close" type="button" aria-label="メニューを閉じる">
-                        <span class="sp-menu__close-line is-light"></span>
-                        <span class="sp-menu__close-line is-dark"></span>
-                    </button>
+        </div>
+    </header>
 
-                    <!-- メニュー -->
-                    <ul class="sp-menu__list">
-                        <li><a href="#top">TOP</a></li>
-                        <li><a href="#about">ABOUT</a></li>
-                        <li><a href="#works">WORKS</a></li>
-                        <li><a href="#concept">CONCEPT</a></li>
-                        <li><a href="#contact">CONTACT</a></li>
-                    </ul>
+    <!-- ===== ABOUT 本文ここから ===== -->
+    <section class="about-page" id="about">
+        <div class="about-title-wrap">
+            <h2 class="about-title">Who I Am</h2>
+            <img src="images/about_title_kirakira.svg" alt="キラキラ" class="about-title-deco" />
+        </div>
 
-                </nav>
-
+        <div class="about-inner">
+            <div class="about-photo">
+                <div class="photo-wrapper">
+                    <img src="images/ABOUT_profilephoto.png" alt="自分の写真" class="profile-photo" />
+                    <img src="images/ABOUT_kirakira_left.svg" alt="キラキラ左" class="deco-left" />
+                    <img src="images/ABOUT_kirakira_right.svg" alt="キラキラ右" class="deco-right" />
+                </div>
             </div>
-        </header>
-        <section class="about-page" id="about">
-            <!-- タイトルとキラキラ -->
+
+            <div class="about-desc">
+                <h3 class="about-name">吉田 樹<span>Yoshida Itsuki</span></h3>
+                <p class="about-desc">
+                    インフラエンジニアとしてネットワークやLinuxの基礎を学ぶ傍ら、<br />
+                    以前から興味のあったWebデザインの勉強を始めました。<br />
+                    ITスキルを身につけながら、学んだ知識を活かして実際にWebサイトやデザイン制作に<br />
+                    取り組むことで、課題解決力や実践力を磨いています。<br />
+                    これまで培ってきた丁寧さや分析力を活かし、心を込めたデザインで多くの人に<br />
+                    喜んでもらえるWebデザイナーを目指しています。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills" id="skills">
+        <div class="skills-inner">
             <div class="about-title-wrap">
-                <h2 class="about-title">Who I Am</h2>
-                <img src="images/about_title_kirakira.svg" alt="キラキラ" class="about-title-deco">
+                <h2 class="about-title">SKILLS</h2>
+                <img src="images/SKILLS_title_kirakira.svg" alt="" class="about-title-deco" />
             </div>
 
-            <div class="about-inner">
-                <!-- 写真とテキスト -->
-                <div class="about-photo">
-                    <div class="photo-wrapper">
-                        <img src="images/ABOUT_profilephoto.png" alt="自分の写真" class="profile-photo">
-                        <img src="images/ABOUT_kirakira_left.svg" alt="キラキラ左" class="deco-left">
-                        <img src="images/ABOUT_kirakira_right.svg" alt="キラキラ右" class="deco-right">
+            <div class="skill-list">
+                <div class="skill">
+                    <div class="skill-label skill-label-design">
+                        <p class="skill-label-text">Design</p>
+                        <span class="orbit" aria-hidden="true">
+                            <img class="orbit-star orbit-star-1" src="images/Design_kirakira_1.svg" alt="" />
+                            <img class="orbit-star orbit-star-2" src="images/Design_kirakira_2.svg" alt="" />
+                            <img class="orbit-star orbit-star-3" src="images/Design_kirakira_3.svg" alt="" />
+                        </span>
+                    </div>
+
+                    <div class="skill-body">
+                        <p class="skill-desc">
+                            Webサイトやバナーなど、幅広いジャンルのデザイン制作に対応しています。<br />
+                            テイストにとらわれず、目的やターゲットに合わせた表現を大切にしています。<br />
+                            見た目の美しさだけでなく、情報の伝わりやすさや使いやすさにも配慮し、<br />
+                            ユーザー目線を意識した設計を心がけています。
+                        </p>
+                        <div class="chips">
+                            <span class="chip">Photoshop</span>
+                            <span class="chip">Illustrator</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="about-desc">
-                    <h3 class="about-name">吉田 樹<span>Yoshida Itsuki</span></h3>
-                    <p class="about-desc">
-                        インフラエンジニアとしてネットワークやLinuxの基礎を学ぶ傍ら、<br>
-                        以前から興味のあったWebデザインの勉強を始めました。<br>
-                        ITスキルを身につけながら、学んだ知識を活かして実際にWebサイトやデザイン制作に<br>
-                        取り組むことで、課題解決力や実践力を磨いています。<br>
-                        これまで培ってきた丁寧さや分析力を活かし、心を込めたデザインで多くの人に<br>
-                        喜んでもらえるWebデザイナーを目指しています。
-                    </p>
+                <div class="skill">
+                    <div class="skill-label skill-label-coding">
+                        <p class="skill-label-text">Coding</p>
+                        <span class="orbit" aria-hidden="true">
+                            <img class="orbit-star orbit-star-1" src="images/Coding_kirakira_1.svg" alt="" />
+                            <img class="orbit-star orbit-star-2" src="images/Coding_kirakira_2.svg" alt="" />
+                            <img class="orbit-star orbit-star-3" src="images/Coding_kirakira_3.svg" alt="" />
+                        </span>
+                    </div>
+
+                    <div class="skill-body">
+                        <p class="skill-desc">
+                            HTML / CSS を使って、デザインを忠実に再現するコーディングが可能です。<br />
+                            JavaScript や jQuery を用いた動きのある表現にも対応しています。<br />
+                            スマートフォンやタブレットなど、どの端末でも快適に見られるよう、<br />
+                            レスポンシブ対応を意識して制作しています。
+                        </p>
+                        <div class="chips">
+                            <span class="chip">Visual Studio Code</span>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="skill">
+                    <div class="skill-label skill-label-tools">
+                        <p class="skill-label-text">Other tools</p>
+                        <span class="orbit" aria-hidden="true">
+                            <img class="orbit-star orbit-star-1" src="images/Othertools_kirakira_1.svg" alt="" />
+                            <img class="orbit-star orbit-star-2" src="images/Othertools_kirakira_2.svg" alt="" />
+                            <img class="orbit-star orbit-star-3" src="images/Othertools_kirakira_3.svg" alt="" />
+                        </span>
+                    </div>
+
+                    <div class="skill-body">
+                        <div class="chips">
+                            <span class="chip">Zoom</span>
+                            <span class="chip">Chatwork</span>
+                            <span class="chip">Excel</span>
+                            <span class="chip">Google Drive</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </section>
+        </div>
+    </section>
 
+    <!-- CONTACT CTA -->
+    <section class="contact-cta">
+        <p class="contact-text">
+            <span class="contact-cta-text">デザインや発信に関するお悩み、ご相談などございましたら、どうぞお気軽にご連絡ください。</span>
+        </p>
+        <a href="index.html#contact" class="contact-cta-button">
+            <img src="images/contact_button.svg" alt="お問い合わせはこちら" />
+        </a>
+    </section>
 
-        <section class="skills" id="skills">
-            <div class="skills-inner">
-                <div class="about-title-wrap">
-                    <h2 class="about-title">SKILLS</h2>
-                    <img src="images/SKILLS_title_kirakira.svg" alt="" class="about-title-deco">
-                </div>
-
-                <div class="skill-list">
-
-                    <!-- ===== Design ===== -->
-                    <div class="skill">
-                        <div class="skill-label skill-label-design">
-                            <p class="skill-label-text">Design</p>
-
-                            <span class="orbit" aria-hidden="true">
-                                <img class="orbit-star orbit-star-1" src="images/Design_kirakira_1.svg" alt="">
-                                <img class="orbit-star orbit-star-2" src="images/Design_kirakira_2.svg" alt="">
-                                <img class="orbit-star orbit-star-3" src="images/Design_kirakira_3.svg" alt="">
-                            </span>
-                        </div>
-
-                        <div class="skill-body">
-                            <p class="skill-desc">
-                                Webサイトやバナーなど、幅広いジャンルのデザイン制作に対応しています。<br>
-                                テイストにとらわれず、目的やターゲットに合わせた表現を大切にしています。<br>
-                                見た目の美しさだけでなく、情報の伝わりやすさや使いやすさにも配慮し、<br>
-                                ユーザー目線を意識した設計を心がけています。
-                            </p>
-
-                            <div class="chips">
-                                <span class="chip">Photoshop</span>
-                                <span class="chip">Illustrator</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ===== Coding ===== -->
-                    <div class="skill">
-                        <div class="skill-label skill-label-coding">
-                            <p class="skill-label-text">Coding</p>
-
-                            <span class="orbit" aria-hidden="true">
-                                <img class="orbit-star orbit-star-1" src="images/Coding_kirakira_1.svg" alt="">
-                                <img class="orbit-star orbit-star-2" src="images/Coding_kirakira_2.svg" alt="">
-                                <img class="orbit-star orbit-star-3" src="images/Coding_kirakira_3.svg" alt="">
-                            </span>
-                        </div>
-
-                        <div class="skill-body">
-                            <p class="skill-desc">
-                                HTML / CSS を使って、デザインを忠実に再現するコーディングが可能です。<br>
-                                JavaScript や jQuery を用いた動きのある表現にも対応しています。<br>
-                                スマートフォンやタブレットなど、どの端末でも快適に見られるよう、<br>
-                                レスポンシブ対応を意識して制作しています。
-                            </p>
-
-                            <div class="chips">
-                                <span class="chip">Visual Studio Code</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ===== Other tools ===== -->
-                    <div class="skill">
-                        <div class="skill-label skill-label-tools">
-                            <p class="skill-label-text">Other tools</p>
-
-                            <span class="orbit" aria-hidden="true">
-                                <img class="orbit-star orbit-star-1" src="images/Othertools_kirakira_1.svg" alt="">
-                                <img class="orbit-star orbit-star-2" src="images/Othertools_kirakira_2.svg" alt="">
-                                <img class="orbit-star orbit-star-3" src="images/Othertools_kirakira_3.svg" alt="">
-                            </span>
-                        </div>
-
-                        <div class="skill-body">
-                            <div class="chips">
-                                <span class="chip">Zoom</span>
-                                <span class="chip">Chatwork</span>
-                                <span class="chip">Excel</span>
-                                <span class="chip">Google Drive</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-        <!-- MY PROFILE -->
-        <section class="myprofile" id="myprofile">
-
-            <div class="myprofile-title-wrap">
-                <h2 class="myprofile-title">MY PROFILE</h2>
-                <img src="images/MYPROFILE_title_kirakira.svg" alt="" class="myprofile-title-deco">
-            </div>
-
-            <div class="myprofile-inner">
-                <div class="myprofile-visual">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="images/myprofil_SP.png">
-                        <img src="images/myprofile_PC.png" alt="" class="myprofile-bg">
-                    </picture>
-
-                    <!-- キラキラ（PCは表示、SPはCSSで非表示のままでOK） -->
-                    <img src="images/MYPROFILE_kirakira_1.svg" alt="" class="kirakira k1">
-                    <img src="images/MYPROFILE_kirakira_2.svg" alt="" class="kirakira k2">
-                    <img src="images/MYPROFILE_kirakira_3.svg" alt="" class="kirakira k3">
-                    <img src="images/MYPROFILE_kirakira_4.svg" alt="" class="kirakira k4">
-                    <img src="images/MYPROFILE_kirakira_5.svg" alt="" class="kirakira k5">
-                    <img src="images/MYPROFILE_kirakira_6.svg" alt="" class="kirakira k6">
-                    <img src="images/MYPROFILE_kirakira_7.svg" alt="" class="kirakira k7">
-                    <img src="images/MYPROFILE_kirakira_8.svg" alt="" class="kirakira k8">
-                </div>
-
-
-                <div class="myprofile-content">
-                    <div class="myprofile-frame">
-                        <img class="myprofile-frame-top sp-only" src="images/myprofile_SP_top.svg" alt="">
-                        <dl class="mp-dl">
-
-                            <div class="mp-row">
-                                <dt>From <span>出身地</span></dt>
-                                <dd>
-                                    <p>Hometown : kanagawa (yokohama)</p>
-                                    <p>Residence : aichi</p>
-                                </dd>
-                            </div>
-
-                            <div class="mp-row">
-                                <dt>Age <span>年齢</span></dt>
-                                <dd>Lv.25</dd>
-                            </div>
-
-                            <div class="mp-row">
-                                <dt>MBTI <span>性格</span></dt>
-                                <dd>INTJ（建築家）</dd>
-                            </div>
-
-                            <div class="mp-row">
-                                <dt>Hobby <span>趣味</span></dt>
-                                <dd>映画・漫画・喫茶店めぐり・サウナ</dd>
-                            </div>
-
-                            <!-- Favorite -->
-                            <div class="mp-row mp-row--stack">
-                                <dt>Favorite <span>好きなもの</span></dt>
-                                <dd>
-
-                                    <div class="favorite-group">
-                                        <p class="favorite-title">【Movies & Animation】</p>
-                                        <ul class="favorite-list">
-                                            <li>Harry Potter / スタジオジブリ</li>
-                                            <li>ロード・オブ・ザ・リング</li>
-                                            <li>The Amazing Spider-Man</li>
-                                            <li>マイインターン / プラダを着た悪魔</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="favorite-group">
-                                        <p class="favorite-title">【TV Series & Drama】</p>
-                                        <ul class="favorite-list">
-                                            <li>Gossip Girl / ウェンズデー</li>
-                                            <li>架空OL日記 / のだめカンタービレ</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="favorite-group">
-                                        <p class="favorite-title">【Books & Authors】</p>
-                                        <ul class="favorite-list">
-                                            <li>山田詠美/村上春樹</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="favorite-group">
-                                        <p class="favorite-title">【Comic】</p>
-                                        <ul class="favorite-list">
-                                            <li>矢沢あい / 東村アキコ /末次由紀</li>
-                                            <li>篠原千絵 / 伊藤潤二</li>
-                                        </ul>
-                                    </div>
-
-                                </dd>
-                            </div>
-
-                        </dl>
-                        </dl>
-                        <img class="myprofile-frame-bottom sp-only" src="images/myprofile_SP_bottom.svg" alt="">
-
-                    </div>
-        </section>
-
-        <section class="contact-cta">
-            <p class="contact-cta">
-                <span class="contact-cta-text">デザインや発信に関するお悩み、ご相談などございましたら、どうぞお気軽にご連絡ください。</span>
-            </p>
-            <a href="index.html#contact" class="contact-cta-button">
-                <img src="images/contact_button.svg" alt="お問い合わせはこちら">
-            </a>
-        </section>
-
-
-
-    </body>
+    <!-- JS（bodyの最後にまとめる：これが一番事故らない） -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
 
 </html>

@@ -20,6 +20,8 @@ body {
     font-family: var(--font-gothic);
     /* 杖カーソル */
     cursor: url("../images/magic-stick.png") 38 58, default;
+
+    overflow-x: hidden;
 }
 
 /* 杖カーソル */
@@ -140,12 +142,14 @@ a:hover {
     opacity: 0.6;
 }
 
+
 /* ヘッダー全体 */
 .site-header {
     padding: 20px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 999;
 }
 
 .site-header .container {
@@ -160,6 +164,11 @@ a:hover {
     max-width: 413px;
     height: 66px;
     max-width: 300px;
+    width: 100%;
+}
+
+.logo {
+    width: 50%;
 }
 
 /* ナビゲーション */
@@ -328,10 +337,12 @@ a:hover {
     width: 555px;
     height: auto;
     z-index: 1;
+
 }
 
 .kumo-bottom .kumo {
     width: 100%;
+
     height: auto;
 }
 
@@ -340,44 +351,37 @@ a:hover {
 .waku {
     position: relative;
     z-index: 2;
-    width: 800px;
-    /* デザインの幅に合わせる */
+    width: 100%;
+    max-width: 800px;
     margin: 0 auto;
     padding: 100px 40px 150px;
-    /* 上枠と下枠の間にテキストが収まる高さを確保 */
-    max-width: 100%;
+    box-sizing: border-box;
 }
 
 /* 上の枠 */
 .waku-top {
     position: absolute;
-    top: 0px;
-    /* 上への距離 */
-    left: 0;
+    top: 0;
+    left: -70px;
+    width: 78%;
+    max-width: 600px;
     height: auto;
     z-index: 2;
-    width: 78%;
-    max-width: 785px;
 }
 
 /* 下の枠 */
 .waku-bottom {
     position: absolute;
     bottom: 0px;
-    /* 下への距離 */
     right: 0;
-    /* 右寄り */
-    /* デザインの横幅 */
+    width: 85%;
     height: auto;
     z-index: 2;
-    width: 100%;
-    max-width: 1030px;
+    max-width: 1000px;
 }
 
-.waku-top,
-.waku-bottom {
-    max-width: 100%;
-    height: auto;
+.waku img {
+    display: block;
 }
 
 /* 枠の中のテキスト */
@@ -1176,6 +1180,24 @@ a:hover {
     line-height: 1.6;
 }
 
+.skill-label-coding+.skill-body .chip {
+    font-size: 12px;
+    padding: 5px 10px;
+    letter-spacing: 0;
+    white-space: nowrap;
+}
+
+/* Other tools の右カラム（skill-body）を横中央へ */
+.skill-label-tools+.skill-body {
+    justify-self: center;
+}
+
+/* ただし中の並びは左寄せにする */
+.skill-label-tools+.skill-body .chips {
+    width: fit-content;
+    justify-content: flex-start;
+}
+
 .kirakira {
     position: absolute;
     height: auto;
@@ -1956,19 +1978,65 @@ body.is-menu-open {
     overflow: hidden;
 }
 
+@media (max-width: 1200px) {
+
+    /* 雲も一緒に縮める（固定pxのままだと被りやすい） */
+    .kumo-top {
+        width: clamp(280px, 34vw, 444px);
+        top: clamp(-40px, -3.5vw, -20px);
+        right: clamp(8px, 2vw, 20px);
+    }
+
+    /* .waku {
+        width: clamp(620px, 70vw, 800px);
+    } */
+
+    .kumo-bottom {
+        width: clamp(360px, 42vw, 555px);
+        bottom: clamp(-35px, -3vw, -15px);
+        left: clamp(-40px, -3vw, -20px);
+    }
+
+    /* .waku-top,
+    .waku-bottom {
+        max-width: 100%;
+        height: auto;
+        width: 63%;
+    } */
+}
+
+@media (max-width: 1050px) {
+
+    /* ナビ文字を一回り小さく */
+    .main-nav a {
+        font-size: 20px;
+        line-height: 56px;
+        padding-bottom: 12px;
+    }
+
+    .main-nav a::after {
+        width: 100px;
+        height: 20px;
+
+    }
+
+    .main-nav ul {
+        gap: 22px;
+    }
+}
+
 @media (max-width: 1000px) {
     .kumo-top {
-        top: 3%;
-        right: 5%;
-        width: 40%;
+        top: clamp(-48px, -6vw, -24px);
+        right: clamp(-12px, -2vw, 10px);
+        width: clamp(260px, 42vw, 380px);
     }
 
     .kumo-bottom {
-        bottom: 3%;
-        left: 5%;
-        width: 50%;
+        bottom: clamp(-48px, -6vw, -24px);
+        left: clamp(-60px, -6vw, -24px);
+        width: clamp(340px, 56vw, 520px);
     }
-
 }
 
 /* ===== SP ===== */
@@ -2069,53 +2137,57 @@ body.is-menu-open {
         padding: 0 16px 90px;
     }
 
-    /* ここで「枠と雲が連動して縮む」基準を作る */
+    /* concept全体の基準 */
     .concept-inner {
         position: relative;
-
-        /* 枠の最大幅：画面が狭いほど一緒に縮む */
-        --frameW: clamp(300px, 88vw, 380px);
-
-        /* 雲も枠幅に連動 */
-        --cloudTopW: clamp(120px, calc(var(--frameW) * 0.45), 180px);
-        --cloudBottomW: clamp(220px, calc(var(--frameW) * 0.75), 320px);
-
-        max-width: calc(var(--frameW) + 32px);
-        margin: 0 auto;
-        padding: 40px 0;
+        padding: 0 20px;
     }
 
-    /* 枠（中身を守る箱） */
+    /* 枠の箱 */
     .waku {
-        width: 100%;
-        max-width: var(--frameW);
-        margin: 0 auto;
 
-        /* 中身の余白（デザインに合わせて微調整OK） */
-        padding: 72px 16px 86px;
-
-        position: relative;
-        z-index: 2;
-        overflow: hidden;
-        /* 枠の内側に雲が入り込まない */
+        padding: 100px 40px 150px;
+        box-sizing: border-box;
     }
 
-    /* 枠画像はSPでは100%で張る（PCの78%を無効化） */
+    /* 上下の枠（線） */
     .waku-top,
     .waku-bottom {
-        width: 100%;
-        max-width: none;
+        position: absolute;
+        z-index: 1;
+        /* 枠は奥 */
         height: auto;
+    }
+
+    /* テキストは枠より手前 */
+    .concept-text {
+        position: relative;
+        z-index: 3;
+    }
+
+    /* 雲は枠より手前に */
+    .kumo-top,
+    .kumo-bottom {
+        position: absolute;
+        z-index: 2;
+        /* 枠(1)より上、文字(3)より下 */
+        pointer-events: none;
     }
 
     .waku-top {
         left: 0;
         top: 0;
+        max-width: 259px;
+        width: 100%;
+        height: auto;
     }
 
     .waku-bottom {
         right: 0;
         bottom: 0;
+        max-width: 323px;
+        height: auto;
+        width: 100%;
     }
 
     .kumo-top,
@@ -2126,16 +2198,19 @@ body.is-menu-open {
     }
 
     .kumo-top {
-        width: var(--cloudTopW);
+        width: 40%;
+        max-width: 320px;
         right: -14px;
         top: -22px;
     }
 
     .kumo-bottom {
-        width: var(--cloudBottomW);
-        left: -20px;
-        bottom: -70px;
+        max-width: 361px;
+        width: 100%;
+        left: -108px;
+        bottom: -41px;
     }
+
 
     .title-text {
         font-size: 26px;
