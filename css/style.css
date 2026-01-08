@@ -901,6 +901,10 @@ a:hover {
     transform: translateY(-1px);
 }
 
+.sp-br {
+    display: none;
+}
+
 /* ABOUT PAGE */
 .skills .skill-list {
     margin-top: 100px;
@@ -2598,5 +2602,83 @@ body.is-menu-open {
     .skill-label-tools+.skill-body .chips {
         grid-template-columns: repeat(2, max-content);
         justify-content: center;
+    }
+
+    /* フォーム全体を “細め幅で中央” に */
+    .contact-form {
+        width: min(360px, 88vw);
+        margin: 0 auto;
+        padding-top: 48px;
+        /* 既にあればそのままでOK */
+    }
+
+    /* 1行（ラベル→入力）を1カラムで */
+    .form-row {
+        width: 100%;
+        grid-template-columns: 1fr;
+        row-gap: 10px;
+        margin: 0 auto 22px;
+    }
+
+    /* ★ここが重要：JPとENを横並びにする */
+    .form-label {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        padding-top: 0;
+    }
+
+    .form-label .jp {
+        font-size: 14px;
+        font-weight: 700;
+        margin: 0;
+        line-height: 1.2;
+    }
+
+    .form-label .en {
+        font-size: 12px;
+        font-weight: 600;
+        margin: 0;
+        line-height: 1.2;
+        letter-spacing: .04em;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        max-width: none;
+        box-sizing: border-box;
+    }
+
+    .contact-form input {
+        height: 44px;
+        padding: 0 14px;
+    }
+
+    .contact-form textarea {
+        height: 220px;
+        padding: 14px;
+    }
+
+    .contact-submit {
+        width: 100%;
+        max-width: 260px;
+        height: 56px;
+        margin: 36px auto 0;
+        display: block;
+    }
+
+
+    .contact-text {
+        padding-top: 32px;
+        font-size: 14px;
+        line-height: 2.1;
+        text-align: center;
+        max-width: 260px;
+        margin: 0 auto;
+    }
+
+    br.sp-br {
+        display: block;
     }
 }
