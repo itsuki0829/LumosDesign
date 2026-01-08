@@ -1268,6 +1268,15 @@ a:hover {
     margin-bottom: 100px;
 }
 
+.contact-cta {
+    justify-items: center;
+    text-align: center;
+    gap: 48px;
+    /* 80pxはSPだと間が空きすぎなら調整 */
+    padding: 90px 16px;
+    /* 左右を少し細く */
+}
+
 .contact-cta-text {
     font-size: 20px;
     display: inline;
@@ -1280,17 +1289,18 @@ a:hover {
 
 /* ボタン */
 .contact-cta-button {
-    display: inline-block;
     justify-self: center;
-    transition: transform .25s ease, opacity .25s ease;
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
 }
 
 .contact-cta-button img {
-    width: 30%;
-    max-width: 260px;
-    min-width: 200px;
-    height: auto;
+    width: min(260px, 70vw);
+    max-width: none;
+    min-width: 0;
     display: block;
+    margin: 0 auto;
 }
 
 .contact-cta-button {
@@ -1442,7 +1452,7 @@ a:hover {
 
 .work-text {
     margin: 0 0 8px;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.7;
 }
 
@@ -2009,6 +2019,36 @@ body.is-menu-open {
     } */
 }
 
+/* ===== FB：1060px以下でテキスト小さく ===== */
+@media (max-width: 1060px) {
+    .fb-left h2 {
+        font-size: 30px;
+    }
+
+    .fb-right .subtitle {
+        font-size: 30px;
+    }
+
+    .fb-right .subtext {
+        font-size: 16px;
+    }
+
+}
+
+@media (max-width: 920px) {
+
+    .fb-left h2,
+    .fb-right .subtitle {
+        font-size: 24px;
+        /* 22〜26で好み調整OK */
+    }
+
+    .fb-right .subtext {
+        font-size: 13px;
+        /* 12〜14で好み調整OK */
+    }
+}
+
 @media (max-width: 1050px) {
 
     /* ナビ文字を一回り小さく */
@@ -2041,7 +2081,33 @@ body.is-menu-open {
         left: clamp(-60px, -6vw, -24px);
         width: clamp(340px, 56vw, 520px);
     }
+
+    /* 2カラム → 1カラム */
+    .works-list {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+        row-gap: 56px;
+        padding: 40px 0 100px;
+    }
+
+    .works-list::before {
+        display: none;
+    }
+
+    .works-col {
+        width: min(520px, 92vw);
+    }
+
+    .work-link {
+        padding: 32px 28px;
+    }
+
+    .work-link::after {
+        width: 100%;
+        left: 0;
+    }
 }
+
 
 /* ===== SP ===== */
 @media (max-width: 768px) {
@@ -2070,6 +2136,52 @@ body.is-menu-open {
         height: auto;
     }
 
+    .FB-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        height: calc(100vh - 88px);
+        padding: 0;
+    }
+
+    .fb-left,
+    .fb-right {
+        margin: 0;
+        text-align: center;
+        min-width: 0;
+    }
+
+    .fb-left h2 {
+        margin: 0;
+        font-size: 30px;
+        line-height: 1.15;
+    }
+
+    .fb-right .subtitle {
+        margin: 0;
+        font-size: 26px;
+        line-height: 1.15;
+    }
+
+    .fb-right .subtext {
+        margin: 8px 0 0;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .fb-center {
+        position: static;
+        transform: none;
+        width: 95%;
+        max-width: 500px;
+    }
+
+    .FB {
+        margin-top: 0;
+    }
+
     .main-nav {
         display: none;
     }
@@ -2080,18 +2192,6 @@ body.is-menu-open {
 
     .works-list::before {
         display: none;
-    }
-
-    .FB-content {
-        flex-direction: column;
-        height: auto;
-        gap: 24px;
-    }
-
-    .fb-center {
-        position: static;
-        transform: none;
-        width: 80%;
     }
 
     .site-header {
@@ -2109,11 +2209,6 @@ body.is-menu-open {
         max-width: 220px;
         width: 100%;
         height: auto;
-    }
-
-    /* FBがヘッダーに食い込まないように余白 */
-    .FB {
-        margin-top: 24px;
     }
 
     .concept-text {
@@ -2681,4 +2776,77 @@ body.is-menu-open {
     br.sp-br {
         display: block;
     }
+
+    .workspage-title-wrap {
+        margin: 20px 0 28px;
+    }
+
+    .workspage-title {
+        font-size: 28px;
+        letter-spacing: .06em;
+    }
+
+    .workspage-title-deco {
+        width: 140px;
+    }
+
+    .works-list {
+        padding: 24px 16px 80px;
+        row-gap: 44px;
+    }
+
+    .works-col {
+        width: 100%;
+        gap: 44px;
+    }
+
+    .work-link {
+        padding: 28px 20px
+    }
+
+    .work-link::after {
+        width: 100%;
+        left: 0;
+    }
+
+    .work-img-box {
+        height: auto;
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    .work-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .work-name {
+        font-size: 16px;
+        margin: 12px 0 6px;
+    }
+
+    .work-text {
+        font-size: 14px;
+        line-height: 1.7;
+        margin: 0 0 6px;
+    }
+
+    .work-name,
+    .work-text,
+    .work-meta {
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .work-meta {
+        font-size: 12px;
+    }
+
+    .work-link::after {
+        width: 90%;
+        left: 5%;
+    }
+
 }
