@@ -2852,4 +2852,29 @@ body.is-menu-open {
         left: 5%;
     }
 
+    .works-frame {
+        width: 92vw;
+        height: auto;
+        aspect-ratio: 760 / 777;
+
+    }
+
+    .works-frame-inner {
+        max-width: 80%;
+    }
+
+    .skills .skill {
+        --label-scale: 0.75;
+        display: grid;
+        grid-template-columns: calc(170px * var(--label-scale)) 1fr;
+        column-gap: 12px;
+        row-gap: 22px;
+        align-items: start;
+        column-gap: 18px;
+    }
+
+    .skills .skill-label {
+        transform: scale(var(--label-scale));
+        transform-origin: left top;
+    }
 }
