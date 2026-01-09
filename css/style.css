@@ -929,7 +929,6 @@ a:hover {
     display: grid;
     grid-template-columns: 240px 1fr;
     column-gap: 80px;
-    align-items: start;
 }
 
 .skill-label {
@@ -978,6 +977,10 @@ a:hover {
     display: flex;
     flex-direction: column;
     gap: 24px;
+}
+
+.skill-label-tools+.skill-body {
+    justify-content: center;
 }
 
 .skill-label-tools+.skill-body .chips {
@@ -1189,11 +1192,6 @@ a:hover {
     padding: 5px 10px;
     letter-spacing: 0;
     white-space: nowrap;
-}
-
-/* Other tools の右カラム（skill-body）を横中央へ */
-.skill-label-tools+.skill-body {
-    justify-self: center;
 }
 
 /* ただし中の並びは左寄せにする */
@@ -2011,12 +2009,9 @@ body.is-menu-open {
         left: clamp(-40px, -3vw, -20px);
     }
 
-    /* .waku-top,
-    .waku-bottom {
-        max-width: 100%;
-        height: auto;
-        width: 63%;
-    } */
+    .skill-desc {
+        font-size: 16px;
+    }
 }
 
 /* ===== FB：1060px以下でテキスト小さく ===== */
@@ -2106,6 +2101,8 @@ body.is-menu-open {
         width: 100%;
         left: 0;
     }
+
+
 }
 
 
@@ -2484,6 +2481,13 @@ body.is-menu-open {
         text-align: center;
     }
 
+    /* ç {
+        font-size: 18px;
+        line-height: 1.9;
+        padding-top: 40px;
+        text-align: center;
+    } */
+
     .contact-form {
         padding-top: 48px;
     }
@@ -2680,7 +2684,6 @@ body.is-menu-open {
         flex-wrap: wrap;
         justify-content: center;
         align-self: center;
-        margin-top: 72px;
     }
 
     .skill-desc {
