@@ -1293,6 +1293,7 @@ a:hover {
     min-width: 0;
     display: block;
     margin: 0 auto;
+    padding-top: 100px;
 }
 
 .contact-cta-button {
@@ -1589,15 +1590,18 @@ a:hover {
 .works-web--has-sp {
     display: grid;
     grid-template-columns: 1fr 260px;
-    gap: 24px;
+    gap: 60px;
     align-items: start;
+    justify-content: center;
 }
 
 /* SP画像を横並びにする */
 .works-web--has-sp .works-web__sp {
     display: flex;
     gap: 24px;
+    justify-content: center;
 }
+
 
 /* 画像共通 */
 .works-web--has-sp img {
@@ -1679,6 +1683,7 @@ a:hover {
     margin-bottom: 44px;
     line-height: 1.8;
     font-size: 15px;
+    padding-left: 20px;
 }
 
 /* 戻るボタン */
@@ -2135,6 +2140,42 @@ body.is-menu-open {
     .works-detail-back::before {
         left: 16px;
         right: calc(16px + 190px);
+    }
+}
+
+@media (max-width: 798px) {
+    .works-web--has-sp {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        align-items: center;
+    }
+
+    /* PC側 */
+    .works-web--has-sp .works-web__pc {
+        width: 100%;
+    }
+
+
+    .works-web--has-sp .works-web-pc {
+        width: 100%;
+        max-width: 251px;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    /* SP側（2枚） */
+    .works-web--has-sp .works-web__sp {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .works-web--has-sp .works-web-sp {
+        width: min(150px, 44vw);
+        max-width: 160px;
+        height: auto;
     }
 }
 
@@ -2907,46 +2948,6 @@ body.is-menu-open {
         top: 131px;
     }
 
-    /* SP版あり */
-    .works-web--has-sp {
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-        align-items: center;
-    }
-
-    /* PC側 */
-    .works-web--has-sp .works-web__pc {
-        width: 100%;
-    }
-
-    .works-web-pc {
-        max-width: 248px;
-        width: 100%;
-        height: auto;
-        display: block;
-    }
-
-    .works-web--has-sp .works-web-pc {
-        width: 100%;
-        max-width: 251px;
-        height: auto;
-        margin: 0 auto;
-    }
-
-    /* SP側（2枚） */
-    .works-web--has-sp .works-web__sp {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-    }
-
-    .works-web--has-sp .works-web-sp {
-        width: min(150px, 44vw);
-        max-width: 160px;
-        height: auto;
-    }
 
     .works-detail-info dl {
         padding: 0 16px;
