@@ -2408,6 +2408,10 @@ body.is-menu-open {
         line-height: 1.9;
     }
 
+    .about-page {
+        margin: 50px 20px;
+    }
+
     .about {
         margin: 0;
         padding: 0 10px 100px;
