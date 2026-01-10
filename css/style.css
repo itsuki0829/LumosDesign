@@ -145,7 +145,7 @@ a:hover {
 
 /* ヘッダー全体 */
 .site-header {
-    padding: 20px 40px;
+    padding: 20px 40px 55px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -935,6 +935,7 @@ a:hover {
     position: relative;
     width: 160px;
     height: 190px;
+    margin-left: 30px;
 }
 
 .skill-label .orbit {
@@ -1198,6 +1199,7 @@ a:hover {
 .skill-label-tools+.skill-body .chips {
     width: fit-content;
     justify-content: flex-start;
+    gap: 10px 12px;
 }
 
 .kirakira {
@@ -1276,7 +1278,7 @@ a:hover {
 }
 
 .contact-cta-text {
-    font-size: 20px;
+    font-size: 18px;
     display: inline;
     padding: 0 .25em;
     background: linear-gradient(transparent 55%,
@@ -1371,9 +1373,10 @@ a:hover {
 .work-link::after {
     content: "";
     position: absolute;
-    left: 0;
+    left: 50%;
     bottom: 0;
-    width: 475px;
+    transform: translateX(-50%);
+    width: min(var(--line-w), 100%);
     height: 1px;
     background: #9a8f79;
 }
@@ -1390,10 +1393,13 @@ a:hover {
 /* カード */
 .work-link {
     position: relative;
-    display: block;
     text-decoration: none;
     color: inherit;
     padding: 40px;
+    --line-w: 447px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* 画像BOX */
@@ -1438,6 +1444,7 @@ a:hover {
 .work-card-free .work-img-box {
     max-width: 447px;
     width: 100%;
+    padding-bottom: 30px;
 }
 
 /* テキスト */
@@ -1463,9 +1470,11 @@ a:hover {
 .work-name,
 .work-text,
 .work-meta {
+    width: 100%;
     max-width: 447px;
     margin-left: auto;
     margin-right: auto;
+    text-align: left;
 }
 
 /* カーソルを合わせたら線が出る */
@@ -1477,23 +1486,25 @@ a:hover {
 
 .work-name::after,
 .work-text::after {
-    content: "";
+    content: none;
     position: absolute;
     left: 0;
     bottom: 0.15em;
     width: 100%;
     height: 0.4em;
-    background: #cfcdbf;
     opacity: 0.35;
     z-index: -1;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
-/* リンクに反応 */
-.work-link:hover .work-name::after,
-.work-link:hover .work-text::after {
-    opacity: 1;
+/* hover時は下線だけ出す */
+.work-link:hover .work-name,
+.work-link:hover .work-text {
+    text-decoration: underline;
+    text-decoration-color: #9a8f79;
+    text-underline-offset: .25em;
+    text-decoration-thickness: 1px;
 }
 
 /* works各ページ */
@@ -1512,10 +1523,9 @@ a:hover {
 
 .works-detail-sub {
     text-align: center;
-    margin-top: 12px;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.8;
-    padding: 40px 0;
+    padding-top: 50px;
 }
 
 
@@ -1632,8 +1642,10 @@ a:hover {
 .works-detail-tag {
     max-width: 866px;
     margin: 22px auto 66px;
+    padding: 0 16px;
+    box-sizing: border-box;
     text-align: right;
-    font-size: 16px;
+    font-size: 14px;
     font-family: var(--font-gothic);
     color: #9a8f79;
 }
@@ -1654,6 +1666,7 @@ a:hover {
     padding-left: 10px;
     font-weight: 700;
     line-height: 1.4;
+    font-size: 15px;
 }
 
 .works-detail-info dt::before {
@@ -1672,7 +1685,7 @@ a:hover {
     margin-top: 8px;
     margin-bottom: 44px;
     line-height: 1.8;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 /* 戻るボタン */
@@ -1693,7 +1706,7 @@ a:hover {
 .works-detail-back::before {
     content: "";
     position: absolute;
-    left: -300px;
+    left: calc(50% - 50vw);
     right: 0;
     top: 50%;
     transform: translateY(-50%);
@@ -2030,23 +2043,38 @@ body.is-menu-open {
 
 }
 
+@media (max-width: 938px) {
+    .skill-desc {
+        font-size: 15px;
+        line-height: 1.8;
+    }
+}
+
 @media (max-width: 920px) {
 
     .fb-left h2,
     .fb-right .subtitle {
         font-size: 24px;
-        /* 22〜26で好み調整OK */
     }
 
     .fb-right .subtext {
         font-size: 13px;
-        /* 12〜14で好み調整OK */
+    }
+}
+
+@media (max-width: 1122px) {
+    .work-link::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .work-link {
+        --line-w: 100%;
     }
 }
 
 @media (max-width: 1050px) {
 
-    /* ナビ文字を一回り小さく */
     .main-nav a {
         font-size: 20px;
         line-height: 56px;
@@ -2098,11 +2126,23 @@ body.is-menu-open {
     }
 
     .work-link::after {
-        width: 100%;
-        left: 0;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
 
+}
+
+@media (max-width: 885px) {
+    .works-detail-back {
+        padding: 0 16px;
+        box-sizing: border-box;
+    }
+
+    .works-detail-back::before {
+        left: 16px;
+        right: calc(16px + 190px);
+    }
 }
 
 
@@ -2375,7 +2415,7 @@ body.is-menu-open {
 
     .deco-left {
         left: 8px;
-        top: 78%;
+        top: 71%;
         width: 36px;
     }
 
@@ -2480,13 +2520,6 @@ body.is-menu-open {
         padding-top: 40px;
         text-align: center;
     }
-
-    /* ç {
-        font-size: 18px;
-        line-height: 1.9;
-        padding-top: 40px;
-        text-align: center;
-    } */
 
     .contact-form {
         padding-top: 48px;
@@ -2643,7 +2676,6 @@ body.is-menu-open {
         column-gap: 18px;
         row-gap: 22px;
         align-items: start;
-        --label-scale: 0.85;
         grid-template-columns: calc(240px * var(--label-scale)) 1fr;
         column-gap: 16px;
     }
@@ -2651,7 +2683,6 @@ body.is-menu-open {
     .skill-label {
         width: 170px;
         height: 200px;
-        transform: scale(var(--label-scale));
         transform-origin: left top;
     }
 
@@ -2663,7 +2694,7 @@ body.is-menu-open {
 
     .skill-label-text {
         font-size: 42px;
-        right: 42px;
+        right: 83px;
         top: 68px;
     }
 
@@ -2680,7 +2711,7 @@ body.is-menu-open {
         grid-column: 2;
         grid-row: 1;
         display: flex;
-        gap: 12px;
+        gap: 10px 12px;
         flex-wrap: wrap;
         justify-content: center;
         align-self: center;
@@ -2692,7 +2723,7 @@ body.is-menu-open {
         margin: 18px auto 0;
         max-width: 30ch;
         text-align: center;
-        margin-top: 16px;
+        margin-top: 18px;
         font-size: 14px;
         line-height: 2;
     }
@@ -2702,15 +2733,12 @@ body.is-menu-open {
         justify-content: center;
     }
 
-    /* フォーム全体を “細め幅で中央” に */
     .contact-form {
         width: min(360px, 88vw);
         margin: 0 auto;
         padding-top: 48px;
-        /* 既にあればそのままでOK */
     }
 
-    /* 1行（ラベル→入力）を1カラムで */
     .form-row {
         width: 100%;
         grid-template-columns: 1fr;
@@ -2718,7 +2746,6 @@ body.is-menu-open {
         margin: 0 auto 22px;
     }
 
-    /* ★ここが重要：JPとENを横並びにする */
     .form-label {
         display: flex;
         align-items: baseline;
@@ -2780,8 +2807,12 @@ body.is-menu-open {
         display: block;
     }
 
+    .contact-cta-button img {
+        width: min(200px, 56vw);
+    }
+
     .workspage-title-wrap {
-        margin: 20px 0 28px;
+        margin: 57px 0 53px;
     }
 
     .workspage-title {
@@ -2807,11 +2838,6 @@ body.is-menu-open {
         padding: 28px 20px
     }
 
-    .work-link::after {
-        width: 100%;
-        left: 0;
-    }
-
     .work-img-box {
         height: auto;
         max-width: 90%;
@@ -2824,7 +2850,7 @@ body.is-menu-open {
         object-fit: contain;
     }
 
-    .work-name {
+    h3.work-name {
         font-size: 16px;
         margin: 12px 0 6px;
     }
@@ -2832,7 +2858,126 @@ body.is-menu-open {
     .work-text {
         font-size: 14px;
         line-height: 1.7;
-        margin: 0 0 6px;
+        margin: 0 0 20px;
+    }
+
+    .work-name,
+    .work-text,
+    .work-meta {
+        max-width: 90%;
+        margin-left: auto;
+    }
+
+    .work-meta {
+        font-size: 12px;
+    }
+
+
+    .works-frame {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 760 / 777;
+        max-width: 380px;
+
+    }
+
+    .works-frame-inner {
+        max-width: 80%;
+    }
+
+    .skills .skill {
+        --label-scale: 0.78;
+        display: grid;
+        grid-template-columns: calc(170px * var(--label-scale)) 1fr;
+        column-gap: 84px;
+        row-gap: 22px;
+        align-items: start;
+    }
+
+    .skills .skill-label {
+        transform: scale(var(--label-scale));
+        transform-origin: left top;
+    }
+
+    .skills .orbit-star-2 {
+        left: -42px;
+        top: 179px;
+    }
+
+    .skills .orbit-star-3 {
+        left: 142px;
+        top: 131px;
+    }
+
+    /* SP版あり */
+    .works-web--has-sp {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        align-items: center;
+    }
+
+    /* PC側 */
+    .works-web--has-sp .works-web__pc {
+        width: 100%;
+    }
+
+    .works-web--has-sp .works-web-pc {
+        width: 100%;
+        max-width: 251px;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    /* SP側（2枚） */
+    .works-web--has-sp .works-web__sp {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .works-web--has-sp .works-web-sp {
+        width: min(150px, 44vw);
+        max-width: 160px;
+        height: auto;
+    }
+
+    .works-detail-info dl {
+        padding: 0 16px;
+        box-sizing: border-box;
+    }
+
+    .works-detail-info dt {
+        padding-left: 32px;
+    }
+
+    .works-detail-info dt::before {
+        left: 0;
+    }
+
+    .works-detail-back {
+        --back-pl: 5px;
+        /* 左余白 */
+        --back-pr: 66px;
+
+        padding-left: var(--back-pl);
+        padding-right: var(--back-pr);
+        box-sizing: border-box;
+    }
+
+    .works-detail-back::before {
+        left: calc(50% - 50vw + var(--back-pl));
+        right: calc(var(--back-pr) + 190px);
+    }
+
+    .work-link::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .work-link {
+        --line-w: 90%;
     }
 
     .work-name,
@@ -2842,39 +2987,39 @@ body.is-menu-open {
         margin-left: auto;
         margin-right: auto;
     }
+}
 
-    .work-meta {
+@media (max-width: 501px) {
+
+    .skills .skill {
+        --label-scale: 0.66;
+        column-gap: 56px;
+        align-items: start;
+    }
+
+    .skills .skill-label-text {
+        font-size: 34px;
+    }
+
+    .skill-label .orbit {
+        left: 6px;
+    }
+
+    .skills .chips {
+        gap: 8px 10px;
+    }
+
+    .skills .chip {
         font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .contact-cta-button img {
+        width: min(180px, 52vw);
     }
 
     .work-link::after {
-        width: 90%;
-        left: 5%;
-    }
-
-    .works-frame {
-        width: 92vw;
-        height: auto;
-        aspect-ratio: 760 / 777;
-
-    }
-
-    .works-frame-inner {
-        max-width: 80%;
-    }
-
-    .skills .skill {
-        --label-scale: 0.75;
-        display: grid;
-        grid-template-columns: calc(170px * var(--label-scale)) 1fr;
-        column-gap: 12px;
-        row-gap: 22px;
-        align-items: start;
-        column-gap: 18px;
-    }
-
-    .skills .skill-label {
-        transform: scale(var(--label-scale));
-        transform-origin: left top;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
