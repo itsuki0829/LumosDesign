@@ -6,16 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ABOUT | Lumos Design</title>
     <link rel="icon" href="./images/favicon.png" type="image/png">
-
-    <!-- Google Font -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
-        rel="stylesheet" />
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="./css/reset.css" />
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
+    <script src="js/script.js" defer></script>
 </head>
 
 <body id="top" class="page-about">
@@ -29,7 +24,7 @@
     <header class="site-header">
         <div class="container">
             <h1 class="logo">
-
+                <!-- 下層ページは / より index.html の方が安定 -->
                 <a href="index.html">
                     <img src="images/logo_lumosdesing.svg" alt="Lumos Design logo" />
                 </a>
@@ -62,7 +57,7 @@
                     <span class="sp-menu__close-line is-dark"></span>
                 </button>
 
-                <!-- ★ 下層ページでは index.html に飛ばす -->
+                <!-- ★ 下層ページでは index.html に飛ばす（ここが大事） -->
                 <ul class="sp-menu__list">
                     <li><a href="index.html#top">TOP</a></li>
                     <li><a href="index.html#concept">CONCEPT</a></li>
@@ -183,6 +178,108 @@
             </div>
         </div>
     </section>
+    <!-- MY PROFILE -->
+
+    <!-- MY PROFILE -->
+    <section class="myprofile" id="myprofile">
+        <div class="myprofile-title-wrap">
+            <h2 class="myprofile-title">MY PROFILE</h2>
+            <img src="images/MYPROFILE_title_kirakira.svg" alt="" class="myprofile-title-deco">
+        </div>
+
+        <div class="myprofile-inner">
+            <div class="myprofile-visual">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="images/myprofil_SP.png">
+                    <img src="images/myprofile_PC.png" alt="" class="myprofile-bg">
+                </picture>
+
+                <!-- キラキラ（PCは表示、SPはCSSで非表示のままでOK） -->
+                <img src="images/MYPROFILE_kirakira_1.svg" alt="" class="kirakira k1">
+                <img src="images/MYPROFILE_kirakira_2.svg" alt="" class="kirakira k2">
+                <img src="images/MYPROFILE_kirakira_3.svg" alt="" class="kirakira k3">
+                <img src="images/MYPROFILE_kirakira_4.svg" alt="" class="kirakira k4">
+                <img src="images/MYPROFILE_kirakira_5.svg" alt="" class="kirakira k5">
+                <img src="images/MYPROFILE_kirakira_6.svg" alt="" class="kirakira k6">
+                <img src="images/MYPROFILE_kirakira_7.svg" alt="" class="kirakira k7">
+                <img src="images/MYPROFILE_kirakira_8.svg" alt="" class="kirakira k8">
+            </div>
+
+            <!-- 文字情報 -->
+            <div class="myprofile-content">
+                <div class="myprofile-frame">
+                    <img class="myprofile-frame-top sp-only" src="images/myprofile_SP_top.svg" alt="">
+
+                    <dl class="mp-dl">
+                        <div class="mp-row">
+                            <dt>From <span>出身地</span></dt>
+                            <dd>
+                                <p>Hometown : kanagawa (yokohama)</p>
+                                <p>Residence : aichi</p>
+                            </dd>
+                        </div>
+
+                        <div class="mp-row">
+                            <dt>Age <span>年齢</span></dt>
+                            <dd>Lv.25</dd>
+                        </div>
+
+                        <div class="mp-row">
+                            <dt>MBTI <span>性格</span></dt>
+                            <dd>INTJ（建築家）</dd>
+                        </div>
+
+                        <div class="mp-row">
+                            <dt>Hobby <span>趣味</span></dt>
+                            <dd>映画・漫画・喫茶店めぐり・サウナ</dd>
+                        </div>
+
+                        <!-- Favorite -->
+                        <div class="mp-row mp-row--stack">
+                            <dt>Favorite <span>好きなもの</span></dt>
+                            <dd>
+                                <div class="favorite-group">
+                                    <p class="favorite-title">【Movies & Animation】</p>
+                                    <ul class="favorite-list">
+                                        <li>Harry Potter / スタジオジブリ</li>
+                                        <li>ロード・オブ・ザ・リング</li>
+                                        <li>The Amazing Spider-Man</li>
+                                        <li>マイインターン / プラダを着た悪魔</li>
+                                    </ul>
+                                </div>
+
+                                <div class="favorite-group">
+                                    <p class="favorite-title">【TV Series & Drama】</p>
+                                    <ul class="favorite-list">
+                                        <li>Gossip Girl / ウェンズデー</li>
+                                        <li>架空OL日記 / のだめカンタービレ</li>
+                                    </ul>
+                                </div>
+
+                                <div class="favorite-group">
+                                    <p class="favorite-title">【Books & Authors】</p>
+                                    <ul class="favorite-list">
+                                        <li>山田詠美 / 村上春樹</li>
+                                    </ul>
+                                </div>
+
+                                <div class="favorite-group">
+                                    <p class="favorite-title">【Comic】</p>
+                                    <ul class="favorite-list">
+                                        <li>矢沢あい / 東村アキコ / 末次由紀</li>
+                                        <li>篠原千絵 / 伊藤潤二</li>
+                                    </ul>
+                                </div>
+                            </dd>
+                        </div>
+                    </dl>
+
+                    <img class="myprofile-frame-bottom sp-only" src="images/myprofile_SP_bottom.svg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- CONTACT CTA -->
     <section class="contact-cta">
@@ -194,7 +291,7 @@
         </a>
     </section>
 
-    <!-- JS（bodyの最後にまとめる：これが一番事故らない） -->
+    <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="js/script.js"></script>

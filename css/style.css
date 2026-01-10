@@ -1262,19 +1262,11 @@ a:hover {
 .contact-cta {
     display: grid;
     place-content: center;
-    gap: 80px;
+    justify-items: center;
+    gap: 20px;
     padding: 120px 30px;
     text-align: center;
     margin-bottom: 100px;
-}
-
-.contact-cta {
-    justify-items: center;
-    text-align: center;
-    gap: 48px;
-    /* 80pxはSPだと間が空きすぎなら調整 */
-    padding: 90px 16px;
-    /* 左右を少し細く */
 }
 
 .contact-cta-text {
@@ -1580,7 +1572,8 @@ a:hover {
 }
 
 .works-web-pc {
-    width: 450px;
+    max-width: 450px;
+    width: 100%;
     height: auto;
     display: block;
 }
@@ -1642,7 +1635,7 @@ a:hover {
 .works-detail-tag {
     max-width: 866px;
     margin: 22px auto 66px;
-    padding: 0 16px;
+    padding: 0 30px;
     box-sizing: border-box;
     text-align: right;
     font-size: 14px;
@@ -1666,7 +1659,7 @@ a:hover {
     padding-left: 10px;
     font-weight: 700;
     line-height: 1.4;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 .works-detail-info dt::before {
@@ -1685,7 +1678,7 @@ a:hover {
     margin-top: 8px;
     margin-bottom: 44px;
     line-height: 1.8;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 /* 戻るボタン */
@@ -2563,6 +2556,11 @@ body.is-menu-open {
         margin: 36px auto 0;
     }
 
+    .myprofile {
+        position: relative;
+        margin: 0 60px;
+    }
+
     .myprofile .kirakira {
         display: none;
     }
@@ -2922,6 +2920,13 @@ body.is-menu-open {
         width: 100%;
     }
 
+    .works-web-pc {
+        max-width: 248px;
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
     .works-web--has-sp .works-web-pc {
         width: 100%;
         max-width: 251px;
@@ -2950,6 +2955,7 @@ body.is-menu-open {
 
     .works-detail-info dt {
         padding-left: 32px;
+        font-size: 16px;
     }
 
     .works-detail-info dt::before {
@@ -2986,6 +2992,10 @@ body.is-menu-open {
         max-width: 90%;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .works-detail-info dd {
+        font-size: 14px;
     }
 }
 
