@@ -14,10 +14,12 @@ $(function () {
         centerPadding: '160px',
 
         autoplay: true,
-        autoplaySpeed: 0,      // PC：止まらず流れる
+        autoplaySpeed: 0,
         speed: 5000,
         cssEase: 'linear',
         infinite: true,
+
+        useTransform: false,
 
         pauseOnHover: false,
         pauseOnFocus: false,
@@ -36,11 +38,12 @@ $(function () {
                     centerPadding: '40px',
 
                     autoplay: true,
-                    autoplaySpeed: 3000, // SP：3秒
+                    autoplaySpeed: 3000,
                     speed: 500,
                     cssEase: 'ease',
                     infinite: true,
 
+                    useTransform: false,
                     arrows: true,
                     prevArrow: $('.works-prev'),
                     nextArrow: $('.works-next'),
@@ -50,6 +53,7 @@ $(function () {
         ]
     });
 });
+
 
 
 // TOPページ
@@ -235,5 +239,18 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     els.forEach(el => io.observe(el));
+});
+// スライダークリック
+document.addEventListener("click", (e) => {
+    const a = e.target.closest(".js-worklink");
+    if (!a) return;
+
+    e.preventDefault();              // すぐ遷移を止める
+    a.classList.add("is-clicked");   // 押した演出ON
+
+    const href = a.getAttribute("href");
+    setTimeout(() => {
+        window.location.href = href;   // 0.2秒後に遷移
+    }, 200);
 });
 

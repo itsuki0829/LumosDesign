@@ -684,11 +684,30 @@ a:hover {
     overflow: visible;
 }
 
-.works-track .works-slider {
-    /* height: 460px; */
-    display: flex !important;
+/* スライド1枚の箱（works-itemを高さ基準にする） */
+.works-track .works-item {
+    height: 380px;
+    display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0 20px;
+}
+
+/* aタグにも高さを持たせる */
+.works-track .works-link {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 画像は箱の中に収める */
+.works-track .works-link img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    display: block;
 }
 
 /* スライド1枚の箱 */
@@ -994,7 +1013,7 @@ a:hover {
 
 .skill-label-tools+.skill-body .chip {
     white-space: nowrap;
-    overflow: hidden;
+    overflow: visible;
     text-overflow: ellipsis;
     line-height: 1;
     display: flex;
@@ -2030,9 +2049,7 @@ body.is-menu-open {
     filter: blur(0);
 }
 
-/* =========================
-   共通：ページ表示（ふわっと）
-========================= */
+/* ふわっと */
 body {
     opacity: 1;
     /* ←最初から表示 */
@@ -2041,12 +2058,9 @@ body {
 
 body.is-leaving {
     opacity: 0;
-    /* 離脱時だけフェードアウト */
 }
 
-/* =========================
-   共通：スクロールでスッと出現
-========================= */
+/* スクロール */
 .js-reveal {
     opacity: 0;
     transform: translate3d(0, 40px, 0);
@@ -2065,7 +2079,6 @@ body.is-leaving {
     filter: blur(0);
 }
 
-/* 左右から（必要な時だけ付ける） */
 .js-reveal--left {
     transform: translateX(-40px);
 }
@@ -2078,16 +2091,82 @@ body.is-leaving {
     transform: translateY(18px);
 }
 
-/* 左右指定でも表示状態は0に戻す */
+
 .js-reveal--left.is-in,
 .js-reveal--right.is-in,
 .js-reveal--up.is-in {
     transform: translate(0, 0);
 }
 
-/* 連続で出す時の微調整（任意） */
+
 .js-reveal[data-delay] {
     transition-delay: var(--delay, 0ms);
+}
+
+.works-link img {
+    transform: scale(.94);
+    transform-origin: center;
+    transition: transform .35s ease, opacity .35s ease, filter .35s ease;
+}
+
+
+.works-link:hover img {
+    transform: scale(.99);
+    filter: brightness(1.05);
+}
+
+/* 押した瞬間 */
+.works-link:active img {
+    transform: scale(0.97);
+    filter: brightness(1.15);
+}
+
+/* キラキラのアニメーション */
+.kirakira {
+    animation: sparkle-breathe-pop 4.8s ease-in-out infinite;
+}
+
+@keyframes sparkle-breathe-pop {
+    0% {
+        scale: 0.8;
+        rotate: 0deg;
+        opacity: 0.5;
+        filter: brightness(1);
+    }
+
+    50% {
+        scale: 1;
+        rotate: 0deg;
+        opacity: 1;
+        filter: brightness(1);
+    }
+
+    /* キラッと光る */
+    60% {
+        scale: 1.3;
+        rotate: 0deg;
+        opacity: 1;
+        filter: brightness(2);
+    }
+
+    /* くるん*/
+    75% {
+        scale: 1.1;
+        rotate: 360deg;
+        opacity: 1;
+        filter: brightness(1.4);
+    }
+
+    100% {
+        scale: 0.8;
+        rotate: 360deg;
+        opacity: 0.5;
+        filter: brightness(1);
+    }
+}
+
+.kirakira {
+    animation: sparkle-breathe-pop 4.8s ease-in-out infinite;
 }
 
 /* 動き少なめ設定の人には止める */
@@ -2115,6 +2194,14 @@ body.is-leaving {
         filter: none;
     }
 }
+
+
+
+
+
+
+
+
 
 @media (max-width: 1200px) {
 
