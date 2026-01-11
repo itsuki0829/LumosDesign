@@ -1,60 +1,52 @@
-$(function () {
-    const $slider = $('.js-works-slick');
-    if (!$slider.length) return;
+// スライダー
+const $slider = $('.js-works-slick');
+const mq = window.matchMedia('(max-width: 768px)');
 
+function enableSlick() {
+    if ($slider.hasClass('slick-initialized')) return;
+
+    $slider.slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        speed: 700,
+
+
+        autoplay: true,
+        autoplaySpeed: 5000,
+        pauseOnHover: true,
+        pauseOnFocus: true,
+
+
+        arrows: true,
+        prevArrow: $('.works-prev'),
+        nextArrow: $('.works-next'),
+
+        // スマホ操作
+        swipe: true,
+        draggable: true,
+        adaptiveHeight: true,
+    });
+}
+
+function disableSlick() {
     if ($slider.hasClass('slick-initialized')) {
         $slider.slick('unslick');
     }
+    $slider.removeAttr('style');
+    $slider.find('.works-item, .works-link, img').removeAttr('style');
+}
 
-    $slider.slick({
-        slidesToShow: 2,
-        slidesToScroll: 1,
+function handle() {
+    if (mq.matches) enableSlick();
+    else disableSlick();
+}
 
-        centerMode: true,
-        centerPadding: '160px',
+// Safari対策（addEventListenerが効かない環境）
+if (mq.addEventListener) mq.addEventListener('change', handle);
+else mq.addListener(handle);
 
-        autoplay: true,
-        autoplaySpeed: 0,
-        speed: 5000,
-        cssEase: 'linear',
-        infinite: true,
-
-        useTransform: false,
-
-        pauseOnHover: false,
-        pauseOnFocus: false,
-
-        arrows: false,
-        dots: false,
-
-        responsive: [
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-
-                    centerMode: true,
-                    centerPadding: '40px',
-
-                    autoplay: true,
-                    autoplaySpeed: 3000,
-                    speed: 500,
-                    cssEase: 'ease',
-                    infinite: true,
-
-                    useTransform: false,
-                    arrows: true,
-                    prevArrow: $('.works-prev'),
-                    nextArrow: $('.works-next'),
-                    dots: false
-                }
-            }
-        ]
-    });
-});
-
-
+handle();
 
 // TOPページ
 $(function () {
@@ -234,7 +226,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         },
         {
-            threshold: [0, 0.15], // ★0 を入れるのがポイント
+            threshold: 0.15,
         }
     );
 
@@ -252,5 +244,34 @@ document.addEventListener("click", (e) => {
     setTimeout(() => {
         window.location.href = href;   // 0.2秒後に遷移
     }, 200);
+});
+
+// ダークモード
+document.addEventListener("DOMContentLoaded", () => {
+    const body = document.body;
+    const toggle = document.querySelector(".js-theme-toggle");
+    if (!toggle) return;
+
+    const applyThemeAssets = (theme) => {
+        document.querySelectorAll("img[data-light][data-dark]").forEach(img => {
+            img.src = theme === "dark" ? img.dataset.dark : img.dataset.light;
+        });
+    };
+
+    const saved = localStorage.getItem("theme");
+    const initial = saved
+        ? saved
+        : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+
+    body.dataset.theme = initial;
+    applyThemeAssets(initial);
+
+    toggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        const next = body.dataset.theme === "dark" ? "light" : "dark";
+        body.dataset.theme = next;
+        localStorage.setItem("theme", next);
+        applyThemeAssets(next);
+    });
 });
 

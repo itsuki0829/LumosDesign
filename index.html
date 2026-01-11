@@ -18,7 +18,8 @@
     <script src="js/script.js" defer></script>
 </head>
 
-<body id="top" class="page-top">
+<body id="top" class="page-top" data-theme="light">
+
 
     <a href="#top" class="to-top js-to-top" aria-label="トップページへ戻る">
         <img src="images/TOPPAGE.svg" alt="" class="to-top__img">
@@ -26,14 +27,14 @@
     </a>
     <header class="site-header">
         <div class="container">
-            <h1 class="logo">
-                <a href="/">
-                    <img src="images/logo_lumosdesing.svg" alt="Lumos Design logo">
-                </a>
-            </h1>
+            <button class="logo-switch js-theme-toggle" type="button" aria-label="ダークモード切り替え">
+                <img class="logo-img" src="./images/logo_lumosdesing.svg" data-light="./images/logo_lumosdesing.svg"
+                    data-dark="./images/logo_dark.svg" onerror="this.src=this.dataset.light" alt="Lumos Design" />
+            </button>
+
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#top">HOME</a></li>
                     <li><a href="#concept">CONCEPT</a></li>
                     <li><a href="./about.html">ABOUT</a></li>
                     <li><a href="./work.html">WORKS</a></li>
@@ -88,19 +89,19 @@
             <!-- 右サブタイトル -->
             <div class="fb-right">
                 <p class="subtitle">PORTFOLIO SITE</p>
-                <p class="subtext">WEB　Design / WEB　Coding</p>
+                <p class="subtext">WEB Design / WEB Coding</p>
             </div>
         </div>
     </section>
 
-    <section class="concept js-reveal" id="concept">
+    <section class="concept" id="concept">
         <div class="concept-inner">
             <!-- 上の雲 -->
             <div class="kumo-top">
                 <img src="images/cloud_top.png" alt="上の雲" class="kumo">
             </div>
             <!-- 枠とテキスト -->
-            <div class="waku">
+            <div class="waku js-reveal">
                 <!-- 上の枠 -->
                 <img src="images/concept_waku_top.svg" alt="上の枠" class="waku-top">
                 <!-- テキスト -->
@@ -130,24 +131,24 @@
             </div>
         </div>
     </section>
-    <section class="about js-reveal" id="about">
+    <section class="about" id="about">
         <!-- タイトルとキラキラ -->
-        <div class="about-title-wrap">
+        <div class="about-title-wrap  js-reveal">
             <h2 class="about-title">ABOUT</h2>
             <img src="images/about_title_kirakira.svg" alt="キラキラ" class="about-title-deco">
         </div>
 
         <div class="about-inner">
             <!-- 写真とテキスト -->
-            <div class="about-photo">
-                <div class="photo-wrapper">
+            <div class="about-photo js-reveal">
+                <div class="photo-wrapper js-reveal">
                     <img src="images/ABOUT_profilephoto.png" alt="自分の写真" class="profile-photo">
                     <img src="images/ABOUT_kirakira_left.svg" alt="キラキラ左" class="deco-left kirakira">
                     <img src="images/ABOUT_kirakira_right.svg" alt="キラキラ右" class="deco-right kirakira">
                 </div>
             </div>
 
-            <div class="about-text">
+            <div class="about-text js-reveal">
                 <h3 class="about-name">吉田 樹<span>Yoshida Itsuki</span></h3>
                 <p class="about-desc">
                     現在はSES企業でITに携わりながら、<br>
@@ -167,24 +168,25 @@
             </div>
         </div>
     </section>
-    <section class="works js-reveal" id="works">
+    <section class="works" id="works">
         <!-- タイトルとキラキラ -->
-        <div class="works-title-wrap">
+        <div class="works-title-wrap js-reveal">
             <h2 class="works-title">WORK</h2>
             <img src="images/work_title_kirakira.svg" alt="キラキラ" class="works-title-deco">
         </div>
 
         <div class="works-inner">
             <!-- スライダー -->
-            <div class="works-slider" aria-label="制作実績">
+            <div class="works-slider js-reveal" aria-label="制作実績">
                 <!-- 表示 -->
                 <div class="works-view">
-                    <ul class="works-track js-works-slick">
+                    <ul class="works-track works-marquee js-works-slick" aria-label="制作実績一覧">
+
+                        <!-- ===== 1セット目 ===== -->
                         <li class="works-item">
                             <a class="works-link js-worklink" href="./work1.html">
                                 <img src="images/work1.png" alt="制作実績1">
                             </a>
-
                         </li>
                         <li class="works-item">
                             <a class="works-link" href="./work2.html">
@@ -236,8 +238,67 @@
                                 <img src="images/work11.png" alt="制作実績11">
                             </a>
                         </li>
+
+                        <!-- ===== 2セット目（PCの無限ループ用：中身は1セット目と同じ） ===== -->
+                        <li class="works-item is-dup" aria-hidden="true">
+                            <a class="works-link" href="./work1.html" tabindex="-1">
+                                <img src="images/work1.png" alt="">
+                            </a>
+                        </li>
+                        <li class="works-item is-dup" aria-hidden="true">
+                            <a class="works-link" href="./work2.html" tabindex="-1">
+                                <img src="images/work2.png" alt="">
+                            </a>
+                        </li>
+                        <li class="works-item is-dup" aria-hidden="true">
+                            <a class="works-link" href="./work3.html" tabindex="-1">
+                                <img src="images/work3.png" alt="">
+                            </a>
+                        </li>
+                        <li class="works-item is-dup" aria-hidden="true">
+                            <a class="works-link" href="./work4.html" tabindex="-1">
+                                <img src="images/work4.png" alt="">
+                            </a>
+                        </li>
+                        <li class="works-item is-dup" aria-hidden="true">
+                            <a class="works-link" href="./work5.html" tabindex="-1">
+                                <img src="images/work5.png" alt="">
+                            </a>
+                        </li>
+                        <li class="works-item is-dup" aria-hidden="true">
+                            <a class="works-link" href="./work6.html" tabindex="-1">
+                                <img src="images/work6.png" alt="">
+                            </a>
+                        </li>
+                        <li class="works-item is-dup" aria-hidden="true">
+                            <a class="works-link" href="./work7.html" tabindex="-1">
+                                <img src="images/work7.png" alt="">
+                            </a>
+                        </li>
+                        <li class="works-item is-dup" aria-hidden="true">
+                            <a class="works-link" href="./work8.html" tabindex="-1">
+                                <img src="images/work8.png" alt="">
+                            </a>
+                        </li>
+                        <li class="works-item is-dup" aria-hidden="true">
+                            <a class="works-link" href="./work9.html" tabindex="-1">
+                                <img src="images/work9.png" alt="">
+                            </a>
+                        </li>
+                        <li class="works-item is-dup" aria-hidden="true">
+                            <a class="works-link" href="./work10.html" tabindex="-1">
+                                <img src="images/work10.png" alt="">
+                            </a>
+                        </li>
+                        <li class="works-item is-dup" aria-hidden="true">
+                            <a class="works-link" href="./work11.html" tabindex="-1">
+                                <img src="images/work11.png" alt="">
+                            </a>
+                        </li>
+
                     </ul>
                 </div>
+
                 <!-- 矢印 -->
                 <div class="works-arrows">
                     <button class="works-arrow works-prev" type="button" aria-label="前へ">

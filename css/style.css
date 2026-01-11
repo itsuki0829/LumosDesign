@@ -7,6 +7,7 @@
     --brown: #62361d;
     --brown-rgb: 98, 54, 29;
     --orbit-alpha: .28;
+    --works-duration: 50s;
 }
 
 html {
@@ -608,7 +609,7 @@ a:hover {
 
 /* WORKSセクション */
 .works {
-    margin: 0 30px 229px 30px;
+    margin-bottom: 229px;
 }
 
 /* タイトルとキラキラ */
@@ -637,12 +638,9 @@ a:hover {
     pointer-events: none;
 }
 
-/* 中身の横幅 */
 .works-inner {
     max-width: 1500px;
     margin: 0 auto;
-    /* スライダー全体 */
-    position: relative;
 }
 
 /* 矢印 */
@@ -680,9 +678,6 @@ a:hover {
     margin-top: 135px;
 }
 
-.works-view {
-    overflow: visible;
-}
 
 /* スライド1枚の箱（works-itemを高さ基準にする） */
 .works-track .works-item {
@@ -703,26 +698,6 @@ a:hover {
 
 /* 画像は箱の中に収める */
 .works-track .works-link img {
-    max-height: 100%;
-    max-width: 100%;
-    width: auto;
-    height: auto;
-    display: block;
-}
-
-/* スライド1枚の箱 */
-.works-track .slick-slide {
-    height: 380px;
-    display: flex !important;
-    align-items: center;
-    /* 縦中央 */
-    justify-content: center;
-    /* 横中央 */
-    padding: 0 20px;
-}
-
-/* 画像は箱の中に収める */
-.works-track img {
     max-height: 100%;
     max-width: 100%;
     width: auto;
@@ -1614,14 +1589,6 @@ a:hover {
     justify-content: center;
 }
 
-/* SP画像を横並びにする */
-.works-web--has-sp .works-web__sp {
-    display: flex;
-    gap: 24px;
-    justify-content: center;
-}
-
-
 /* 画像共通 */
 .works-web--has-sp img {
     width: auto;
@@ -2020,6 +1987,92 @@ body.is-menu-open {
     overflow: hidden;
 }
 
+
+/* スライダー */
+.works-track {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.works-view {
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+
+    display: block;
+    /* justify-content: center; */
+}
+
+.works-marquee {
+    display: flex;
+    align-items: center;
+    gap: 120px;
+    width: max-content;
+    will-change: transform;
+    animation: works-marquee var(--works-duration, 18s) linear infinite;
+}
+
+.works-marquee .works-item {
+    flex: 0 0 520px;
+    height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.works-marquee .works-link {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.works-marquee .works-link img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+}
+
+
+@keyframes works-marquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+
+    /* 2セット前提 */
+}
+
+@media (max-width: 768px) {
+    .works-marquee .is-dup {
+        display: none;
+    }
+
+    .works-marquee {
+        animation: none;
+        width: 100%;
+    }
+
+    .works-view {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    .works-marquee {
+        animation: none;
+    }
+}
+
 /* アニメーション */
 
 /* 雲 */
@@ -2121,9 +2174,41 @@ body.is-leaving {
     filter: brightness(1.15);
 }
 
-/* キラキラのアニメーション */
-.kirakira {
-    animation: sparkle-breathe-pop 4.8s ease-in-out infinite;
+
+/* ダークモード */
+.logo a {
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* hoverで光る */
+.logo a:hover img {
+    filter: drop-shadow(0 0 10px rgba(255, 220, 150, .6));
+    transform: translateY(-1px);
+}
+
+/* クリックした瞬間 */
+.logo a:active img {
+    transform: scale(.97);
+}
+
+.logo-switch {
+    background: none;
+    border: 0;
+    padding: 0;
+    line-height: 0;
+}
+
+.logo-img {
+    transition: filter .3s ease, transform .25s ease;
+    display: block;
+    max-width: 413px;
+    width: 100%;
+    height: auto;
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    z-index: 9999;
 }
 
 @keyframes sparkle-breathe-pop {
@@ -2730,12 +2815,6 @@ body.is-leaving {
         left: auto;
         right: auto;
         top: auto;
-        display: block;
-    }
-
-    .works-arrow img {
-        width: 59px;
-        height: auto;
         display: block;
     }
 
