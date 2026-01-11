@@ -72,13 +72,13 @@
 
     <!-- ===== ABOUT 本文ここから ===== -->
     <section class="about-page" id="about">
-        <div class="about-title-wrap">
+        <div class="about-title-wrap js-reveal">
             <h2 class="about-title">Who I Am</h2>
             <img src="images/about_title_kirakira.svg" alt="キラキラ" class="about-title-deco" />
         </div>
 
         <div class="about-inner">
-            <div class="about-photo">
+            <div class="about-photo js-reveal">
                 <div class="photo-wrapper">
                     <img src="images/ABOUT_profilephoto.png" alt="自分の写真" class="profile-photo" />
                     <img src="images/ABOUT_kirakira_left.svg" alt="キラキラ左" class="deco-left" />
@@ -87,8 +87,8 @@
             </div>
 
             <div class="about-desc">
-                <h3 class="about-name">吉田 樹<span>Yoshida Itsuki</span></h3>
-                <p class="about-desc">
+                <h3 class="about-name js-reveal">吉田 樹<span>Yoshida Itsuki</span></h3>
+                <p class="about-desc js-reveal">
                     インフラエンジニアとしてネットワークやLinuxの基礎を学ぶ傍ら、<br />
                     以前から興味のあったWebデザインの勉強を始めました。<br />
                     ITスキルを身につけながら、学んだ知識を活かして実際にWebサイトやデザイン制作に<br />
@@ -100,7 +100,7 @@
         </div>
     </section>
 
-    <section class="skills" id="skills">
+    <section class="skills js-reveal" id="skills">
         <div class="skills-inner">
             <div class="about-title-wrap">
                 <h2 class="about-title">SKILLS</h2>
@@ -150,7 +150,7 @@
                             レスポンシブ対応を意識して制作しています。
                         </p>
                         <div class="chips">
-                            <span class="chip">Visual Studio Code</span>
+                            <span class="chip js-reveal">Visual Studio Code</span>
                         </div>
                     </div>
                 </div>
@@ -166,7 +166,7 @@
                     </div>
 
                     <div class="skill-body">
-                        <div class="chips">
+                        <div class="chips js-reveal">
                             <span class="chip">Zoom</span>
                             <span class="chip">Chatwork</span>
                             <span class="chip">Excel</span>
@@ -178,16 +178,15 @@
             </div>
         </div>
     </section>
-    <!-- MY PROFILE -->
 
     <!-- MY PROFILE -->
     <section class="myprofile" id="myprofile">
-        <div class="myprofile-title-wrap">
+        <div class="myprofile-title-wrap js-reveal">
             <h2 class="myprofile-title">MY PROFILE</h2>
             <img src="images/MYPROFILE_title_kirakira.svg" alt="" class="myprofile-title-deco">
         </div>
 
-        <div class="myprofile-inner">
+        <div class="myprofile-inner js-reveal">
             <div class="myprofile-visual">
                 <picture>
                     <source media="(max-width: 768px)" srcset="images/myprofil_SP.png">
@@ -283,13 +282,18 @@
 
     <!-- CONTACT CTA -->
     <section class="contact-cta">
-        <p class="contact-text">
-            <span class="contact-cta-text">デザインや発信に関するお悩み、ご相談などございましたら、どうぞお気軽にご連絡ください。</span>
+        <p class="contact-text js-reveal">
+            <span class="contact-maker">
+                デザインや発信に関するお悩み、<br class="sp-br">
+                ご相談などございましたら、<br class="sp-br">
+                どうぞお気軽にご連絡ください
+            </span>
         </p>
-        <a href="index.html#contact" class="contact-cta-button">
+        <a href="index.html#contact" class="contact-cta-button js-reveal">
             <img src="images/contact_button.svg" alt="お問い合わせはこちら" />
         </a>
     </section>
+
 
     <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

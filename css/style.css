@@ -2001,6 +2001,121 @@ body.is-menu-open {
     overflow: hidden;
 }
 
+/* アニメーション */
+
+/* 雲 */
+.kumo-top,
+.kumo-bottom {
+    opacity: 0;
+    filter: blur(3px);
+    transition: transform 900ms ease, opacity 900ms ease, filter 900ms ease;
+    will-change: transform, opacity, filter;
+}
+
+/* 上の雲：右から */
+.kumo-top {
+    transform: translateX(80px);
+}
+
+/* 下の雲：左から */
+.kumo-bottom {
+    transform: translateX(-80px);
+}
+
+/* 表示状態 */
+.kumo-top.is-in,
+.kumo-bottom.is-in {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+}
+
+/* =========================
+   共通：ページ表示（ふわっと）
+========================= */
+body {
+    opacity: 1;
+    /* ←最初から表示 */
+    transition: opacity 500ms ease;
+}
+
+body.is-leaving {
+    opacity: 0;
+    /* 離脱時だけフェードアウト */
+}
+
+/* =========================
+   共通：スクロールでスッと出現
+========================= */
+.js-reveal {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+    filter: blur(2px);
+    transition:
+        opacity 1600ms cubic-bezier(.16, 1, .3, 1),
+        transform 1600ms cubic-bezier(.16, 1, .3, 1),
+        filter 1600ms cubic-bezier(.16, 1, .3, 1);
+    will-change: transform, opacity, filter;
+    backface-visibility: hidden;
+}
+
+.js-reveal.is-in {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+}
+
+/* 左右から（必要な時だけ付ける） */
+.js-reveal--left {
+    transform: translateX(-40px);
+}
+
+.js-reveal--right {
+    transform: translateX(40px);
+}
+
+.js-reveal--up {
+    transform: translateY(18px);
+}
+
+/* 左右指定でも表示状態は0に戻す */
+.js-reveal--left.is-in,
+.js-reveal--right.is-in,
+.js-reveal--up.is-in {
+    transform: translate(0, 0);
+}
+
+/* 連続で出す時の微調整（任意） */
+.js-reveal[data-delay] {
+    transition-delay: var(--delay, 0ms);
+}
+
+/* 動き少なめ設定の人には止める */
+@media (prefers-reduced-motion: reduce) {
+    body {
+        opacity: 1;
+        transition: none;
+    }
+
+    .js-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/* ユーザーが「動き少なめ」設定してる場合はアニメ切る */
+@media (prefers-reduced-motion: reduce) {
+
+    .kumo-top,
+    .kumo-bottom {
+        transition: none;
+        transform: none;
+        opacity: 1;
+        filter: none;
+    }
+}
+
 @media (max-width: 1200px) {
 
     /* 雲も一緒に縮める（固定pxのままだと被りやすい） */

@@ -2,7 +2,6 @@ $(function () {
     const $slider = $('.js-works-slick');
     if (!$slider.length) return;
 
-    // ★ 再初期化対策（これが消えてた）
     if ($slider.hasClass('slick-initialized')) {
         $slider.slick('unslick');
     }
@@ -105,7 +104,6 @@ if (!isTouchDevice) {
 
 // ハンバーガーメニュー
 
-// ハンバーガーメニュー（差し替え用：再発防止つき）
 document.addEventListener("DOMContentLoaded", () => {
     const body = document.body;
     const openBtn = document.querySelector(".hamburger");
@@ -115,10 +113,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!openBtn || !menu || !closeBtn) return;
 
-    // ▼ CSSのtransition秒数と合わせる
     const DURATION = 250;
 
-    // ▼ CSSの@mediaと同じ数字にする（768→900にしたいならここも900）
     const BREAKPOINT = 768;
 
     const isSP = () => window.innerWidth <= BREAKPOINT;
@@ -176,3 +172,68 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!isSP()) forceClose();
     });
 });
+
+// 雲
+document.addEventListener("DOMContentLoaded", () => {
+    const clouds = document.querySelectorAll(".kumo-top, .kumo-bottom");
+    const concept = document.querySelector("#concept");
+
+    if (!clouds.length || !concept) return;
+
+    if (!("IntersectionObserver" in window)) {
+        clouds.forEach(el => el.classList.add("is-in"));
+        return;
+    }
+
+    const io = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+
+                const top = document.querySelector(".kumo-top");
+                const bottom = document.querySelector(".kumo-bottom");
+
+                if (top) top.classList.add("is-in");
+                if (bottom) setTimeout(() => bottom.classList.add("is-in"), 120);
+
+                io.disconnect();
+            });
+        },
+        {
+            root: null,
+            threshold: 0.25,
+        }
+    );
+
+    io.observe(concept);
+});
+
+// スクロール
+document.addEventListener("DOMContentLoaded", () => {
+    const els = document.querySelectorAll(".js-reveal");
+    if (!els.length) return;
+
+    if (!("IntersectionObserver" in window)) {
+        els.forEach(el => el.classList.add("is-in"));
+        return;
+    }
+
+    const io = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-in");
+                } else if (entry.intersectionRatio === 0) {
+                    // ★完全に見えなくなった時だけ外す
+                    entry.target.classList.remove("is-in");
+                }
+            });
+        },
+        {
+            threshold: [0, 0.15], // ★0 を入れるのがポイント
+        }
+    );
+
+    els.forEach(el => io.observe(el));
+});
+
