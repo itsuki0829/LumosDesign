@@ -250,7 +250,6 @@ document.addEventListener("click", (e) => {
 document.addEventListener("DOMContentLoaded", () => {
     const body = document.body;
     const toggle = document.querySelector(".js-theme-toggle");
-    if (!toggle) return;
 
     const applyThemeAssets = (theme) => {
         document.querySelectorAll("img[data-light][data-dark]").forEach((img) => {
@@ -258,69 +257,85 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
+    // --- bg-orbs（生成/削除） ---
+    const ensureOrbs = (theme) => {
+        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (reduce) return;
+
+        const existing = document.querySelectorAll(".bg-orbs");
+        if (theme !== "dark") {
+            existing.forEach(el => el.remove());
+            return;
+        }
+        if (existing.length) return;
+
+        const back = document.createElement("div");
+        const mid = document.createElement("div");
+        const front = document.createElement("div");
+
+        back.className = "bg-orbs bg-orbs--back";
+        mid.className = "bg-orbs bg-orbs--mid";
+        front.className = "bg-orbs bg-orbs--front";
+
+        body.prepend(front);
+        body.prepend(mid);
+        body.prepend(back);
+
+        // 視差パララックス
+        let ticking = false;
+        const SPEED_BACK = 0.05;
+        const SPEED_MID = 0.10;
+        const SPEED_FRONT = 0.16;
+
+        const SCALE_BACK = 1.10;
+        const SCALE_MID = 1.00;
+        const SCALE_FRONT = 0.92;
+
+        const update = () => {
+            ticking = false;
+            const y = window.scrollY || 0;
+            back.style.transform = `translate3d(0, ${y * SPEED_BACK}px, 0) scale(${SCALE_BACK})`;
+            mid.style.transform = `translate3d(0, ${y * SPEED_MID}px, 0) scale(${SCALE_MID})`;
+            front.style.transform = `translate3d(${y * 0.02}px, ${y * SPEED_FRONT}px, 0) scale(${SCALE_FRONT})`;
+        };
+
+        const onScroll = () => {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(update);
+        };
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+        update();
+    };
+
+    const setTheme = (theme) => {
+        body.dataset.theme = theme;
+        localStorage.setItem("theme", theme);
+        applyThemeAssets(theme);
+        ensureOrbs(theme);
+    };
+
+    // 初期テーマ
     const saved = localStorage.getItem("theme");
     const initial = saved
         ? saved
         : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    setTheme(initial);
 
-    body.dataset.theme = initial;
-    applyThemeAssets(initial);
-
-    toggle.addEventListener("click", (e) => {
-        e.preventDefault();
-        const next = body.dataset.theme === "dark" ? "light" : "dark";
-        body.dataset.theme = next;
-        localStorage.setItem("theme", next);
-        applyThemeAssets(next);
-    });
+    // 切り替えボタン
+    if (toggle) {
+        toggle.addEventListener("click", (e) => {
+            e.preventDefault();
+            const next = body.dataset.theme === "dark" ? "light" : "dark";
+            setTheme(next);
+        });
+    }
 });
+
 // パララックス（bg-orbs）
-document.addEventListener("DOMContentLoaded", () => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) return;
 
-    if (document.body.dataset.theme !== "dark") return;
-    if (document.querySelector(".bg-orbs")) return;
-
-    const body = document.body;
-
-    const back = document.createElement("div");
-    const mid = document.createElement("div");
-    const front = document.createElement("div");
-
-    back.className = "bg-orbs bg-orbs--back";
-    mid.className = "bg-orbs bg-orbs--mid";
-    front.className = "bg-orbs bg-orbs--front";
-
-    body.prepend(front);
-    body.prepend(mid);
-    body.prepend(back);
-
-    // 視差が体感できる設定
-    const SCALE_BACK = 1.10;
-    const SCALE_MID = 1.00;
-    const SCALE_FRONT = 0.92;
-
-    const update = () => {
-        ticking = false;
-        const y = window.scrollY || 0;
-
-        back.style.transform = `translate3d(0, ${y * SPEED_BACK}px, 0) scale(${SCALE_BACK})`;
-        mid.style.transform = `translate3d(0, ${y * SPEED_MID}px, 0) scale(${SCALE_MID})`;
-        front.style.transform = `translate3d(${y * 0.02}px, ${y * SPEED_FRONT}px, 0) scale(${SCALE_FRONT})`;
-    };
-
-
-    const onScroll = () => {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(update);
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    update();
-});
-// フォーム送信後に thanks.html へ遷移（Googleフォーム + hidden_iframe用）
+// サンクスページ
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("contactForm");
     const iframe = document.querySelector('iframe[name="hidden_iframe"]');
@@ -333,7 +348,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     iframe.addEventListener("load", () => {
-        if (!submitted) return;         // 初回読み込みでは飛ばない
-        window.location.href = "./thanks.html"; // ✅ ここをあなたのURL/ファイル名に
+        if (!submitted) return;
+        window.location.href = "./thanks.html";
     });
 });

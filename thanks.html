@@ -5,42 +5,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>thanks</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
-        rel="stylesheet">
+    <link rel="icon" href="./images/favicon.png" type="image/png">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
-
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer></script>
     <script src="js/script.js" defer></script>
 </head>
 
-<body id="top" class="page-top">
-    <a href="#top" class="to-top" aria-label="トップページへ戻る">
-        <img src="images/TOPPAGE.svg" alt="" class="to-top__img">
-    </a>
+<body id="top" class="page-top" data-theme="light">
 
+
+    <a href="#top" class="to-top js-to-top" aria-label="トップページへ戻る">
+        <img src="images/TOPPAGE.svg" data-light="images/TOPPAGE.svg" data-dark="images/TOPPAGE_dark.svg" alt=""
+            class="to-top__img theme-img" />
+
+
+    </a>
     <header class="site-header">
         <div class="container">
             <h1 class="logo">
-                <a href="/">
-                    <img src="images/logo_lumosdesing.svg" alt="Lumos Design logo">
+
+                <a href="index.html">
+                    <img src="images/logo_lumosdesing.svg" alt="Lumos Design logo" />
                 </a>
             </h1>
 
+            <!-- PC nav -->
             <nav class="main-nav">
                 <ul>
-                    <li><a href="./index.html">HOME</a></li>
-                    <li><a href="./index.html#concept">CONCEPT</a></li>
-                    <li><a href="./index.html#about">ABOUT</a></li>
-                    <li><a href="./index.html#works">WORKS</a></li>
-                    <li><a href="./index.html#contact">CONTACT</a></li>
+                    <li><a href="index.html#top">HOME</a></li>
+                    <li><a href="index.html#concept">CONCEPT</a></li>
+                    <li><a href="index.html#about">ABOUT</a></li>
+                    <li><a href="index.html#works">WORKS</a></li>
+                    <li><a href="index.html#contact">CONTACT</a></li>
                 </ul>
             </nav>
+
+            <!-- hamburger -->
+            <button class="hamburger" type="button" aria-label="メニューを開く" aria-expanded="false">
+                <span class="hamburger__lines">
+                    <span></span><span></span><span></span>
+                </span>
+                <span class="hamburger__arrow"></span>
+                <img src="images/hamburger_kirakira.svg" alt="" class="hamburger_kirakira" />
+            </button>
+
+            <!-- SP menu -->
+            <nav id="sp-menu" class="sp-menu" aria-hidden="true">
+                <button class="sp-menu__close" type="button" aria-label="メニューを閉じる">
+                    <span class="sp-menu__close-line is-light"></span>
+                    <span class="sp-menu__close-line is-dark"></span>
+                </button>
+
+                <!-- ★ 下層ページでは index.html に飛ばす -->
+                <ul class="sp-menu__list">
+                    <li><a href="index.html#top">TOP</a></li>
+                    <li><a href="index.html#concept">CONCEPT</a></li>
+                    <li><a href="index.html#about">ABOUT</a></li>
+                    <li><a href="index.html#works">WORKS</a></li>
+                    <li><a href="index.html#contact">CONTACT</a></li>
+                </ul>
+            </nav>
+
         </div>
     </header>
+
+
 
     <main class="thanks">
         <!-- キラキラ線 -->
