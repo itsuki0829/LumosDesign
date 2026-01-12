@@ -253,7 +253,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!toggle) return;
 
     const applyThemeAssets = (theme) => {
-        document.querySelectorAll("img[data-light][data-dark]").forEach(img => {
+        document.querySelectorAll("img[data-light][data-dark]").forEach((img) => {
             img.src = theme === "dark" ? img.dataset.dark : img.dataset.light;
         });
     };
@@ -274,4 +274,49 @@ document.addEventListener("DOMContentLoaded", () => {
         applyThemeAssets(next);
     });
 });
+// パララックス（bg-orbs）
+document.addEventListener("DOMContentLoaded", () => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
 
+    if (document.body.dataset.theme !== "dark") return;
+    if (document.querySelector(".bg-orbs")) return;
+
+    const body = document.body;
+
+    const back = document.createElement("div");
+    const mid = document.createElement("div");
+    const front = document.createElement("div");
+
+    back.className = "bg-orbs bg-orbs--back";
+    mid.className = "bg-orbs bg-orbs--mid";
+    front.className = "bg-orbs bg-orbs--front";
+
+    body.prepend(front);
+    body.prepend(mid);
+    body.prepend(back);
+
+    // 視差が体感できる設定
+    const SCALE_BACK = 1.10;
+    const SCALE_MID = 1.00;
+    const SCALE_FRONT = 0.92;
+
+    const update = () => {
+        ticking = false;
+        const y = window.scrollY || 0;
+
+        back.style.transform = `translate3d(0, ${y * SPEED_BACK}px, 0) scale(${SCALE_BACK})`;
+        mid.style.transform = `translate3d(0, ${y * SPEED_MID}px, 0) scale(${SCALE_MID})`;
+        front.style.transform = `translate3d(${y * 0.02}px, ${y * SPEED_FRONT}px, 0) scale(${SCALE_FRONT})`;
+    };
+
+
+    const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(update);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    update();
+});

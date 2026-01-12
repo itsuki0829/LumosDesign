@@ -22,7 +22,9 @@
 
 
     <a href="#top" class="to-top js-to-top" aria-label="トップページへ戻る">
-        <img src="images/TOPPAGE.svg" alt="" class="to-top__img">
+        <img src="images/TOPPAGE.svg" data-light="images/TOPPAGE.svg" data-dark="images/TOPPAGE_dark.svg" alt=""
+            class="to-top__img theme-img" />
+
 
     </a>
     <header class="site-header">
@@ -30,6 +32,7 @@
             <button class="logo-switch js-theme-toggle" type="button" aria-label="ダークモード切り替え">
                 <img class="logo-img" src="./images/logo_lumosdesing.svg" data-light="./images/logo_lumosdesing.svg"
                     data-dark="./images/logo_dark.svg" onerror="this.src=this.dataset.light" alt="Lumos Design" />
+
             </button>
 
             <nav class="main-nav">
@@ -82,9 +85,13 @@
                 <h2>ITSUKI YOSHIDA</h2>
             </div>
             <!-- 中央:手のGIF -->
+
             <div class="fb-center">
-                <img src="images/FB_hand_light.gif" alt="光を灯す手のアニメーション">
+                <img class="fb-hand is-light" src="images/FB_hand_light.gif" alt="光を灯す手のアニメーション">
+                <img class="fb-hand is-dark" src="images/FB_hand_dark.gif" alt="光を灯す手のアニメーション">
             </div>
+
+
 
             <!-- 右サブタイトル -->
             <div class="fb-right">
@@ -103,7 +110,8 @@
             <!-- 枠とテキスト -->
             <div class="waku js-reveal">
                 <!-- 上の枠 -->
-                <img src="images/concept_waku_top.svg" alt="上の枠" class="waku-top">
+                <img class="theme-img waku-top" src="images/waku-top_light.svg" data-light="images/waku-top_light.svg"
+                    data-dark="images/waku-top_dark.svg" alt="">
                 <!-- テキスト -->
                 <div class="concept-text">
                     <div class="concept-title">
@@ -122,7 +130,8 @@
                     </p>
                 </div>
                 <!-- 下の枠 -->
-                <img src="images/concept_waku_bottom.svg" alt="下の枠" class="waku-bottom">
+                <img class="theme-img waku-bottom" src="images/waku-bottom_light.svg"
+                    data-light="images/waku-bottom_light.svg" data-dark="images/waku-bottom_dark.svg" alt="">
             </div>
 
             <!-- 下の雲 -->
@@ -142,9 +151,15 @@
             <!-- 写真とテキスト -->
             <div class="about-photo js-reveal">
                 <div class="photo-wrapper js-reveal">
-                    <img src="images/ABOUT_profilephoto.png" alt="自分の写真" class="profile-photo">
-                    <img src="images/ABOUT_kirakira_left.svg" alt="キラキラ左" class="deco-left kirakira">
-                    <img src="images/ABOUT_kirakira_right.svg" alt="キラキラ右" class="deco-right kirakira">
+                    <img src="images/ABOUT_profilephoto.png" data-light="images/ABOUT_profilephoto.png"
+                        data-dark="images/ABOUT_profilephoto_dark.png" alt="自分の写真" class="profile-photo theme-img" />
+
+                    <img src="images/ABOUT_kirakira_left.svg" data-light="images/ABOUT_kirakira_left.svg"
+                        data-dark="images/kirakira_left_dark.svg" alt="キラキラ左" class="deco-left kirakira theme-img" />
+
+                    <img src="images/ABOUT_kirakira_right.svg" data-light="images/ABOUT_kirakira_right.svg"
+                        data-dark="images/kirakira_right_dark.svg" alt="キラキラ右" class="deco-right kirakira theme-img" />
+
                 </div>
             </div>
 
@@ -301,12 +316,18 @@
 
                 <!-- 矢印 -->
                 <div class="works-arrows">
-                    <button class="works-arrow works-prev" type="button" aria-label="前へ">
-                        <img src="images/WORK_yajirushi_left.svg" alt="前へ">
+                    <button class="works-arrow works-prev">
+                        <img class="theme-img" src="images/WORK_yajirushi_left.svg"
+                            data-light="images/WORK_yajirushi_left.svg" data-dark="images/WORK_yajirushi_left_dark.svg"
+                            alt="前へ">
                     </button>
-                    <button class="works-arrow works-next" type="button" aria-label="次へ">
-                        <img src="images/WORK_yajirusshi_right.svg" alt="次へ">
+
+                    <button class="works-arrow works-next">
+                        <img class="theme-img" src="images/WORK_yajirusshi_right.svg"
+                            data-light="images/WORK_yajirusshi_right.svg"
+                            data-dark="images/WORK_yajirushi_right_dark.svg" alt="次へ">
                     </button>
+
                 </div>
 
             </div>
