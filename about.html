@@ -81,25 +81,21 @@
 
         <div class="about-inner">
             <div class="about-photo js-reveal">
+                <!-- ✅ 二重の photo-wrapper を1つに -->
                 <div class="photo-wrapper">
-                    <div class="photo-wrapper">
-                        <img src="images/ABOUT_profilephoto.png" data-light="images/ABOUT_profilephoto.png"
-                            data-dark="images/ABOUT_profilephoto_dark.png" alt="自分の写真"
-                            class="profile-photo theme-img" />
+                    <img src="images/ABOUT_profilephoto.png" data-light="images/ABOUT_profilephoto.png"
+                        data-dark="images/ABOUT_profilephoto_dark.png" alt="自分の写真" class="profile-photo theme-img" />
 
-                        <img src="images/ABOUT_kirakira_left.svg" data-light="images/ABOUT_kirakira_left.svg"
-                            data-dark="images/kirakira_left_dark.svg" alt="キラキラ左"
-                            class="deco-left kirakira theme-img" />
+                    <img src="images/ABOUT_kirakira_left.svg" data-light="images/ABOUT_kirakira_left.svg"
+                        data-dark="images/kirakira_left_dark.svg" alt="キラキラ左" class="deco-left kirakira theme-img" />
 
-                        <img src="images/ABOUT_kirakira_right.svg" data-light="images/ABOUT_kirakira_right.svg"
-                            data-dark="images/kirakira_right_dark.svg" alt="キラキラ右"
-                            class="deco-right kirakira theme-img" />
-                    </div>
-
+                    <img src="images/ABOUT_kirakira_right.svg" data-light="images/ABOUT_kirakira_right.svg"
+                        data-dark="images/kirakira_right_dark.svg" alt="キラキラ右" class="deco-right kirakira theme-img" />
                 </div>
             </div>
 
-            <div class="about-desc">
+            <!-- ✅ about-desc のクラス被りを解消（親は about-text に） -->
+            <div class="about-text">
                 <h3 class="about-name js-reveal">吉田 樹<span>Yoshida Itsuki</span></h3>
                 <p class="about-desc js-reveal">
                     インフラエンジニアとしてネットワークやLinuxの基礎を学ぶ傍ら、<br />
