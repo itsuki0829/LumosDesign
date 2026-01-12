@@ -246,6 +246,7 @@ document.addEventListener("click", (e) => {
     }, 200);
 });
 
+
 // ダークモード
 document.addEventListener("DOMContentLoaded", () => {
     const body = document.body;
@@ -257,7 +258,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    // --- bg-orbs（生成/削除） ---
+
     const ensureOrbs = (theme) => {
         const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         if (reduce) return;
@@ -310,6 +311,10 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const setTheme = (theme) => {
+
+        body.classList.add("is-theme-changing");
+        setTimeout(() => body.classList.remove("is-theme-changing"), 650);
+
         body.dataset.theme = theme;
         localStorage.setItem("theme", theme);
         applyThemeAssets(theme);
@@ -327,13 +332,18 @@ document.addEventListener("DOMContentLoaded", () => {
     if (toggle) {
         toggle.addEventListener("click", (e) => {
             e.preventDefault();
+
+
+            toggle.classList.add("is-switching");
+            setTimeout(() => toggle.classList.remove("is-switching"), 520);
+
             const next = body.dataset.theme === "dark" ? "light" : "dark";
             setTheme(next);
         });
     }
 });
 
-// パララックス（bg-orbs）
+
 
 // サンクスページ
 document.addEventListener("DOMContentLoaded", () => {
@@ -352,3 +362,54 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "./thanks.html";
     });
 });
+
+// ローディング
+(() => {
+    let started = false;
+
+    const runIntro = () => {
+        if (started) return;
+        started = true;
+
+        const intro = document.querySelector(".intro");
+        const name = document.querySelector(".intro__name");
+        if (!intro || !name) return;
+
+        intro.classList.remove("is-hide");
+        intro.classList.add("is-show");
+        intro.style.display = "grid";
+
+        const text = (name.dataset.text || "").trim();
+        name.textContent = "";
+
+        let i = 0;
+        const TYPE_SPEED = 160; // ←速度調整
+
+        const tick = () => {
+            name.textContent += text.charAt(i);
+            i++;
+
+            if (i < text.length) {
+                setTimeout(tick, TYPE_SPEED);
+            } else {
+                // 出し切ったら少し待って消える
+                setTimeout(() => {
+                    intro.classList.add("is-hide");
+                    setTimeout(() => {
+                        intro.style.display = "none";
+                    }, 520);
+                }, 800);
+            }
+        };
+
+        if (!text) {
+            intro.style.display = "none";
+            return;
+        }
+
+        tick();
+    };
+
+
+    window.addEventListener("load", runIntro, { once: true });
+})();

@@ -13,31 +13,33 @@
     <script src="js/script.js" defer></script>
 </head>
 
-<body id="top" class="page-top" data-theme="light">
+<body id="top" class="page-about" data-theme="light">
 
-
+    <!-- to top -->
     <a href="#top" class="to-top js-to-top" aria-label="トップページへ戻る">
         <img src="images/TOPPAGE.svg" data-light="images/TOPPAGE.svg" data-dark="images/TOPPAGE_dark.svg" alt=""
             class="to-top__img theme-img" />
-
-
     </a>
+    <!-- header -->
     <header class="site-header">
         <div class="container">
-            <h1 class="logo">
 
-                <a href="index.html">
-                    <img src="images/logo_lumosdesing.svg" alt="Lumos Design logo" />
-                </a>
-            </h1>
+            <!-- 下層ページは / より index.html の方が安定 -->
+            <button class="logo-switch js-theme-toggle" type="button" aria-label="ダークモード切り替え">
+                <img class="logo-img theme-img" src="./images/logo_lumosdesing.svg"
+                    data-light="./images/logo_lumosdesing.svg" data-dark="./images/logo_dark.svg"
+                    onerror="this.src=this.dataset.light" alt="Lumos Design" />
+
+            </button>
+
 
             <!-- PC nav -->
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html#top">HOME</a></li>
                     <li><a href="index.html#concept">CONCEPT</a></li>
-                    <li><a href="index.html#about">ABOUT</a></li>
-                    <li><a href="index.html#works">WORKS</a></li>
+                    <li><a href="./about.html">ABOUT</a></li>
+                    <li><a href="./work.html">WORKS</a></li>
                     <li><a href="index.html#contact">CONTACT</a></li>
                 </ul>
             </nav>
@@ -62,8 +64,8 @@
                 <ul class="sp-menu__list">
                     <li><a href="index.html#top">TOP</a></li>
                     <li><a href="index.html#concept">CONCEPT</a></li>
-                    <li><a href="index.html#about">ABOUT</a></li>
-                    <li><a href="index.html#works">WORKS</a></li>
+                    <li><a href="./about.html">ABOUT</a></li>
+                    <li><a href="./work.html">WORKS</a></li>
                     <li><a href="index.html#contact">CONTACT</a></li>
                 </ul>
             </nav>
@@ -75,16 +77,16 @@
 
     <main class="thanks">
         <!-- キラキラ線 -->
-        <div class="thanks-head">
-            <div class="thanks-line thanks-line--top">
-                <img src="images/thanks_sen_top.svg" alt="">
-            </div>
+        <div class="thanks-line thanks-line--top">
+            <img src="images/thanks_sen_top.svg" data-light="images/thanks_sen_top.svg"
+                data-dark="images/thanks_sen_top_dark.svg" class="theme-img" alt="">
+        </div>
 
-            <p class="thanks-text">お問い合わせありがとうございます</p>
+        <p class="thanks-text">お問い合わせありがとうございます</p>
 
-            <div class="thanks-line thanks-line--bottom">
-                <img src="images/thanks_sen_bottom.svg" alt="">
-            </div>
+        <div class="thanks-line thanks-line--bottom">
+            <img src="images/thanks_sen_bottom.svg" data-light="images/thanks_sen_bottom.svg"
+                data-dark="images/thanks_sen_bottom_dark.svg" class="theme-img" alt="">
         </div>
 
         <!-- ビジュアル -->

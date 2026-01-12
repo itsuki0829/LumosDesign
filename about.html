@@ -17,18 +17,20 @@
 
     <!-- to top -->
     <a href="#top" class="to-top js-to-top" aria-label="トップページへ戻る">
-        <img src="images/TOPPAGE.svg" alt="" class="to-top__img" />
+        <img src="images/TOPPAGE.svg" data-light="images/TOPPAGE.svg" data-dark="images/TOPPAGE_dark.svg" alt=""
+            class="to-top__img theme-img" />
     </a>
-
     <!-- header -->
     <header class="site-header">
         <div class="container">
-            <h1 class="logo">
-                <!-- 下層ページは / より index.html の方が安定 -->
-                <a href="index.html">
-                    <img src="images/logo_lumosdesing.svg" alt="Lumos Design logo" />
-                </a>
-            </h1>
+
+            <!-- 下層ページは / より index.html の方が安定 -->
+            <button class="logo-switch js-theme-toggle" type="button" aria-label="ダークモード切り替え">
+                <img class="logo-img" src="./images/logo_lumosdesing.svg" data-light="./images/logo_lumosdesing.svg"
+                    data-dark="./images/logo_dark.svg" onerror="this.src=this.dataset.light" alt="Lumos Design" />
+
+            </button>
+
 
             <!-- PC nav -->
             <nav class="main-nav">
@@ -57,7 +59,7 @@
                     <span class="sp-menu__close-line is-dark"></span>
                 </button>
 
-                <!-- ★ 下層ページでは index.html に飛ばす（ここが大事） -->
+                <!-- ★ 下層ページでは index.html に飛ばす-->
                 <ul class="sp-menu__list">
                     <li><a href="index.html#top">TOP</a></li>
                     <li><a href="index.html#concept">CONCEPT</a></li>
@@ -80,9 +82,20 @@
         <div class="about-inner">
             <div class="about-photo js-reveal">
                 <div class="photo-wrapper">
-                    <img src="images/ABOUT_profilephoto.png" alt="自分の写真" class="profile-photo" />
-                    <img src="images/ABOUT_kirakira_left.svg" alt="キラキラ左" class="deco-left kirakira" />
-                    <img src="images/ABOUT_kirakira_right.svg" alt="キラキラ右" class="deco-right kirakira" />
+                    <div class="photo-wrapper">
+                        <img src="images/ABOUT_profilephoto.png" data-light="images/ABOUT_profilephoto.png"
+                            data-dark="images/ABOUT_profilephoto_dark.png" alt="自分の写真"
+                            class="profile-photo theme-img" />
+
+                        <img src="images/ABOUT_kirakira_left.svg" data-light="images/ABOUT_kirakira_left.svg"
+                            data-dark="images/kirakira_left_dark.svg" alt="キラキラ左"
+                            class="deco-left kirakira theme-img" />
+
+                        <img src="images/ABOUT_kirakira_right.svg" data-light="images/ABOUT_kirakira_right.svg"
+                            data-dark="images/kirakira_right_dark.svg" alt="キラキラ右"
+                            class="deco-right kirakira theme-img" />
+                    </div>
+
                 </div>
             </div>
 
@@ -266,7 +279,7 @@
                                 </div>
 
                                 <div class="favorite-group">
-                                    <p class="favorite-title">【Comic】</p>
+                                    <p class="favorite-title">【Comics】</p>
                                     <ul class="favorite-list">
                                         <li>矢沢あい / 東村アキコ / 末次由紀</li>
                                         <li>篠原千絵 / 伊藤潤二</li>
@@ -276,7 +289,7 @@
                         </div>
                     </dl>
 
-                    <img class="myprofile-frame-bottom sp-only" src="images/myprofile_SP_bottom.svg" alt="">
+                    </a>
                 </div>
             </div>
         </div>
@@ -292,16 +305,19 @@
                 どうぞお気軽にご連絡ください
             </span>
         </p>
+
         <a href="index.html#contact" class="contact-cta-button js-reveal">
-            <img src="images/contact_button.svg" alt="お問い合わせはこちら" />
+            <img src="images/contact_button.svg" data-light="images/contact_button.svg"
+                data-dark="images/contact_button_dark.svg" class="theme-img" alt="お問い合わせはこちら" />
         </a>
     </section>
 
 
+
     <!-- JS -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/script.js"></script> -->
 </body>
 
 </html>
