@@ -320,3 +320,20 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", onScroll, { passive: true });
     update();
 });
+// フォーム送信後に thanks.html へ遷移（Googleフォーム + hidden_iframe用）
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("contactForm");
+    const iframe = document.querySelector('iframe[name="hidden_iframe"]');
+    if (!form || !iframe) return;
+
+    let submitted = false;
+
+    form.addEventListener("submit", () => {
+        submitted = true;
+    });
+
+    iframe.addEventListener("load", () => {
+        if (!submitted) return;         // 初回読み込みでは飛ばない
+        window.location.href = "./thanks.html"; // ✅ ここをあなたのURL/ファイル名に
+    });
+});

@@ -2364,6 +2364,35 @@
      color: #ffffff;
  }
 
+ /* ダークモードGIF */
+ body[data-theme="dark"] .fb-center {
+     max-width: none;
+     width: 60%;
+ }
+
+ body[data-theme="dark"] .fb-hand.is-dark {
+     width: 100%;
+     height: auto;
+ }
+
+ body[data-theme="dark"] .contact-submit {
+     background: linear-gradient(135deg,
+             rgba(180, 170, 255, 0.35),
+             rgba(96, 87, 128, 0.6));
+     color: #ffffff;
+     border: 1px solid rgba(220, 210, 255, 0.6);
+     box-shadow:
+         0 0 20px rgba(150, 140, 255, 0.4),
+         inset 0 0 12px rgba(255, 255, 255, 0.2);
+     border-radius: 999px;
+     /* 魔法っぽく */
+     letter-spacing: 0.15em;
+     font-weight: 600;
+     backdrop-filter: blur(10px);
+     transition: all .3s ease;
+ }
+
+
  @keyframes sparkle-breathe-pop {
      0% {
          scale: 0.8;
@@ -2604,6 +2633,7 @@
 
  /* ===== SP ===== */
  @media (max-width: 768px) {
+
      body {
          overflow-x: hidden;
      }
