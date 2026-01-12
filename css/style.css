@@ -2212,16 +2212,6 @@
      }
  }
 
- body.is-theme-changing[data-theme="dark"] .FB::after {
-     content: "";
-     position: absolute;
-     inset: -30px;
-     pointer-events: none;
-     background:
-         radial-gradient(circle at 50% 30%, rgba(180, 170, 255, .22), transparent 55%),
-         radial-gradient(circle at 30% 70%, rgba(96, 87, 128, .18), transparent 60%);
-     animation: fb-glow 650ms ease-out;
- }
 
  @keyframes fb-glow {
      0% {
@@ -2322,21 +2312,21 @@
 
  .bg-orbs.bg-orbs--back {
      background:
-         radial-gradient(circle at 14% 14%, rgba(96, 87, 128, .45) 0 78px, transparent 16vw),
-         radial-gradient(circle at 88% 18%, rgba(96, 87, 128, .40) 0 66px, transparent 14vw),
-         radial-gradient(circle at 24% 86%, rgba(96, 87, 128, .38) 0 84px, transparent 17vw);
+         radial-gradient(circle at 14% 14%, rgba(96, 87, 128, .45) 0 4.5vw, transparent 12vw),
+         radial-gradient(circle at 88% 18%, rgba(96, 87, 128, .40) 0 3.8vw, transparent 10vw),
+         radial-gradient(circle at 24% 86%, rgba(96, 87, 128, .38) 0 5vw, transparent 13vw);
      filter: blur(22px);
  }
 
  .bg-orbs.bg-orbs--front {
      background:
          /* 中 */
-         radial-gradient(circle at 70% 38%, rgba(96, 87, 128, .45) 0 52px, transparent 11vw),
-         radial-gradient(circle at 10% 56%, rgba(96, 87, 128, .42) 0 46px, transparent 10vw),
+         radial-gradient(circle at 70% 38%, rgba(96, 87, 128, .45) 0 3.2vw, transparent 9vw),
+         radial-gradient(circle at 10% 56%, rgba(96, 87, 128, .42) 0 2.8vw, transparent 8vw),
 
          /* 小 */
-         radial-gradient(circle at 86% 80%, rgba(96, 87, 128, .38) 0 28px, transparent 6vw),
-         radial-gradient(circle at 36% 22%, rgba(96, 87, 128, .35) 0 26px, transparent 5vw);
+         radial-gradient(circle at 86% 80%, rgba(96, 87, 128, .38) 0 1.6vw, transparent 5vw),
+         radial-gradient(circle at 36% 22%, rgba(96, 87, 128, .35) 0 1.5vw, transparent 4.5vw);
      filter: blur(14px);
  }
 
