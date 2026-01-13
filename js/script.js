@@ -374,10 +374,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const intro = document.querySelector(".intro");
         const name = document.querySelector(".intro__name");
 
-        // intro自体が無ければ何もしない
         if (!intro) return;
 
-        // nameが無い or data-textが空なら「即消す」
+
         if (!name || !(name.dataset.text || "").trim()) {
             intro.classList.add("is-hide");
             intro.style.display = "none";

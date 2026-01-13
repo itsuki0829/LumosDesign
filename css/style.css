@@ -2546,12 +2546,13 @@
      font-size: clamp(22px, 3vw, 40px);
      letter-spacing: .12em;
 
-     /* ❷ 真っ白 → 少しブラウン寄りに */
-     color: #62361d;
+
+     color: #9a8f79;
 
      opacity: 0;
      transform: translateY(12px);
      filter: blur(2px);
+     text-shadow: 0 0 10px rgba(255, 214, 120, .35);
  }
 
  /* 表示開始 */
