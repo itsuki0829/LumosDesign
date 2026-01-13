@@ -2972,890 +2972,890 @@
          max-width: 500px;
          margin: 10px 0;
      }
- }
 
- body[data-theme="dark"] .fb-hand.is-dark {
-     width: 100%;
-     height: auto;
-     max-width: none;
-     display: block;
- }
 
- .thanks-text {
-     font-size: 14px;
-     margin: 8px 0;
- }
-
- .thanks-line img {
-     max-width: 300px;
- }
-
- .thanks-sub {
-     margin-top: 100px;
-     font-size: 16px;
-
- }
-
- .thanks-visual {
-     width: min(520px, 92vw);
- }
-
- .hane1 {
-     left: -6vw;
-     top: 42%;
- }
-
- .hane3 {
-     right: -4vw;
-     top: 50%;
- }
-
- .hane4 {
-     left: 2%;
-     top: 16%;
- }
-
- .hane6 {
-     right: 37%;
-     top: 57%;
- }
-
- .hamburger {
-     display: inline-flex;
-     align-items: center;
-     justify-content: center;
- }
-
- .sp-menu {
-     display: grid;
- }
-
- /* 既存：SPではPCナビ非表示 */
- .main-nav {
-     display: none;
- }
-
- .to-top img {
-     max-width: 101px;
-     width: 100%;
-     height: auto;
- }
-
- .FB-content {
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     justify-content: center;
-     gap: 10px;
-     height: calc(100vh - 88px);
-     padding: 0;
-     position: relative;
- }
-
- .fb-left,
- .fb-right {
-     margin: 0;
-     text-align: center;
-     min-width: 0;
- }
-
- .fb-left h2 {
-     margin: 0;
-     font-size: 30px;
-     line-height: 1.15;
- }
-
- .fb-right .subtitle {
-     margin: 0;
-     font-size: 26px;
-     line-height: 1.15;
- }
-
- .fb-right .subtext {
-     margin: 8px 0 0;
-     font-size: 14px;
-     line-height: 1.4;
- }
-
- .fb-center {
-     position: static;
-     transform: none;
-     width: 95%;
-     max-width: 500px;
- }
-
- .FB {
-     margin-top: 0;
- }
-
- .main-nav {
-     display: none;
- }
-
- .works-list {
-     grid-template-columns: 1fr;
- }
-
- .works-list::before {
-     display: none;
- }
-
- .site-header {
-     padding: 12px 16px;
-     justify-content: flex-start;
-     position: sticky;
- }
-
- .logo {
-     position: static;
-     margin: 0;
- }
-
- .logo img {
-     max-width: 220px;
-     width: 100%;
-     height: auto;
- }
-
- .concept-text {
-     margin-top: -20px;
- }
-
- .title-text {
-     font-size: 26px;
-     width: auto;
- }
-
- .title-deco {
-     width: 150px;
-     transform: translate(-50%, -28px);
- }
-
- .lead {
-     font-size: 26px;
-     line-height: 1.6;
-     margin-top: 22px;
- }
-
- .concept {
-     margin: 0;
-     padding: 0 16px 90px;
- }
-
- /* concept全体の基準 */
- .concept-inner {
-     position: relative;
-     padding: 0 20px;
- }
-
- /* 枠の箱 */
- .waku {
-     padding: 100px 40px 150px;
-     box-sizing: border-box;
- }
-
- /* 上下の枠（線） */
- .waku-top,
- .waku-bottom {
-     position: absolute;
-     z-index: 1;
-     /* 枠は奥 */
-     height: auto;
- }
-
- /* テキストは枠より手前 */
- .concept-text {
-     position: relative;
-     z-index: 3;
- }
-
- /* 雲は枠より手前に */
- .kumo-top,
- .kumo-bottom {
-     position: absolute;
-     z-index: 2;
-     /* 枠(1)より上、文字(3)より下 */
-     pointer-events: none;
- }
-
- .waku-top {
-     left: 0;
-     top: 0;
-     max-width: 259px;
-     width: 100%;
-     height: auto;
- }
-
- .waku-bottom {
-     right: 0;
-     bottom: 0;
-     max-width: 323px;
-     height: auto;
-     width: 100%;
- }
-
- .kumo-top,
- .kumo-bottom {
-     position: absolute;
-     z-index: 3;
-     pointer-events: none;
- }
-
- .kumo-top {
-     width: 40%;
-     max-width: 320px;
-     right: -14px;
-     top: -22px;
- }
-
- .kumo-bottom {
-     max-width: 361px;
-     width: 100%;
-     left: -108px;
-     bottom: -41px;
- }
-
- .title-text {
-     font-size: 26px;
-     width: auto;
- }
-
- .title-deco {
-     width: 150px;
-     transform: translate(-50%, -28px);
- }
-
- .concept-text {
-     margin-top: -20px;
- }
-
- .lead {
-     font-size: 26px;
-     line-height: 1.6;
-     margin-top: 22px;
- }
-
- .concept-text p:not(.lead) {
-     padding-top: 18px;
-     font-size: 14px;
-     line-height: 1.9;
- }
-
- .about-page {
-     margin: 50px 20px;
- }
-
- .about {
-     margin: 0;
-     padding: 0 10px 100px;
- }
-
- .about-title {
-     font-size: 28px;
- }
-
- .about-title-deco {
-     width: 140px;
- }
-
- .about-inner {
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     gap: 28px;
-     max-width: 420px;
-     margin: 0 auto;
-     padding-top: 40px;
- }
-
- .about-photo {
-     width: 100%;
-     max-width: 300px;
- }
-
- .photo-wrapper {
-     width: 100%;
-     position: relative;
- }
-
- .profile-photo {
-     width: 100%;
-     height: auto;
-     display: block;
- }
-
- .deco-left {
-     left: 8px;
-     top: 71%;
-     width: 36px;
- }
-
- .deco-right {
-     right: -6px;
-     top: 34%;
-     width: 36px;
- }
-
- .about-text {
-     width: 100%;
-     text-align: center;
- }
-
- .about-name {
-     font-size: 20px;
-     line-height: 1.7;
-     margin-bottom: 12px;
- }
-
- .about-name span {
-     display: block;
-     margin-left: 0;
-     margin-top: 4px;
-     font-size: 14px;
-     letter-spacing: 0.12em;
- }
-
- .about-desc {
-     font-size: 12px;
-     line-height: 2;
-     padding: 0 10px;
-     text-align: center;
-     box-sizing: border-box;
-     color: var(--text);
- }
-
- .about-button {
-     margin: 32px auto 0;
-     width: 180px;
-     height: 54px;
-     align-self: center;
- }
-
- .works-arrows {
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-     width: 240px;
-     margin: 24px auto 0;
- }
-
- .works-arrow {
-     display: block;
-     background: transparent;
-     border: none;
-     padding: 0;
-     cursor: pointer;
-     width: auto;
-     height: auto;
- }
-
- .works-arrow img {
-     width: 59px;
-     height: auto;
-     display: block;
- }
-
- .works-prev,
- .works-next {
-     position: static;
-     transform: none;
-     left: auto;
-     right: auto;
-     top: auto;
-     display: block;
- }
-
- /* contact */
- .contact {
-     margin: 0;
-     padding: 90px 10px 180px;
-     /* ← 下を増やす */
- }
-
- .contact-title {
-     font-size: 28px;
- }
-
- .contact-title-deco {
-     width: 140px;
- }
-
- .contact-text {
-     font-size: 18px;
-     line-height: 1.9;
-     padding-top: 40px;
-     text-align: center;
- }
-
- .contact-form {
-     padding-top: 48px;
- }
-
- /* 2カラム → 1カラム */
- .form-row {
-     display: grid;
-     grid-template-columns: 1fr;
-     row-gap: 12px;
-     margin-bottom: 28px;
- }
-
- .form-label {
-     padding-top: 0;
- }
-
- .form-label .jp {
-     font-size: 14px;
-     margin-bottom: 4px;
- }
-
- .form-label .en {
-     font-size: 12px;
- }
-
- .contact-form input,
- .contact-form textarea {
-     width: 100%;
-     max-width: none;
- }
-
- .contact-form textarea {
-     height: 220px;
-     margin-top: 4px;
- }
-
- .contact-submit {
-     width: 180px;
-     height: 54px;
-     margin: 36px auto 0;
- }
-
- .myprofile {
-     position: relative;
-     margin: 0 60px;
- }
-
- .myprofile .kirakira {
-     display: none;
- }
-
- .mp-row {
-     display: block;
-     grid-template-columns: none;
-     padding: 12px 0;
- }
-
- .mp-row dt,
- .mp-row dd {
-     text-align: center;
- }
-
- .mp-row dd {
-     margin-top: 10px;
- }
-
- .sp-only {
-     display: block;
- }
-
- .myprofile-visual {
-     transform: translateX(-40px);
-     position: relative;
-     width: 248px;
-     margin: 0;
-     left: -50px;
-     top: 0;
- }
-
- .myprofile-content {
-     transform: translateY(-100px);
-     position: static;
-     width: 100%;
- }
-
- .myprofile-inner {
-     width: 100%;
-     box-sizing: border-box;
-     padding-left: 16px;
-     padding-right: 16px;
- }
-
- .myprofile {
-     max-width: 100%;
-     box-sizing: border-box;
- }
-
- .mp-dl {
-     margin-left: 0;
- }
-
- .mp-dl dt {
-     font-size: 18px;
-     letter-spacing: 0.05em;
-     padding-bottom: 6px;
-     margin-bottom: 10px;
-     position: relative;
-     text-align: center;
- }
-
- .mp-dl dt::after {
-     content: "";
-     display: block;
-     width: 150px;
-     height: 1px;
-     background-color: #9c8c72;
-     margin: 8px auto 0;
- }
-
- .mp-dl dd {
-     font-size: 13px;
-     line-height: 2.5;
-     margin-top: 8px;
-     text-align: center;
- }
-
- .mp-dl dd p,
- .mp-dl dd span {
-     display: block;
-     margin-bottom: 14px;
- }
-
- .myprofile-frame {
-     width: 100%;
-     max-width: 248px;
-     margin: 0 auto;
-     text-align: center;
- }
-
- .myprofile-frame-top,
- .myprofile-frame-bottom {
-     display: block;
-     width: 248px;
-     margin: 0 auto;
- }
-
- .skills-inner {
-     width: 100%;
-     max-width: 420px;
-     margin: 0 auto;
-     padding: 90px 20px;
-     box-sizing: border-box;
- }
-
- .skill {
-     grid-template-columns: 170px 1fr;
-     column-gap: 18px;
-     row-gap: 22px;
-     align-items: start;
-     grid-template-columns: calc(240px * var(--label-scale)) 1fr;
-     column-gap: 16px;
- }
-
- .skill-label {
-     width: 170px;
-     height: 200px;
-     transform-origin: left top;
- }
-
- .skill-label .orbit {
-     width: 170px;
-     height: 260px;
-     left: 0;
- }
-
- .skill-label-text {
-     font-size: 42px;
-     right: 83px;
-     top: 68px;
- }
-
- .skill-label-tools .skill-label-text {
-     font-size: 34px;
-     right: -2px;
- }
-
- .skill-body {
-     display: contents;
- }
-
- .chips {
-     grid-column: 2;
-     grid-row: 1;
-     display: flex;
-     gap: 10px 12px;
-     flex-wrap: wrap;
-     justify-content: center;
-     align-self: center;
- }
-
- .skill-desc {
-     grid-column: 1 / -1;
-     grid-row: 2;
-     margin: 18px auto 0;
-     max-width: 30ch;
-     text-align: center;
-     margin-top: 18px;
-     font-size: 14px;
-     line-height: 2;
- }
-
- .skill-label-tools+.skill-body .chips {
-     grid-template-columns: repeat(2, max-content);
-     justify-content: center;
- }
-
- .contact-form {
-     width: min(360px, 88vw);
-     margin: 0 auto;
-     padding-top: 48px;
- }
-
- .form-row {
-     width: 100%;
-     grid-template-columns: 1fr;
-     row-gap: 10px;
-     margin: 0 auto 22px;
- }
-
- .form-label {
-     display: flex;
-     align-items: baseline;
-     gap: 10px;
-     padding-top: 0;
- }
-
- .form-label .jp {
-     font-size: 14px;
-     font-weight: 700;
-     margin: 0;
-     line-height: 1.2;
- }
-
- .form-label .en {
-     font-size: 12px;
-     font-weight: 600;
-     margin: 0;
-     line-height: 1.2;
-     letter-spacing: .04em;
- }
-
- .contact-form input,
- .contact-form textarea {
-     width: 100%;
-     max-width: none;
-     box-sizing: border-box;
- }
-
- .contact-form input {
-     height: 44px;
-     padding: 0 14px;
- }
-
- .contact-form textarea {
-     height: 220px;
-     padding: 14px;
- }
-
- .contact-submit {
-     width: 100%;
-     max-width: 260px;
-     height: 56px;
-     margin: 36px auto 0;
-     display: block;
- }
-
- .contact-text {
-     padding-top: 32px;
-     font-size: 14px;
-     line-height: 2.1;
-     text-align: center;
-     max-width: 260px;
-     margin: 0 auto;
- }
-
- br.sp-br {
-     display: block;
- }
-
- .contact-cta-button img {
-     width: min(200px, 56vw);
- }
-
- .workspage-title-wrap {
-     margin: 57px 0 53px;
- }
-
- .workspage-title {
-     font-size: 28px;
-     letter-spacing: .06em;
- }
-
- .workspage-title-deco {
-     width: 140px;
- }
-
- .works-list {
-     padding: 24px 16px 80px;
-     row-gap: 44px;
- }
-
- .works-col {
-     width: 100%;
-     gap: 44px;
- }
-
- .work-link {
-     padding: 28px 20px
- }
-
- .work-img-box {
-     height: auto;
-     max-width: 90%;
-     margin: 0 auto;
- }
-
- .work-img {
-     width: 100%;
-     height: 100%;
-     object-fit: contain;
- }
-
- h3.work-name {
-     font-size: 16px;
-     margin: 12px 0 6px;
- }
-
- .work-text {
-     font-size: 14px;
-     line-height: 1.7;
-     margin: 0 0 20px;
- }
-
- .work-name,
- .work-text,
- .work-meta {
-     max-width: 90%;
-     margin-left: auto;
- }
-
- .work-meta {
-     font-size: 12px;
- }
-
- .works-frame {
-     width: 100%;
-     height: auto;
-     aspect-ratio: 760 / 777;
-     max-width: 380px;
- }
-
- .works-frame-inner {
-     max-width: 80%;
- }
-
- .skills .skill {
-     --label-scale: 0.78;
-     display: grid;
-     grid-template-columns: calc(170px * var(--label-scale)) 1fr;
-     column-gap: 84px;
-     row-gap: 22px;
-     align-items: start;
- }
-
- .skills .skill-label {
-     transform: scale(var(--label-scale));
-     transform-origin: left top;
- }
-
- .skills .orbit-star-2 {
-     left: -42px;
-     top: 179px;
- }
-
- .skills .orbit-star-3 {
-     left: 142px;
-     top: 131px;
- }
-
- .works-detail-info dl {
-     padding: 0 16px;
-     box-sizing: border-box;
- }
-
- .works-detail-info dt {
-     padding-left: 32px;
-     font-size: 16px;
- }
-
- .works-detail-info dt::before {
-     left: 0;
- }
-
- .works-detail-back {
-     --back-pl: 5px;
-     /* 左余白 */
-     --back-pr: 66px;
-     padding-left: var(--back-pl);
-     padding-right: var(--back-pr);
-     box-sizing: border-box;
- }
-
- .works-detail-back::before {
-     left: calc(50% - 50vw + var(--back-pl));
-     right: calc(var(--back-pr) + 190px);
- }
-
- .work-link::after {
-     left: 50%;
-     transform: translateX(-50%);
- }
-
- .work-link {
-     --line-w: 90%;
- }
-
- .work-name,
- .work-text,
- .work-meta {
-     max-width: 90%;
-     margin-left: auto;
-     margin-right: auto;
- }
-
- .works-detail-info dd {
-     font-size: 14px;
- }
-
-
- @media (max-width: 501px) {
-     .skills .skill {
-         --label-scale: 0.66;
-         column-gap: 56px;
-         align-items: start;
+     body[data-theme="dark"] .fb-hand.is-dark {
+         width: 100%;
+         height: auto;
+         max-width: none;
+         display: block;
      }
 
-     .skills .skill-label-text {
-         font-size: 34px;
+     .thanks-text {
+         font-size: 14px;
+         margin: 8px 0;
+     }
+
+     .thanks-line img {
+         max-width: 300px;
+     }
+
+     .thanks-sub {
+         margin-top: 100px;
+         font-size: 16px;
+
+     }
+
+     .thanks-visual {
+         width: min(520px, 92vw);
+     }
+
+     .hane1 {
+         left: -6vw;
+         top: 42%;
+     }
+
+     .hane3 {
+         right: -4vw;
+         top: 50%;
+     }
+
+     .hane4 {
+         left: 2%;
+         top: 16%;
+     }
+
+     .hane6 {
+         right: 37%;
+         top: 57%;
+     }
+
+     .hamburger {
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+     }
+
+     .sp-menu {
+         display: grid;
+     }
+
+     /* 既存：SPではPCナビ非表示 */
+     .main-nav {
+         display: none;
+     }
+
+     .to-top img {
+         max-width: 101px;
+         width: 100%;
+         height: auto;
+     }
+
+     .FB-content {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         gap: 10px;
+         height: calc(100vh - 88px);
+         padding: 0;
+         position: relative;
+     }
+
+     .fb-left,
+     .fb-right {
+         margin: 0;
+         text-align: center;
+         min-width: 0;
+     }
+
+     .fb-left h2 {
+         margin: 0;
+         font-size: 30px;
+         line-height: 1.15;
+     }
+
+     .fb-right .subtitle {
+         margin: 0;
+         font-size: 26px;
+         line-height: 1.15;
+     }
+
+     .fb-right .subtext {
+         margin: 8px 0 0;
+         font-size: 14px;
+         line-height: 1.4;
+     }
+
+     .fb-center {
+         position: static;
+         transform: none;
+         width: 95%;
+         max-width: 500px;
+     }
+
+     .FB {
+         margin-top: 0;
+     }
+
+     .main-nav {
+         display: none;
+     }
+
+     .works-list {
+         grid-template-columns: 1fr;
+     }
+
+     .works-list::before {
+         display: none;
+     }
+
+     .site-header {
+         padding: 12px 16px;
+         justify-content: flex-start;
+         position: sticky;
+     }
+
+     .logo {
+         position: static;
+         margin: 0;
+     }
+
+     .logo img {
+         max-width: 220px;
+         width: 100%;
+         height: auto;
+     }
+
+     .concept-text {
+         margin-top: -20px;
+     }
+
+     .title-text {
+         font-size: 26px;
+         width: auto;
+     }
+
+     .title-deco {
+         width: 150px;
+         transform: translate(-50%, -28px);
+     }
+
+     .lead {
+         font-size: 26px;
+         line-height: 1.6;
+         margin-top: 22px;
+     }
+
+     .concept {
+         margin: 0;
+         padding: 0 16px 90px;
+     }
+
+     /* concept全体の基準 */
+     .concept-inner {
+         position: relative;
+         padding: 0 20px;
+     }
+
+     /* 枠の箱 */
+     .waku {
+         padding: 100px 40px 150px;
+         box-sizing: border-box;
+     }
+
+     /* 上下の枠（線） */
+     .waku-top,
+     .waku-bottom {
+         position: absolute;
+         z-index: 1;
+         /* 枠は奥 */
+         height: auto;
+     }
+
+     /* テキストは枠より手前 */
+     .concept-text {
+         position: relative;
+         z-index: 3;
+     }
+
+     /* 雲は枠より手前に */
+     .kumo-top,
+     .kumo-bottom {
+         position: absolute;
+         z-index: 2;
+         /* 枠(1)より上、文字(3)より下 */
+         pointer-events: none;
+     }
+
+     .waku-top {
+         left: 0;
+         top: 0;
+         max-width: 259px;
+         width: 100%;
+         height: auto;
+     }
+
+     .waku-bottom {
+         right: 0;
+         bottom: 0;
+         max-width: 323px;
+         height: auto;
+         width: 100%;
+     }
+
+     .kumo-top,
+     .kumo-bottom {
+         position: absolute;
+         z-index: 3;
+         pointer-events: none;
+     }
+
+     .kumo-top {
+         width: 40%;
+         max-width: 320px;
+         right: -14px;
+         top: -22px;
+     }
+
+     .kumo-bottom {
+         max-width: 361px;
+         width: 100%;
+         left: -108px;
+         bottom: -41px;
+     }
+
+     .title-text {
+         font-size: 26px;
+         width: auto;
+     }
+
+     .title-deco {
+         width: 150px;
+         transform: translate(-50%, -28px);
+     }
+
+     .concept-text {
+         margin-top: -20px;
+     }
+
+     .lead {
+         font-size: 26px;
+         line-height: 1.6;
+         margin-top: 22px;
+     }
+
+     .concept-text p:not(.lead) {
+         padding-top: 18px;
+         font-size: 14px;
+         line-height: 1.9;
+     }
+
+     .about-page {
+         margin: 50px 20px;
+     }
+
+     .about {
+         margin: 0;
+         padding: 0 10px 100px;
+     }
+
+     .about-title {
+         font-size: 28px;
+     }
+
+     .about-title-deco {
+         width: 140px;
+     }
+
+     .about-inner {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         gap: 28px;
+         max-width: 420px;
+         margin: 0 auto;
+         padding-top: 40px;
+     }
+
+     .about-photo {
+         width: 100%;
+         max-width: 300px;
+     }
+
+     .photo-wrapper {
+         width: 100%;
+         position: relative;
+     }
+
+     .profile-photo {
+         width: 100%;
+         height: auto;
+         display: block;
+     }
+
+     .deco-left {
+         left: 8px;
+         top: 71%;
+         width: 36px;
+     }
+
+     .deco-right {
+         right: -6px;
+         top: 34%;
+         width: 36px;
+     }
+
+     .about-text {
+         width: 100%;
+         text-align: center;
+     }
+
+     .about-name {
+         font-size: 20px;
+         line-height: 1.7;
+         margin-bottom: 12px;
+     }
+
+     .about-name span {
+         display: block;
+         margin-left: 0;
+         margin-top: 4px;
+         font-size: 14px;
+         letter-spacing: 0.12em;
+     }
+
+     .about-desc {
+         font-size: 12px;
+         line-height: 2;
+         padding: 0 10px;
+         text-align: center;
+         box-sizing: border-box;
+         color: var(--text);
+     }
+
+     .about-button {
+         margin: 32px auto 0;
+         width: 180px;
+         height: 54px;
+         align-self: center;
+     }
+
+     .works-arrows {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         width: 240px;
+         margin: 24px auto 0;
+     }
+
+     .works-arrow {
+         display: block;
+         background: transparent;
+         border: none;
+         padding: 0;
+         cursor: pointer;
+         width: auto;
+         height: auto;
+     }
+
+     .works-arrow img {
+         width: 59px;
+         height: auto;
+         display: block;
+     }
+
+     .works-prev,
+     .works-next {
+         position: static;
+         transform: none;
+         left: auto;
+         right: auto;
+         top: auto;
+         display: block;
+     }
+
+     /* contact */
+     .contact {
+         margin: 0;
+         padding: 90px 10px 180px;
+         /* ← 下を増やす */
+     }
+
+     .contact-title {
+         font-size: 28px;
+     }
+
+     .contact-title-deco {
+         width: 140px;
+     }
+
+     .contact-text {
+         font-size: 18px;
+         line-height: 1.9;
+         padding-top: 40px;
+         text-align: center;
+     }
+
+     .contact-form {
+         padding-top: 48px;
+     }
+
+     /* 2カラム → 1カラム */
+     .form-row {
+         display: grid;
+         grid-template-columns: 1fr;
+         row-gap: 12px;
+         margin-bottom: 28px;
+     }
+
+     .form-label {
+         padding-top: 0;
+     }
+
+     .form-label .jp {
+         font-size: 14px;
+         margin-bottom: 4px;
+     }
+
+     .form-label .en {
+         font-size: 12px;
+     }
+
+     .contact-form input,
+     .contact-form textarea {
+         width: 100%;
+         max-width: none;
+     }
+
+     .contact-form textarea {
+         height: 220px;
+         margin-top: 4px;
+     }
+
+     .contact-submit {
+         width: 180px;
+         height: 54px;
+         margin: 36px auto 0;
+     }
+
+     .myprofile {
+         position: relative;
+         margin: 0 60px;
+     }
+
+     .myprofile .kirakira {
+         display: none;
+     }
+
+     .mp-row {
+         display: block;
+         grid-template-columns: none;
+         padding: 12px 0;
+     }
+
+     .mp-row dt,
+     .mp-row dd {
+         text-align: center;
+     }
+
+     .mp-row dd {
+         margin-top: 10px;
+     }
+
+     .sp-only {
+         display: block;
+     }
+
+     .myprofile-visual {
+         transform: translateX(-40px);
+         position: relative;
+         width: 248px;
+         margin: 0;
+         left: -50px;
+         top: 0;
+     }
+
+     .myprofile-content {
+         transform: translateY(-100px);
+         position: static;
+         width: 100%;
+     }
+
+     .myprofile-inner {
+         width: 100%;
+         box-sizing: border-box;
+         padding-left: 16px;
+         padding-right: 16px;
+     }
+
+     .myprofile {
+         max-width: 100%;
+         box-sizing: border-box;
+     }
+
+     .mp-dl {
+         margin-left: 0;
+     }
+
+     .mp-dl dt {
+         font-size: 18px;
+         letter-spacing: 0.05em;
+         padding-bottom: 6px;
+         margin-bottom: 10px;
+         position: relative;
+         text-align: center;
+     }
+
+     .mp-dl dt::after {
+         content: "";
+         display: block;
+         width: 150px;
+         height: 1px;
+         background-color: #9c8c72;
+         margin: 8px auto 0;
+     }
+
+     .mp-dl dd {
+         font-size: 13px;
+         line-height: 2.5;
+         margin-top: 8px;
+         text-align: center;
+     }
+
+     .mp-dl dd p,
+     .mp-dl dd span {
+         display: block;
+         margin-bottom: 14px;
+     }
+
+     .myprofile-frame {
+         width: 100%;
+         max-width: 248px;
+         margin: 0 auto;
+         text-align: center;
+     }
+
+     .myprofile-frame-top,
+     .myprofile-frame-bottom {
+         display: block;
+         width: 248px;
+         margin: 0 auto;
+     }
+
+     .skills-inner {
+         width: 100%;
+         max-width: 420px;
+         margin: 0 auto;
+         padding: 90px 20px;
+         box-sizing: border-box;
+     }
+
+     .skill {
+         grid-template-columns: 170px 1fr;
+         column-gap: 18px;
+         row-gap: 22px;
+         align-items: start;
+         grid-template-columns: calc(240px * var(--label-scale)) 1fr;
+         column-gap: 16px;
+     }
+
+     .skill-label {
+         width: 170px;
+         height: 200px;
+         transform-origin: left top;
      }
 
      .skill-label .orbit {
-         left: 6px;
+         width: 170px;
+         height: 260px;
+         left: 0;
      }
 
-     .skills .chips {
-         gap: 8px 10px;
+     .skill-label-text {
+         font-size: 42px;
+         right: 83px;
+         top: 68px;
      }
 
-     .skills .chip {
+     .skill-label-tools .skill-label-text {
+         font-size: 34px;
+         right: -2px;
+     }
+
+     .skill-body {
+         display: contents;
+     }
+
+     .chips {
+         grid-column: 2;
+         grid-row: 1;
+         display: flex;
+         gap: 10px 12px;
+         flex-wrap: wrap;
+         justify-content: center;
+         align-self: center;
+     }
+
+     .skill-desc {
+         grid-column: 1 / -1;
+         grid-row: 2;
+         margin: 18px auto 0;
+         max-width: 30ch;
+         text-align: center;
+         margin-top: 18px;
+         font-size: 14px;
+         line-height: 2;
+     }
+
+     .skill-label-tools+.skill-body .chips {
+         grid-template-columns: repeat(2, max-content);
+         justify-content: center;
+     }
+
+     .contact-form {
+         width: min(360px, 88vw);
+         margin: 0 auto;
+         padding-top: 48px;
+     }
+
+     .form-row {
+         width: 100%;
+         grid-template-columns: 1fr;
+         row-gap: 10px;
+         margin: 0 auto 22px;
+     }
+
+     .form-label {
+         display: flex;
+         align-items: baseline;
+         gap: 10px;
+         padding-top: 0;
+     }
+
+     .form-label .jp {
+         font-size: 14px;
+         font-weight: 700;
+         margin: 0;
+         line-height: 1.2;
+     }
+
+     .form-label .en {
          font-size: 12px;
-         padding: 6px 12px;
+         font-weight: 600;
+         margin: 0;
+         line-height: 1.2;
+         letter-spacing: .04em;
+     }
+
+     .contact-form input,
+     .contact-form textarea {
+         width: 100%;
+         max-width: none;
+         box-sizing: border-box;
+     }
+
+     .contact-form input {
+         height: 44px;
+         padding: 0 14px;
+     }
+
+     .contact-form textarea {
+         height: 220px;
+         padding: 14px;
+     }
+
+     .contact-submit {
+         width: 100%;
+         max-width: 260px;
+         height: 56px;
+         margin: 36px auto 0;
+         display: block;
+     }
+
+     .contact-text {
+         padding-top: 32px;
+         font-size: 14px;
+         line-height: 2.1;
+         text-align: center;
+         max-width: 260px;
+         margin: 0 auto;
+     }
+
+     br.sp-br {
+         display: block;
      }
 
      .contact-cta-button img {
-         width: min(180px, 52vw);
+         width: min(200px, 56vw);
+     }
+
+     .workspage-title-wrap {
+         margin: 57px 0 53px;
+     }
+
+     .workspage-title {
+         font-size: 28px;
+         letter-spacing: .06em;
+     }
+
+     .workspage-title-deco {
+         width: 140px;
+     }
+
+     .works-list {
+         padding: 24px 16px 80px;
+         row-gap: 44px;
+     }
+
+     .works-col {
+         width: 100%;
+         gap: 44px;
+     }
+
+     .work-link {
+         padding: 28px 20px
+     }
+
+     .work-img-box {
+         height: auto;
+         max-width: 90%;
+         margin: 0 auto;
+     }
+
+     .work-img {
+         width: 100%;
+         height: 100%;
+         object-fit: contain;
+     }
+
+     h3.work-name {
+         font-size: 16px;
+         margin: 12px 0 6px;
+     }
+
+     .work-text {
+         font-size: 14px;
+         line-height: 1.7;
+         margin: 0 0 20px;
+     }
+
+     .work-name,
+     .work-text,
+     .work-meta {
+         max-width: 90%;
+         margin-left: auto;
+     }
+
+     .work-meta {
+         font-size: 12px;
+     }
+
+     .works-frame {
+         width: 100%;
+         height: auto;
+         aspect-ratio: 760 / 777;
+         max-width: 380px;
+     }
+
+     .works-frame-inner {
+         max-width: 80%;
+     }
+
+     .skills .skill {
+         --label-scale: 0.78;
+         display: grid;
+         grid-template-columns: calc(170px * var(--label-scale)) 1fr;
+         column-gap: 84px;
+         row-gap: 22px;
+         align-items: start;
+     }
+
+     .skills .skill-label {
+         transform: scale(var(--label-scale));
+         transform-origin: left top;
+     }
+
+     .skills .orbit-star-2 {
+         left: -42px;
+         top: 179px;
+     }
+
+     .skills .orbit-star-3 {
+         left: 142px;
+         top: 131px;
+     }
+
+     .works-detail-info dl {
+         padding: 0 16px;
+         box-sizing: border-box;
+     }
+
+     .works-detail-info dt {
+         padding-left: 32px;
+         font-size: 16px;
+     }
+
+     .works-detail-info dt::before {
+         left: 0;
+     }
+
+     .works-detail-back {
+         --back-pl: 5px;
+         /* 左余白 */
+         --back-pr: 66px;
+         padding-left: var(--back-pl);
+         padding-right: var(--back-pr);
+         box-sizing: border-box;
+     }
+
+     .works-detail-back::before {
+         left: calc(50% - 50vw + var(--back-pl));
+         right: calc(var(--back-pr) + 190px);
      }
 
      .work-link::after {
          left: 50%;
          transform: translateX(-50%);
      }
- }
+
+     .work-link {
+         --line-w: 90%;
+     }
+
+     .work-name,
+     .work-text,
+     .work-meta {
+         max-width: 90%;
+         margin-left: auto;
+         margin-right: auto;
+     }
+
+     .works-detail-info dd {
+         font-size: 14px;
+     }
+
+
+     @media (max-width: 501px) {
+         .skills .skill {
+             --label-scale: 0.66;
+             column-gap: 56px;
+             align-items: start;
+         }
+
+         .skills .skill-label-text {
+             font-size: 34px;
+         }
+
+         .skill-label .orbit {
+             left: 6px;
+         }
+
+         .skills .chips {
+             gap: 8px 10px;
+         }
+
+         .skills .chip {
+             font-size: 12px;
+             padding: 6px 12px;
+         }
+
+         .contact-cta-button img {
+             width: min(180px, 52vw);
+         }
+
+         .work-link::after {
+             left: 50%;
+             transform: translateX(-50%);
+         }
+     }
