@@ -2507,32 +2507,14 @@
  }
 
  /* ダークモードGIF */
- @media (max-width: 768px) {
+ body[data-theme="dark"] .fb-center {
+     max-width: none;
+     width: 60%;
+ }
 
-     /* SPダークではGIFをPCと同じ“浮遊レイヤー”に戻す */
-     body[data-theme="dark"] .fb-center {
-         position: absolute;
-         top: 52%;
-         /* ← ここで上下の距離をデザイン調整 */
-         left: 50%;
-         transform: translate(-50%, -50%);
-         width: 88%;
-         /* ← SP用のサイズ調整 */
-         max-width: 420px;
-         z-index: 0;
-     }
-
-     body[data-theme="dark"] .fb-hand.is-dark {
-         width: 100%;
-         height: auto;
-     }
-
-     /* テキストはGIFより前 */
-     body[data-theme="dark"] .fb-left,
-     body[data-theme="dark"] .fb-right {
-         position: relative;
-         z-index: 1;
-     }
+ body[data-theme="dark"] .fb-hand.is-dark {
+     width: 100%;
+     height: auto;
  }
 
  body[data-theme="dark"] .contact-submit {
@@ -2954,8 +2936,23 @@
  /* ===== SP ===== */
  @media (max-width: 768px) {
 
-     body {
+     /* ダークGIF */
+     body[data-theme="dark"] .fb-center body {
          overflow-x: hidden;
+     }
+
+     body[data-theme="dark"] .fb-center {
+         width: 88vw;
+         /* ここでSPダークGIFの大きさ調整 */
+         max-width: 500px;
+         /* 上限（好みで） */
+     }
+
+     body[data-theme="dark"] .fb-hand.is-dark {
+         width: 100%;
+         height: auto;
+         max-width: none;
+         display: block;
      }
 
      .thanks-text {
