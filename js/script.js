@@ -373,17 +373,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const intro = document.querySelector(".intro");
         const name = document.querySelector(".intro__name");
-        if (!intro || !name) return;
+
+        // intro自体が無ければ何もしない
+        if (!intro) return;
+
+        // nameが無い or data-textが空なら「即消す」
+        if (!name || !(name.dataset.text || "").trim()) {
+            intro.classList.add("is-hide");
+            intro.style.display = "none";
+            return;
+        }
 
         intro.classList.remove("is-hide");
         intro.classList.add("is-show");
         intro.style.display = "grid";
 
-        const text = (name.dataset.text || "").trim();
+        const text = name.dataset.text.trim();
         name.textContent = "";
 
         let i = 0;
-        const TYPE_SPEED = 160; // ←速度調整
+        const TYPE_SPEED = 160;
 
         const tick = () => {
             name.textContent += text.charAt(i);
@@ -392,7 +401,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (i < text.length) {
                 setTimeout(tick, TYPE_SPEED);
             } else {
-                // 出し切ったら少し待って消える
                 setTimeout(() => {
                     intro.classList.add("is-hide");
                     setTimeout(() => {
@@ -402,14 +410,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         };
 
-        if (!text) {
-            intro.style.display = "none";
-            return;
-        }
-
         tick();
     };
-
 
     window.addEventListener("load", runIntro, { once: true });
 })();
