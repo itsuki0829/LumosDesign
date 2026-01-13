@@ -2517,25 +2517,26 @@
      transition: all .3s ease;
  }
 
- /* ローディング */
+ /* ローディング：最初は隠す */
  .intro {
-     display: grid;
+     display: none;
+     /* ←これが大事 */
      position: fixed;
      inset: 0;
      z-index: 99999;
-     display: grid;
      place-items: center;
-
-
      background: radial-gradient(circle at center,
              #ffffff 0%,
              #f6f0e6 40%,
              #e8dcc5 70%,
              #e2d6c2 100%);
+ }
 
+ /* JSが動いた時だけ出す */
+ .intro.is-show {
+     display: grid;
      opacity: 1;
      visibility: visible;
-     pointer-events: none;
  }
 
  /* 名前 */
