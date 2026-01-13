@@ -2555,6 +2555,20 @@
      text-shadow: 0 0 10px rgba(255, 214, 120, .35);
  }
 
+ .site-header,
+ main,
+ .container {
+     position: relative;
+     z-index: 10;
+ }
+
+ .bg-orbs {
+     position: fixed;
+     inset: 0;
+     z-index: 0;
+     pointer-events: none;
+ }
+
  /* 表示開始 */
  .intro.is-show .intro__name {
      opacity: 1;
