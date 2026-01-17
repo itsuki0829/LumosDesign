@@ -10,19 +10,13 @@ function enableSlick() {
         slidesToScroll: 1,
         infinite: true,
         speed: 700,
-
-
         autoplay: true,
         autoplaySpeed: 5000,
         pauseOnHover: true,
         pauseOnFocus: true,
-
-
         arrows: true,
         prevArrow: $('.works-prev'),
         nextArrow: $('.works-next'),
-
-        // スマホ操作
         swipe: true,
         draggable: true,
         adaptiveHeight: true,
@@ -40,6 +34,15 @@ function disableSlick() {
 function handle() {
     if (mq.matches) enableSlick();
     else disableSlick();
+}
+
+// Safari対策（addEventListenerが効かない環境）
+if (mq.addEventListener) mq.addEventListener('change', handle);
+else mq.addListener(handle);
+
+// ★ここだけガードを付ける
+if ($slider.length && $.fn.slick) {
+    handle();
 }
 
 // Safari対策（addEventListenerが効かない環境）
