@@ -3122,6 +3122,8 @@
          padding: 12px 16px;
          justify-content: flex-start;
          position: sticky;
+         top: 0;
+         z-index: 99999;
      }
 
      .logo {
