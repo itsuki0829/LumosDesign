@@ -2094,14 +2094,17 @@
 
  /* スクロール */
  .js-reveal {
-     opacity: 1;
-     transform: translate3d(0, 40px, 0);
+     opacity: 0;
+     transform: translate3d(0, 18px, 0);
      filter: blur(2px);
-     transition: opacity 1600ms cubic-bezier(.16, 1, .3, 1), transform 1600ms cubic-bezier(.16, 1, .3, 1), filter 1600ms cubic-bezier(.16, 1, .3, 1);
+     transition: opacity 1600ms cubic-bezier(.16, 1, .3, 1),
+         transform 1600ms cubic-bezier(.16, 1, .3, 1),
+         filter 1600ms cubic-bezier(.16, 1, .3, 1);
      will-change: transform, opacity, filter;
      backface-visibility: hidden;
  }
 
+ /* 入ったら表示 */
  .js-reveal.is-in {
      opacity: 1;
      transform: translate3d(0, 0, 0);
@@ -2245,6 +2248,21 @@
          opacity: 0;
          transform: scale(1.01);
      }
+ }
+
+ /* 共通：箱モデル事故防止（おすすめ） */
+ *,
+ *::before,
+ *::after {
+     box-sizing: border-box;
+ }
+
+ /* 中央寄せ */
+ main.container {
+     width: 100%;
+     margin-inline: auto;
+     padding-inline: 16px;
+     max-width: 1200px;
  }
 
  body[data-theme="dark"] {
@@ -3825,37 +3843,38 @@
          font-size: 14px;
      }
 
+ }
 
-     @media (max-width: 501px) {
-         .skills .skill {
-             --label-scale: 0.66;
-             column-gap: 56px;
-             align-items: start;
-         }
-
-         .skills .skill-label-text {
-             font-size: 34px;
-         }
-
-         .skill-label .orbit {
-             left: 6px;
-         }
-
-         .skills .chips {
-             gap: 8px 10px;
-         }
-
-         .skills .chip {
-             font-size: 12px;
-             padding: 6px 12px;
-         }
-
-         .contact-cta-button img {
-             width: min(180px, 52vw);
-         }
-
-         .work-link::after {
-             left: 50%;
-             transform: translateX(-50%);
-         }
+ @media (max-width: 501px) {
+     .skills .skill {
+         --label-scale: 0.66;
+         column-gap: 56px;
+         align-items: start;
      }
+
+     .skills .skill-label-text {
+         font-size: 34px;
+     }
+
+     .skill-label .orbit {
+         left: 6px;
+     }
+
+     .skills .chips {
+         gap: 8px 10px;
+     }
+
+     .skills .chip {
+         font-size: 12px;
+         padding: 6px 12px;
+     }
+
+     .contact-cta-button img {
+         width: min(180px, 52vw);
+     }
+
+     .work-link::after {
+         left: 50%;
+         transform: translateX(-50%);
+     }
+ }
