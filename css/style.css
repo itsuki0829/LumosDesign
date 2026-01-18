@@ -10,6 +10,11 @@
      --thanks-text: #8d7f6a;
 
      --thanks-sub: #9b8b73;
+     --work2-band-bg: linear-gradient(180deg,
+             rgba(255, 255, 255, 0.65) 0%,
+             rgba(232, 220, 197, 0.95) 45%,
+             rgba(216, 204, 183, 0.95) 100%);
+     --work2-band-shadow: 0 10px 24px rgba(0, 0, 0, .08);
  }
 
  html {
@@ -1303,7 +1308,11 @@
      display: flex;
      flex-direction: column;
      align-items: center;
-     margin-bottom: 56px;
+ }
+
+ /* WORKSタイトルと帯の間を広げる */
+ .page-work2 .workspage-title-wrap {
+     margin-bottom: 100px;
  }
 
  .workspage-title {
@@ -1504,9 +1513,9 @@
      position: relative;
      width: 100%;
      max-width: 760px;
-     height: 777px;
      margin: 0 auto;
-     background: url("../images/work-waku.svg") no-repeat center / contain;
+     /* background: url("../images/work-waku.svg") no-repeat center / contain; */
+
  }
 
  /* 中の作品画像 */
@@ -2279,6 +2288,14 @@
      --glass-rgb: 96, 87, 128;
      --glass-a: .50;
      --panel: rgba(var(--glass-rgb), var(--glass-a));
+
+     --work2-band-bg: linear-gradient(180deg,
+             rgba(96, 87, 128, 0.85) 0%,
+             rgba(72, 66, 96, 0.85) 60%,
+             rgba(56, 50, 78, 0.90) 100%);
+     --work2-band-shadow:
+         inset 0 0 0 1px rgba(255, 255, 255, .08),
+         0 12px 28px rgba(0, 0, 0, .45);
  }
 
  body {
@@ -3153,7 +3170,7 @@
      .site-header {
          padding: 12px 16px;
          justify-content: flex-start;
-         position: sticky;
+
          top: 0;
          z-index: 99999;
      }
@@ -3796,7 +3813,7 @@
      .works-frame {
          width: 100%;
          height: auto;
-         aspect-ratio: 760 / 777;
+         /* aspect-ratio: 760 / 777; */
          max-width: 380px;
      }
 
@@ -3910,5 +3927,274 @@
      .work-link::after {
          left: 50%;
          transform: translateX(-50%);
+     }
+ }
+
+ /* work2-test */
+
+ body.page-work2 .works-frame {
+     max-width: none;
+     /* 760pxの壁を外す */
+ }
+
+ /* 2) work2のモック枠：中央・大きめ・押し込み */
+ body.page-work2 .works-frame.is-mockup {
+     background: none;
+     width: min(1100px, 96vw);
+     margin: 80px auto 24px;
+     padding-inline: clamp(0px, 2vw, 24px);
+     box-sizing: border-box;
+ }
+
+
+ body.page-work2 .works-frame.is-mockup .works-frame-inner {
+     position: static;
+     transform: none;
+     width: 100%;
+     max-width: none;
+ }
+
+ /* ===== PCモック本体 ===== */
+ body.page-work2 .pc-scroll--work2 {
+     position: relative;
+     width: 100%;
+     max-width: 900px;
+     margin-inline: auto;
+     aspect-ratio: 1200 / 900;
+     box-sizing: border-box;
+
+     /* 窓位置（PC） */
+     --screen-top: 30px;
+     --screen-right: 153px;
+     --screen-bottom: 253px;
+     --screen-left: 151px;
+
+     --bar-right: 22px;
+     --bar-top: 86px;
+ }
+
+ body.page-work2 .pc-scroll--work2 .pc-scroll__screen {
+     position: absolute;
+     overflow: hidden;
+     inset: var(--screen-top) var(--screen-right) var(--screen-bottom) var(--screen-left);
+ }
+
+ body.page-work2 .pc-scroll--work2 .pc-scroll__content {
+     width: 100%;
+     height: auto;
+     display: block;
+     will-change: transform;
+ }
+
+ /* 棒 */
+ body.page-work2 .pc-scroll--work2 .pc-scroll__bar {
+     position: absolute;
+     z-index: 5;
+     right: var(--bar-right);
+     top: var(--bar-top);
+     width: 55px;
+     height: 292px;
+     background: url("../images/scrollbar_right.png") no-repeat center / contain;
+ }
+
+ /* つまみ */
+ body.page-work2 .pc-scroll--work2 .pc-scroll__thumb {
+     position: absolute;
+     z-index: 6;
+     left: 50%;
+     transform: translateX(-50%);
+     top: 0;
+     width: 54px;
+     height: 54px;
+     background: url("../images/scrollbutton_right.png") no-repeat center / contain;
+     border: 0;
+     padding: 0;
+     cursor: grab;
+     touch-action: none;
+ }
+
+ body[data-theme="dark"].page-work2 .pc-scroll--work2 .pc-scroll__bar {
+     background-image: url("../images/scrollbar_dark.png");
+ }
+
+ body[data-theme="dark"].page-work2 .pc-scroll--work2 .pc-scroll__thumb {
+     background-image: url("../images/scrollbutton_dark.png");
+ }
+
+ /* 掴みやすく（当たり判定だけ拡張） */
+ body.page-work2 .pc-scroll--work2 .pc-scroll__thumb::before {
+     content: "";
+     position: absolute;
+     inset: -18px;
+ }
+
+ /* ===== タグ（span） ===== */
+ body.page-work2 .works-detail-tag {
+     width: min(900px, 100%);
+     margin: 24px auto 60px;
+     padding: 0 24px;
+     box-sizing: border-box;
+     display: flex;
+     justify-content: flex-end;
+     gap: 14px;
+     font-size: 12px;
+ }
+
+ body.page-work2 .works-detail-tag span {
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     padding: 4px 12px;
+     border-radius: 999px;
+     background: rgba(158, 141, 115, .25);
+     white-space: nowrap;
+ }
+
+ /* ===== 822px以下：縮小＋バーも追随 ===== */
+ @media (max-width: 822px) {
+     body.page-work2 .pc-scroll--work2 {
+         max-width: 760px;
+
+         --screen-top: 4.2%;
+         --screen-right: 17%;
+         --screen-bottom: 38%;
+         --screen-left: 17%;
+
+         --bar-right: 2.6%;
+         --bar-top: 3.2%;
+     }
+
+     body.page-work2 .pc-scroll--work2 .pc-scroll__bar {
+         width: 44px;
+         height: 240px;
+     }
+
+     body.page-work2 .pc-scroll--work2 .pc-scroll__thumb {
+         width: 44px;
+         height: 44px;
+     }
+ }
+
+ @media (max-width: 975px) {
+     body.page-work2 .pc-scroll--work2 {
+         max-width: 820px;
+         aspect-ratio: 1200 / 900;
+
+         --screen-top: 5%;
+         --screen-right: 16%;
+         --screen-bottom: 36%;
+         --screen-left: 16%;
+
+         --bar-right: 3%;
+         --bar-top: 5%;
+     }
+ }
+
+ /* ===== 768px以下：バー無しでネイティブスクロール ===== */
+ @media (max-width: 768px) {
+     body.page-work2 .pc-scroll--work2 {
+         max-width: 520px;
+     }
+
+     body.page-work2 .pc-scroll--work2 .pc-scroll__bar,
+     body.page-work2 .pc-scroll--work2 .pc-scroll__thumb {
+         display: none;
+     }
+
+     body.page-work2 .pc-scroll--work2 .pc-scroll__screen {
+         overflow: auto;
+         -webkit-overflow-scrolling: touch;
+     }
+
+     body.page-work2 .pc-scroll--work2 .pc-scroll__content {
+         transform: none;
+     }
+
+     body.page-work2 .works-detail-tag {
+         width: min(520px, 92vw);
+         margin: 12px auto 40px;
+         padding: 0;
+         display: flex;
+         justify-content: flex-end;
+         gap: 10px;
+         flex-wrap: nowrap;
+     }
+
+
+     body.page-work2 .works-detail-tag span {
+         white-space: nowrap;
+     }
+ }
+
+ /* =========================
+   work2：タイトル帯（確実に見える版）
+   ※important無し
+========================= */
+
+ /* wrap */
+ .page-work2 .works-detail-subwrap {
+     display: flex;
+     justify-content: center;
+     margin-inline: 20px;
+     margin-top: 48px;
+     margin-bottom: 30px;
+ }
+
+ /* 帯本体（ライト） */
+ .page-work2 .works-detail-sub {
+     position: relative;
+     width: min(620px, 92vw);
+     margin: 0;
+     padding: 22px 48px;
+     text-align: center;
+
+     font-size: 18px;
+     line-height: 1.8;
+     color: var(--text);
+     background: var(--work2-band-bg);
+     box-shadow: var(--work2-band-shadow);
+
+     /* 角カット形状は維持 */
+     clip-path: polygon(18px 0,
+             calc(100% - 18px) 0,
+             100% 18px,
+             100% calc(100% - 18px),
+             calc(100% - 18px) 100%,
+             18px 100%,
+             0 calc(100% - 18px),
+             0 18px);
+
+ }
+
+ /* ダーク時の帯（完全に別色として定義） */
+ body[data-theme="dark"] .page-work2 .works-detail-sub {
+     background:
+         linear-gradient(180deg,
+             rgba(96, 87, 128, 0.85) 0%,
+             rgba(72, 66, 96, 0.85) 60%,
+             rgba(56, 50, 78, 0.9) 100%);
+
+     box-shadow:
+         inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+         0 12px 28px rgba(0, 0, 0, 0.45);
+ }
+
+ /* 768px以下：文字と余白を小さく */
+ @media (max-width: 768px) {
+     .page-work2 .works-detail-sub {
+         font-size: 14px;
+         line-height: 1.7;
+         padding: 18px 24px;
+     }
+
+     .page-work2 .works-detail-subwrap {
+         padding: 0 18px;
+         /* 帯の外側に余白 */
+     }
+
+     .page-work2 .works-detail-sub {
+
+         width: min(520px, 86vw);
+         padding: 16px 18px;
      }
  }

@@ -36,20 +36,14 @@ function handle() {
     else disableSlick();
 }
 
-// Safari対策（addEventListenerが効かない環境）
-if (mq.addEventListener) mq.addEventListener('change', handle);
-else mq.addListener(handle);
-
-// ★ここだけガードを付ける
+// ✅ slickが無い or スライダーDOMが無いページでは何もしない
 if ($slider.length && $.fn.slick) {
-    handle();
+    // Safari対策（change監視）
+    if (mq.addEventListener) mq.addEventListener('change', handle);
+    else mq.addListener(handle);
+
+    handle(); // ✅ ここは「ガードの中」だけで実行
 }
-
-// Safari対策（addEventListenerが効かない環境）
-if (mq.addEventListener) mq.addEventListener('change', handle);
-else mq.addListener(handle);
-
-handle();
 
 // TOPページ
 $(function () {
@@ -417,3 +411,122 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("load", runIntro, { once: true });
 })();
+
+// ===== PCモック：右バー操作 + 画面ホイールでスクロール（ページは動かさない）=====
+function setupPcScrollBar() {
+    const blocks = document.querySelectorAll(".js-pc-scroll");
+
+    blocks.forEach((wrap) => {
+        const screen = wrap.querySelector(".pc-scroll__screen");
+        const content = wrap.querySelector(".pc-scroll__content");
+        const bar = wrap.querySelector(".pc-scroll__bar");
+        const thumb = wrap.querySelector(".pc-scroll__thumb");
+        if (!screen || !content || !bar || !thumb) return;
+
+        let maxMove = 0;
+        let maxThumb = 0;
+
+        const setProgress = (p) => {
+            const y = maxMove * p;
+            const ty = maxThumb * p;
+            content.style.transform = `translateY(-${y}px)`;
+            thumb.style.top = `${ty}px`;
+        };
+
+        const calc = () => {
+            const screenH = screen.clientHeight;
+            if (!content.naturalWidth || !content.naturalHeight) return;
+
+            const scale = screen.clientWidth / content.naturalWidth;
+            const contentH = content.naturalHeight * scale;
+
+            maxMove = Math.max(0, contentH - screenH);
+
+            const barH = bar.clientHeight;
+            const thumbH = thumb.clientHeight;
+            maxThumb = Math.max(0, barH - thumbH);
+
+            setProgress(0);
+        };
+
+        if (content.complete && content.naturalWidth) calc();
+        else content.addEventListener("load", calc);
+        window.addEventListener("resize", calc);
+
+        // ===== ドラッグ操作（Pointer Events版：掴みやすい）=====
+        let dragging = false;
+        let startY = 0;
+        let startTop = 0;
+
+        thumb.style.touchAction = "none"; // ←スマホでスクロールに取られない
+
+        thumb.addEventListener("pointerdown", (e) => {
+            e.preventDefault();
+            dragging = true;
+
+            startY = e.clientY;
+            startTop = parseFloat(getComputedStyle(thumb).top) || 0;
+
+            thumb.setPointerCapture(e.pointerId); // ←これが最強
+            thumb.style.cursor = "grabbing";
+        });
+
+        thumb.addEventListener("pointermove", (e) => {
+            if (!dragging) return;
+
+            const dy = e.clientY - startY;
+            let nextTop = startTop + dy;
+            nextTop = Math.max(0, Math.min(maxThumb, nextTop));
+
+            setProgress(maxThumb ? nextTop / maxThumb : 0);
+        });
+
+        thumb.addEventListener("pointerup", () => {
+            dragging = false;
+            thumb.style.cursor = "grab";
+        });
+
+        thumb.addEventListener("pointercancel", () => {
+            dragging = false;
+            thumb.style.cursor = "grab";
+        });
+
+        // ===== バークリックで上下トグル =====
+        let opened = false;
+        bar.addEventListener("click", () => {
+            if (dragging) return;
+            opened = !opened;
+            setProgress(opened ? 1 : 0);
+        });
+
+        // ===== 画面ホイールで「モックアップ内だけ」スクロール =====
+        const WHEEL_FOLLOW = 0.7;
+
+        screen.addEventListener(
+            "wheel",
+            (e) => {
+                if (maxMove <= 0 || maxThumb <= 0) return;
+
+                const currentTop = parseFloat(getComputedStyle(thumb).top) || 0;
+
+                // 端にいるときはページスクロールに譲る（自然）
+                if (
+                    (e.deltaY < 0 && currentTop <= 0) ||
+                    (e.deltaY > 0 && currentTop >= maxThumb)
+                ) {
+                    return;
+                }
+
+                e.preventDefault(); // ← ページスクロールを止める
+                if (dragging) return;
+
+                let nextTop = currentTop + e.deltaY * WHEEL_FOLLOW;
+                nextTop = Math.max(0, Math.min(maxThumb, nextTop));
+                setProgress(nextTop / maxThumb);
+            },
+            { passive: false }
+        );
+    });
+}
+
+document.addEventListener("DOMContentLoaded", setupPcScrollBar);
