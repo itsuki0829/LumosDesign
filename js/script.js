@@ -530,3 +530,17 @@ function setupPcScrollBar() {
 }
 
 document.addEventListener("DOMContentLoaded", setupPcScrollBar);
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const wraps = document.querySelectorAll(".js-pc-scroll");
+    if (!wraps.length) return;
+
+    wraps.forEach(wrap => {
+        wrap.querySelectorAll(".pc-scroll__frame, .pc-scroll__content").forEach(img => {
+            if (img.complete) img.classList.add("is-loaded");
+            else img.addEventListener("load", () => img.classList.add("is-loaded"), { once: true });
+        });
+    });
+});
+
