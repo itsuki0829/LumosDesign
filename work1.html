@@ -13,7 +13,7 @@
     <script src="js/script.js" defer></script>
 </head>
 
-<body id="top" class="page-top" data-theme="light">
+<body id="top" class="page-top page-work3" data-theme="light">
 
 
     <a href="#top" class="to-top js-to-top" aria-label="トップページへ戻る">
@@ -27,7 +27,6 @@
             <button class="logo-switch js-theme-toggle" type="button" aria-label="ダークモード切り替え">
                 <img class="logo-img" src="./images/logo_lumosdesing.svg" data-light="./images/logo_lumosdesing.svg"
                     data-dark="./images/logo_dark.svg" onerror="this.src=this.dataset.light" alt="Lumos Design" />
-
             </button>
 
             <nav class="main-nav">
@@ -51,14 +50,11 @@
 
             <!-- SPメニュー全体 -->
             <nav id="sp-menu" class="sp-menu" aria-hidden="true">
-
-                <!-- 閉じるボタン -->
                 <button class="sp-menu__close" type="button" aria-label="メニューを閉じる">
                     <span class="sp-menu__close-line is-light"></span>
                     <span class="sp-menu__close-line is-dark"></span>
                 </button>
 
-                <!-- メニュー -->
                 <ul class="sp-menu__list">
                     <li><a href="./index.html">TOP</a></li>
                     <li><a href="./about.html">ABOUT</a></li>
@@ -66,7 +62,6 @@
                     <li><a href="./index.html#concept">CONCEPT</a></li>
                     <li><a href="./index.html#contact">CONTACT</a></li>
                 </ul>
-
             </nav>
         </div>
     </header>
@@ -79,64 +74,102 @@
             <img src="images/work_title_kirakira.svg" alt="キラキラ" class="workspage-title-deco">
         </div>
 
-        <p class="works-detail-sub js-reveal">
-            - WORKERS -<br>
-            会員制コワーキングスペースのブランドサイト
-        </p>
+        <!-- 帯 -->
+        <div class="works-detail-subwrap js-reveal">
+            <p class="works-detail-sub">
+                - WORKERS -<br>
+                会員制コワーキングスペースのブランドサイト
+            </p>
+        </div>
 
-        <!-- フレーム+作品 -->
-        <div class="works-frame js-reveal">
+        <!-- フレーム（PC＋SPモック） -->
+        <div class="works-frame js-reveal is-mockup">
             <div class="works-frame-inner">
-                <img src="images/work1.png" alt="ライフスタイルに寄り添うヘアサロンサイト">
+
+                <div class="mock-group">
+
+                    <!-- PC -->
+                    <div class="pc-scroll js-pc-scroll pc-scroll--work2">
+                        <img src="images/scroll.png" class="pc-scroll__frame" alt="PCモック">
+                        <div class="pc-scroll__screen">
+                            <img src="images/work1-LP.png" class="pc-scroll__content"
+                                alt="WORKERS コワーキングスペース サイト画面（PC）">
+                        </div>
+
+                        <div class="pc-scroll__bar" aria-hidden="true">
+                            <button class="pc-scroll__thumb" type="button" aria-label="スクロール"></button>
+                        </div>
+                    </div>
+
+                    <!-- SP -->
+                    <!-- SP：スマホモック（枠＋中身） -->
+                    <div class="sp-mock js-sp-scroll">
+                        <img src="images/sp-mock.png" class="sp-mock__frame" alt="スマホモック">
+
+                        <div class="sp-mock__screen">
+                            <img src="images/work1-SP.png" class="sp-mock__img" alt="サイト画面（SP）">
+                        </div>
+
+                        <!-- ✅ SP用バー（追加） -->
+                        <div class="sp-scroll__bar" aria-hidden="true">
+                            <button class="sp-scroll__thumb" type="button" aria-label="スクロール"></button>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
 
-        <p class="works-detail-tag js-reveal">WEBサイト　スクール課題</p>
+        <!-- タグ -->
+        <p class="works-detail-tag js-reveal">
+            <span>WEBサイト</span>
+            <span>スクール課題</span>
+        </p>
+
+        <!-- 詳細 -->
         <section class="works-detail-info js-reveal">
             <dl>
-                <dt>全体デザイン</dt>
-                <dd>
-                    <section class="works-web works-web--has-sp">
-                        <div class="works-web__pc">
-                            <img src="images/work1_design_pc.png" alt="PCデザイン" class="works-web-pc">
-                        </div>
-
-                        <div class="works-web__sp">
-                            <img src="images/work1_design_sp.png" alt="SPトップ画面" class="works-web-sp sp--main">
-                            <img src="images/work1_design_sp2.png" alt="SPメニュー画面" class="works-web-sp sp--menu">
-                        </div>
-                    </section>
-                </dd>
 
                 <dt>概要</dt>
-                <dd>架空の美容室「LIFE」のWebサイトデザインを制作。<br>
-                    “自分らしさを大切にする”というブランドコンセプトをもとに、<br>
-                    ナチュラルでやさしい世界観を表現しました。 全体を通して、<br>
-                    淡いパステルカラーと十分な余白を活かし、落ち着きと清潔感のある印象に仕上げています。</dd>
+                <dd>
+                    会員制コワーキングスペース「WORKERS」を想定したブランドサイトを制作。<br>
+                    「働く人が安心して過ごせる場所」をコンセプトに、<br>
+                    信頼感と落ち着きを感じられるデザインを目指しました。<br>
+                    初めて訪れるユーザーにも施設の雰囲気や利用イメージが伝わるよう、<br>
+                    情報の整理と視認性を意識しています。
+                </dd>
 
                 <dt>目的</dt>
-                <dd>美容室の魅力やコンセプトを視覚的に伝え、ターゲットユーザーに安心感と親しみを持ってもらうこと。<br>
-                    Webサイトを通じて、来店や予約につながるきっかけをつくることを目的としています。</dd>
+                <dd>
+                    コワーキングスペースの特徴や魅力を分かりやすく伝え、<br>
+                    利用を検討しているユーザーに安心感を与えること。<br>
+                    見学や入会へのアクションにつなげることを目的としています。
+                </dd>
 
                 <dt>ターゲット</dt>
-                <dd>20〜40代の女性を中心とした、美容室選びにこだわりのある層。<br>
-                    ナチュラルな雰囲気や丁寧な接客を重視するユーザーを想定。</dd>
+                <dd>
+                    フリーランス・リモートワーカー・個人事業主など、<br>
+                    落ち着いた環境で作業できる場所を探している20〜40代の働く人。
+                </dd>
 
                 <dt>制作期間</dt>
-                <dd>約5日</dd>
+                <dd>約1週間</dd>
 
                 <dt>使用ツール</dt>
-                <dd>Adobe Illustrator / Photoshop / Adobe Stock</dd>
+                <dd>Adobe Illustrator / Photoshop / Visual Studio Code</dd>
+
             </dl>
         </section>
 
+        <!-- 戻る -->
         <div class="works-detail-back js-reveal">
             <a href="./work.html" class="works-all-btn">WORKS ALL</a>
         </div>
 
     </main>
-    <!-- CONTACT CTA -->
-    <section class="contact-cta">
+
+    <!-- CONTACT CTA（必要なら） -->
+    <section class="contact-cta" id="contact">
         <p class="contact-text js-reveal">
             <span class="contact-maker">
                 デザインや発信に関するお悩み、<br class="sp-br">

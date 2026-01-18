@@ -3979,6 +3979,56 @@ body.page-work3 .works-frame.is-mockup {
     padding: 0;
     cursor: grab;
     touch-action: none;
+
+}
+
+/* SPバーをスマホモックの上に固定 */
+.sp-mock {
+    position: absolute;
+}
+
+/* work3では already absolute のはず */
+.sp-mock.js-sp-scroll {
+    position: absolute;
+}
+
+/* 念のため */
+
+.sp-mock {
+    position: relative;
+}
+
+/* ← work1みたいに単体置きの時用 */
+body.page-work3 .sp-mock {
+    position: absolute;
+}
+
+/* work3はabsoluteでOK */
+
+.sp-scroll__bar {
+    position: absolute;
+    z-index: 40;
+    right: 8%;
+    top: 10%;
+    width: 12%;
+    height: 70%;
+}
+
+.sp-scroll__thumb {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+
+    width: 100%;
+    height: 18%;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
 }
 
 .pc-scroll--work2 .pc-scroll__thumb::before {
@@ -4087,24 +4137,24 @@ body.page-work3 .sp-mock__frame {
     pointer-events: none;
 }
 
-/* SPの窓：ここだけスクロール */
+/* SPの窓：ネイティブスクロール禁止（バー制御にする） */
 body.page-work3 .sp-mock__screen {
     position: absolute;
     top: 5%;
     left: 21%;
     right: 22%;
-    bottom: 5%;
+    bottom: 9%;
     border-radius: 13px;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
+    overflow: hidden;
+
     pointer-events: auto;
 }
 
 body.page-work3 .sp-mock__img {
+    display: block;
     width: 100%;
     height: auto;
-    display: block;
+    will-change: transform;
 }
 
 @media (max-width: 768px) {

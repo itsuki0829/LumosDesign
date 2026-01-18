@@ -412,135 +412,217 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("load", runIntro, { once: true });
 })();
 
-// ===== PCモック：右バー操作 + 画面ホイールでスクロール（ページは動かさない）=====
-function setupPcScrollBar() {
-    const blocks = document.querySelectorAll(".js-pc-scroll");
+// ===== PC/SP モック：バー + ホイール + 連動（置き換え版）=====
+function setupLinkedMockScroll() {
+    const groups = document.querySelectorAll(".mock-group");
+    if (!groups.length) return;
 
-    blocks.forEach((wrap) => {
-        const screen = wrap.querySelector(".pc-scroll__screen");
-        const content = wrap.querySelector(".pc-scroll__content");
-        const bar = wrap.querySelector(".pc-scroll__bar");
-        const thumb = wrap.querySelector(".pc-scroll__thumb");
-        if (!screen || !content || !bar || !thumb) return;
+    const clamp01 = (v) => Math.max(0, Math.min(1, v));
 
-        let maxMove = 0;
-        let maxThumb = 0;
+    // side: "pc" or "sp"
+    const getEls = (group, side) => {
+        if (side === "pc") {
+            const wrap = group.querySelector(".js-pc-scroll");
+            return {
+                wrap,
+                screen: wrap?.querySelector(".pc-scroll__screen"),
+                content: wrap?.querySelector(".pc-scroll__content"),
+                bar: wrap?.querySelector(".pc-scroll__bar"),
+                thumb: wrap?.querySelector(".pc-scroll__thumb"),
+            };
+        }
+        // sp
+        const wrap = group.querySelector(".js-sp-scroll");
+        return {
+            wrap,
+            screen: wrap?.querySelector(".sp-mock__screen"),
+            content: wrap?.querySelector(".sp-mock__img"),
+            bar: wrap?.querySelector(".sp-scroll__bar"),
+            thumb: wrap?.querySelector(".sp-scroll__thumb"),
+        };
+    };
 
-        const setProgress = (p) => {
-            const y = maxMove * p;
-            const ty = maxThumb * p;
-            content.style.transform = `translateY(-${y}px)`;
-            thumb.style.top = `${ty}px`;
+    const waitImg = (img, cb) => {
+        if (!img) return;
+        if (img.complete && img.naturalWidth) cb();
+        else img.addEventListener("load", cb, { once: true });
+    };
+
+    groups.forEach((group) => {
+        const pc = getEls(group, "pc");
+        const sp = getEls(group, "sp");
+
+        // 両方揃ってる前提（片方だけならスキップ）
+        if (
+            !pc.wrap || !pc.screen || !pc.content || !pc.bar || !pc.thumb ||
+            !sp.wrap || !sp.screen || !sp.content || !sp.bar || !sp.thumb
+        ) return;
+
+        const state = {
+            pc: { maxMove: 0, maxThumb: 0 },
+            sp: { maxMove: 0, maxThumb: 0 },
+            lock: null, // "pc" / "sp"（操作中は逆側からの更新を抑止）
+        };
+
+        // 表示スケールから maxMove を計算
+        const calcOne = (screen, imgEl, barEl, thumbEl) => {
+            const screenH = screen.clientHeight;
+            const screenW = screen.clientWidth;
+
+            if (!imgEl.naturalWidth || !imgEl.naturalHeight) {
+                return { maxMove: 0, maxThumb: 0 };
+            }
+
+            const scale = screenW / imgEl.naturalWidth;
+            const contentH = imgEl.naturalHeight * scale;
+
+            const maxMove = Math.max(0, contentH - screenH);
+
+            const barH = barEl.clientHeight;
+            const thumbH = thumbEl.clientHeight;
+            const maxThumb = Math.max(0, barH - thumbH);
+
+            return { maxMove, maxThumb };
+        };
+
+        // p(0-1) を両方へ反映
+        const applyProgress = (p, from) => {
+            p = clamp01(p);
+
+            // 片側を触ってる間は、逆側からの更新で暴れないようにする
+            if (state.lock && state.lock !== from) return;
+
+            // PC
+            {
+                const y = state.pc.maxMove * p;
+                const ty = state.pc.maxThumb * p;
+                pc.content.style.transform = `translateY(-${y}px)`;
+                pc.thumb.style.top = `${ty}px`;
+            }
+
+            // SP
+            {
+                const y = state.sp.maxMove * p;
+                const ty = state.sp.maxThumb * p;
+                sp.content.style.transform = `translateY(-${y}px)`;
+                sp.thumb.style.top = `${ty}px`;
+            }
+        };
+
+        // thumbの現在位置から p を得る（side別）
+        const getPFromThumb = (thumbEl, maxThumb) => {
+            const top = parseFloat(getComputedStyle(thumbEl).top) || 0;
+            return maxThumb ? top / maxThumb : 0;
         };
 
         const calc = () => {
-            const screenH = screen.clientHeight;
-            if (!content.naturalWidth || !content.naturalHeight) return;
+            state.pc = calcOne(pc.screen, pc.content, pc.bar, pc.thumb);
+            state.sp = calcOne(sp.screen, sp.content, sp.bar, sp.thumb);
 
-            const scale = screen.clientWidth / content.naturalWidth;
-            const contentH = content.naturalHeight * scale;
-
-            maxMove = Math.max(0, contentH - screenH);
-
-            const barH = bar.clientHeight;
-            const thumbH = thumb.clientHeight;
-            maxThumb = Math.max(0, barH - thumbH);
-
-            setProgress(0);
+            // 現在のPC位置を基準に p を維持（リサイズでガクッを防ぐ）
+            const pNow = getPFromThumb(pc.thumb, state.pc.maxThumb);
+            applyProgress(pNow, "pc");
         };
 
-        if (content.complete && content.naturalWidth) calc();
-        else content.addEventListener("load", calc);
+        // 初回：両方の画像ロード後に計算
+        waitImg(pc.content, () => {
+            waitImg(sp.content, () => {
+                calc();
+            });
+        });
+
         window.addEventListener("resize", calc);
 
-        // ===== ドラッグ操作（Pointer Events版：掴みやすい）=====
-        let dragging = false;
-        let startY = 0;
-        let startTop = 0;
+        // ====== ドラッグ共通処理 ======
+        const setupDrag = (side, els) => {
+            let dragging = false;
+            let startY = 0;
+            let startTop = 0;
 
-        thumb.style.touchAction = "none"; // ←スマホでスクロールに取られない
+            els.thumb.style.touchAction = "none";
 
-        thumb.addEventListener("pointerdown", (e) => {
-            e.preventDefault();
-            dragging = true;
+            els.thumb.addEventListener("pointerdown", (e) => {
+                const maxThumb = state[side].maxThumb;
+                if (maxThumb <= 0) return;
 
-            startY = e.clientY;
-            startTop = parseFloat(getComputedStyle(thumb).top) || 0;
+                e.preventDefault();
+                state.lock = side;
+                dragging = true;
 
-            thumb.setPointerCapture(e.pointerId); // ←これが最強
-            thumb.style.cursor = "grabbing";
-        });
+                startY = e.clientY;
+                startTop = parseFloat(getComputedStyle(els.thumb).top) || 0;
 
-        thumb.addEventListener("pointermove", (e) => {
-            if (!dragging) return;
+                els.thumb.setPointerCapture(e.pointerId);
+                els.thumb.style.cursor = "grabbing";
+            });
 
-            const dy = e.clientY - startY;
-            let nextTop = startTop + dy;
-            nextTop = Math.max(0, Math.min(maxThumb, nextTop));
+            els.thumb.addEventListener("pointermove", (e) => {
+                if (!dragging) return;
 
-            setProgress(maxThumb ? nextTop / maxThumb : 0);
-        });
-
-        thumb.addEventListener("pointerup", () => {
-            dragging = false;
-            thumb.style.cursor = "grab";
-        });
-
-        thumb.addEventListener("pointercancel", () => {
-            dragging = false;
-            thumb.style.cursor = "grab";
-        });
-
-        // ===== バークリックで上下トグル =====
-        let opened = false;
-        bar.addEventListener("click", () => {
-            if (dragging) return;
-            opened = !opened;
-            setProgress(opened ? 1 : 0);
-        });
-
-        // ===== 画面ホイールで「モックアップ内だけ」スクロール =====
-        const WHEEL_FOLLOW = 0.7;
-
-        screen.addEventListener(
-            "wheel",
-            (e) => {
-                if (maxMove <= 0 || maxThumb <= 0) return;
-
-                const currentTop = parseFloat(getComputedStyle(thumb).top) || 0;
-
-                // 端にいるときはページスクロールに譲る（自然）
-                if (
-                    (e.deltaY < 0 && currentTop <= 0) ||
-                    (e.deltaY > 0 && currentTop >= maxThumb)
-                ) {
-                    return;
-                }
-
-                e.preventDefault(); // ← ページスクロールを止める
-                if (dragging) return;
-
-                let nextTop = currentTop + e.deltaY * WHEEL_FOLLOW;
+                const maxThumb = state[side].maxThumb;
+                let nextTop = startTop + (e.clientY - startY);
                 nextTop = Math.max(0, Math.min(maxThumb, nextTop));
-                setProgress(nextTop / maxThumb);
-            },
-            { passive: false }
-        );
+
+                const p = maxThumb ? nextTop / maxThumb : 0;
+                applyProgress(p, side);
+            });
+
+            const end = () => {
+                dragging = false;
+                els.thumb.style.cursor = "grab";
+                state.lock = null;
+            };
+
+            els.thumb.addEventListener("pointerup", end);
+            els.thumb.addEventListener("pointercancel", end);
+
+            // バークリック：上下トグル（PCと同じ挙動）
+            let opened = false;
+            els.bar.addEventListener("click", () => {
+                if (dragging) return;
+                const maxThumb = state[side].maxThumb;
+                if (maxThumb <= 0) return;
+
+                state.lock = side;
+                opened = !opened;
+                applyProgress(opened ? 1 : 0, side);
+                state.lock = null;
+            });
+        };
+
+        setupDrag("pc", pc);
+        setupDrag("sp", sp);
+
+        // ====== ホイール：モック内だけスクロール（連動） ======
+        const setupWheel = (side, els) => {
+            const WHEEL_FOLLOW = 0.7;
+
+            els.screen.addEventListener(
+                "wheel",
+                (e) => {
+                    const maxMove = state[side].maxMove;
+                    const maxThumb = state[side].maxThumb;
+                    if (maxMove <= 0 || maxThumb <= 0) return;
+
+                    const pNow = getPFromThumb(els.thumb, maxThumb);
+
+                    // 端にいるときはページスクロールに譲る
+                    if ((e.deltaY < 0 && pNow <= 0) || (e.deltaY > 0 && pNow >= 1)) return;
+
+                    e.preventDefault();
+
+                    state.lock = side;
+                    const nextP = clamp01(pNow + (e.deltaY * WHEEL_FOLLOW) / maxThumb);
+                    applyProgress(nextP, side);
+                    state.lock = null;
+                },
+                { passive: false }
+            );
+        };
+
+        setupWheel("pc", pc);
+        setupWheel("sp", sp);
     });
 }
 
-document.addEventListener("DOMContentLoaded", setupPcScrollBar);
-
-
-document.addEventListener("DOMContentLoaded", () => {
-    const wraps = document.querySelectorAll(".js-pc-scroll");
-    if (!wraps.length) return;
-
-    wraps.forEach(wrap => {
-        wrap.querySelectorAll(".pc-scroll__frame, .pc-scroll__content").forEach(img => {
-            if (img.complete) img.classList.add("is-loaded");
-            else img.addEventListener("load", () => img.classList.add("is-loaded"), { once: true });
-        });
-    });
-});
-
+document.addEventListener("DOMContentLoaded", setupLinkedMockScroll);
